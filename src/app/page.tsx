@@ -2,8 +2,9 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   return (
@@ -13,8 +14,8 @@ export default function LoginPage() {
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/20 via-obsidian to-obsidian"></div>
 
         <div className="relative z-10 flex items-center gap-3">
-          <div className="w-10 h-10 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display text-xl">
-            KV
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10">
+            <Image src="/khemet-logo.jpg" alt="Khemet Logo" fill className="object-cover" />
           </div>
           <span className="font-display font-bold text-2xl tracking-wide text-white">
             KHEMET
@@ -42,8 +43,8 @@ export default function LoginPage() {
         <div className="w-full max-w-md flex flex-col gap-8">
 
           <div className="md:hidden flex items-center gap-3 mb-8 justify-center">
-            <div className="w-8 h-8 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display">
-              KV
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/10">
+              <Image src="/khemet-logo.jpg" alt="Khemet Logo" fill className="object-cover" />
             </div>
             <span className="font-display font-bold text-xl tracking-wide text-white">
               KHEMET

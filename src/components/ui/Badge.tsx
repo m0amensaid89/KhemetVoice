@@ -21,7 +21,7 @@ export function Badge({
           "bg-red-500/10 text-red-400 border border-red-500/20": variant === "error",
           "bg-primary/10 text-primary border border-primary/20": variant === "info",
           "bg-white/5 text-text-secondary border border-white/10": variant === "neutral",
-          "bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_10px_rgba(76,215,246,0.2)]": variant === "active",
+          "bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_10px_rgba(229,195,101,0.2)]": variant === "active",
         },
         className
       )}

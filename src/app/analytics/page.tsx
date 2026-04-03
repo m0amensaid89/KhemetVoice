@@ -100,7 +100,7 @@ export default function AnalyticsPage() {
                       {val * 10}
                     </div>
                     {/* Stacked bars */}
-                    <div className="w-full bg-secondary rounded-t-sm transition-all duration-300 group-hover:brightness-110" style={{ height: `${val * 0.3}%` }}></div>
+                    <div className="w-full bg-tertiary rounded-t-sm transition-all duration-300 group-hover:brightness-110" style={{ height: `${val * 0.3}%` }}></div>
                     <div className="w-full bg-primary rounded-sm transition-all duration-300 group-hover:brightness-110" style={{ height: `${val * 0.7}%` }}></div>
                   </div>
                 ))}

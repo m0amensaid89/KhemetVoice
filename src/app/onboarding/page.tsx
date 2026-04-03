@@ -2,8 +2,9 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { CheckCircle2, ChevronRight, Building2, Users, Globe } from "lucide-react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OnboardingPage() {
   return (
@@ -11,8 +12,8 @@ export default function OnboardingPage() {
       {/* Simple Header */}
       <header className="h-16 flex items-center px-8 border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display">
-            KV
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
+            <Image src="/khemet-logo.jpg" alt="Khemet Logo" fill className="object-cover" />
           </div>
           <span className="font-display font-bold text-lg tracking-wide text-white">
             KHEMET

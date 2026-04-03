@@ -65,14 +65,14 @@ export default function LiveConversationPage() {
           <Card className="lg:col-span-2 flex flex-col overflow-hidden">
             {/* Waveform Area */}
             <div className="h-48 bg-obsidian flex items-center justify-center relative border-b border-white/5">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary/10 via-obsidian to-obsidian opacity-50"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-obsidian to-obsidian opacity-50"></div>
 
               {/* Fake Waveform Visuals */}
               <div className="flex items-center gap-1 h-24 z-10 px-8">
                 {waveforms.map((wave, i) => (
                   <div
                     key={i}
-                    className="w-1.5 bg-secondary rounded-full animate-pulse shadow-[0_0_8px_rgba(76,215,246,0.5)]"
+                    className="w-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(203,170,77,0.5)]"
                     style={{
                       height: `${wave.height}%`,
                       animationDelay: `${wave.delay}s`,
@@ -81,7 +81,7 @@ export default function LiveConversationPage() {
                   />
                 ))}
               </div>
-              <div className="absolute bottom-4 left-4 text-xs font-mono text-secondary tracking-widest uppercase">
+              <div className="absolute bottom-4 left-4 text-xs font-mono text-primary tracking-widest uppercase">
                 Analyzing Audio Stream...
               </div>
             </div>
@@ -112,14 +112,14 @@ export default function LiveConversationPage() {
                 </div>
                 <div className="bg-surface-low border border-white/5 p-4 rounded-sm rounded-tl-none max-w-[80%] relative">
                   <p className="text-sm text-white">Excellent. To better assist you, could you confirm how many agent licenses your team currently requires?</p>
-                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 bg-secondary rounded-r-full shadow-[0_0_8px_rgba(76,215,246,0.5)]"></div>
+                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-6 bg-primary rounded-r-full shadow-[0_0_8px_rgba(203,170,77,0.5)]"></div>
                 </div>
               </div>
 
               <div className="flex items-center justify-center gap-2 text-xs text-text-secondary py-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-bounce" style={{ animationDelay: '0ms' }}></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '300ms' }}></span>
                 <span className="ml-2 uppercase tracking-widest text-[10px]">Processing Input</span>
               </div>
             </div>
