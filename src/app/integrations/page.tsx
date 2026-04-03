@@ -2,7 +2,8 @@ import { AppShell } from "@/components/layout/AppShell";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { Search, Link as LinkIcon, Database, MessageSquare, Phone } from "lucide-react";
+import { Input } from "@/components/ui/Input";
+import { Search, Link as LinkIcon, Database, MessageSquare, Phone, Calendar, Key, Webhook, Copy, Eye, Plus } from "lucide-react";
 
 export default function IntegrationsPage() {
   const integrations = [
@@ -12,6 +13,8 @@ export default function IntegrationsPage() {
     { id: 4, name: "Twilio", category: "Telephony", status: "connected", icon: Phone },
     { id: 5, name: "Slack", category: "Communication", status: "available", icon: MessageSquare },
     { id: 6, name: "WhatsApp Business", category: "Messaging", status: "available", icon: MessageSquare },
+    { id: 7, name: "Google Calendar", category: "Calendar", status: "connected", icon: Calendar },
+    { id: 8, name: "Outlook Calendar", category: "Calendar", status: "available", icon: Calendar },
   ];
 
   return (
@@ -33,7 +36,7 @@ export default function IntegrationsPage() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {integrations.map((integration) => (
             <Card key={integration.id} className="p-6 flex flex-col gap-6" elite={integration.status === 'connected'}>
               <div className="flex items-start justify-between">
@@ -61,6 +64,76 @@ export default function IntegrationsPage() {
             </Card>
           ))}
         </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* API Keys Section */}
+          <Card className="p-6 flex flex-col gap-6">
+            <div className="flex items-center justify-between pb-2 border-b border-white/5">
+              <div className="flex items-center gap-2">
+                <Key className="w-5 h-5 text-primary" />
+                <h2 className="text-lg font-display font-medium text-white">API Keys</h2>
+              </div>
+              <Button variant="secondary" size="sm" className="gap-2">
+                <Plus className="w-4 h-4" /> Generate Key
+              </Button>
+            </div>
+            <p className="text-sm text-text-secondary">Use these keys to authenticate API requests from your backend.</p>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between p-4 border border-white/10 rounded-sm bg-surface-low">
+                <div>
+                  <h3 className="text-sm font-medium text-white">Production Key</h3>
+                  <p className="text-xs text-text-secondary">Created: May 12, 2024</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-mono text-text-secondary bg-surface-high px-2 py-1 rounded">sk_prod_...8f92</span>
+                  <Button variant="icon" size="sm"><Copy className="w-4 h-4" /></Button>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-4 border border-white/10 rounded-sm bg-surface-low">
+                <div>
+                  <h3 className="text-sm font-medium text-white">Staging Key</h3>
+                  <p className="text-xs text-text-secondary">Created: Apr 28, 2024</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-mono text-text-secondary bg-surface-high px-2 py-1 rounded">sk_test_...3a1c</span>
+                  <Button variant="icon" size="sm"><Copy className="w-4 h-4" /></Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Webhooks Section */}
+          <Card className="p-6 flex flex-col gap-6">
+            <div className="flex items-center justify-between pb-2 border-b border-white/5">
+              <div className="flex items-center gap-2">
+                <Webhook className="w-5 h-5 text-secondary" />
+                <h2 className="text-lg font-display font-medium text-white">Webhooks</h2>
+              </div>
+              <Button variant="secondary" size="sm" className="gap-2">
+                <Plus className="w-4 h-4" /> Add Endpoint
+              </Button>
+            </div>
+            <p className="text-sm text-text-secondary">Receive real-time events when calls complete, leads are qualified, etc.</p>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 p-4 border border-white/10 rounded-sm bg-surface-low">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-white">CRM Sync Endpoint</h3>
+                  <Badge variant="success">Active</Badge>
+                </div>
+                <div className="text-sm font-mono text-primary bg-primary/10 px-2 py-1 rounded break-all">
+                  https://api.yourcompany.com/webhooks/khemet
+                </div>
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5">
+                  <span className="text-xs text-text-secondary">Events: call.completed, lead.qualified</span>
+                  <Button variant="secondary" size="sm" className="h-6 text-xs px-2">Edit</Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
       </div>
     </AppShell>
   );

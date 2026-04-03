@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Input } from "@/components/ui/Input";
-import { Search, Database, FileText, Globe, Upload, MoreVertical } from "lucide-react";
+import { Search, Database, FileText, Globe, Upload, MoreVertical, BrainCircuit, CheckCircle2 } from "lucide-react";
 
 export default function KnowledgeBasePage() {
   const sources = [
@@ -40,7 +40,7 @@ export default function KnowledgeBasePage() {
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center text-primary">
               <Database className="w-5 h-5" />
@@ -66,6 +66,20 @@ export default function KnowledgeBasePage() {
             <div>
               <div className="text-xs text-text-secondary uppercase tracking-wider mb-1">Web Sources</div>
               <div className="text-xl font-display font-medium text-white">8 Domains</div>
+            </div>
+          </Card>
+          <Card className="p-4 flex items-center gap-4 border-emerald-500/20 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-500/10 to-transparent relative overflow-hidden">
+            <div className="w-10 h-10 rounded bg-emerald-500/10 flex items-center justify-center text-emerald-400 z-10">
+              <BrainCircuit className="w-5 h-5" />
+            </div>
+            <div className="z-10">
+              <div className="text-xs text-text-secondary uppercase tracking-wider mb-1">Knowledge Readiness</div>
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-display font-bold text-emerald-400">92%</span>
+                <span className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm border border-emerald-500/20">
+                  <CheckCircle2 className="w-3 h-3" /> Ready
+                </span>
+              </div>
             </div>
           </Card>
         </div>

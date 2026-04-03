@@ -169,6 +169,70 @@ export default function AnalyticsPage() {
           </div>
 
         </div>
+
+        {/* New Analytics Rows */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Language Split */}
+          <Card className="p-6 flex flex-col min-h-[300px]">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-white mb-6">Language Split</h3>
+            <div className="flex-1 flex items-center justify-center gap-8">
+              {/* Donut Chart Mock */}
+              <div className="relative w-40 h-40">
+                <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-surface-high)" strokeWidth="20" />
+                  {/* Arabic Segment - ~65% */}
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-primary)" strokeWidth="20" strokeDasharray="251.2" strokeDashoffset={251.2 * 0.35} className="transition-all duration-1000 ease-out" />
+                  {/* English Segment - ~35% */}
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-secondary)" strokeWidth="20" strokeDasharray="251.2" strokeDashoffset={251.2 * 0.65} className="transition-all duration-1000 ease-out" style={{ strokeDashoffset: 251.2 * 0.65, transform: 'rotate(234deg)', transformOrigin: 'center' }} />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                  <span className="text-xs text-text-secondary">Total Calls</span>
+                  <span className="text-lg font-bold text-white">12.4k</span>
+                </div>
+              </div>
+              {/* Legend */}
+              <div className="flex flex-col gap-4">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-3 h-3 rounded-sm bg-primary"></div>
+                    <span className="text-sm text-white">Arabic (Gulf)</span>
+                  </div>
+                  <div className="text-2xl font-bold text-white">65%</div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-3 h-3 rounded-sm bg-secondary"></div>
+                    <span className="text-sm text-white">English (US)</span>
+                  </div>
+                  <div className="text-2xl font-bold text-white">35%</div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Missed Intents Breakdown */}
+          <Card className="p-6 flex flex-col min-h-[300px]">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-white mb-6">Missed Intents Breakdown</h3>
+            <div className="flex-1 flex flex-col justify-center gap-5">
+              {[
+                { label: "Technical Jargon / Unknown Product", value: 45 },
+                { label: "Complex Pricing Questions", value: 30 },
+                { label: "Out of Scope Requests", value: 15 },
+                { label: "Unrecognized Accent / Dialect", value: 10 }
+              ].map((intent, i) => (
+                <div key={i}>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-white">{intent.label}</span>
+                    <span className="text-text-secondary">{intent.value}%</span>
+                  </div>
+                  <div className="w-full h-2 bg-surface-high rounded-full overflow-hidden">
+                    <div className="h-full bg-tertiary transition-all duration-1000 ease-out" style={{ width: `${intent.value}%` }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </AppShell>
   );
