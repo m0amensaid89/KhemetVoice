@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khemet Voice | Agent Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "gold-accent": "#cbaa4d",
+                    "tertiary-container": "#8b6700",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary": "#003640",
+                    "surface-container-highest": "#26364a",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#d3e4fe",
+                    "inverse-primary": "#0053db",
+                    "inverse-surface": "#d3e4fe",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "outline-variant": "#434655",
+                    "surface-dim": "#031427",
+                    "background": "#031427",
+                    "on-secondary-container": "#00424e",
+                    "outline": "#8d90a0",
+                    "surface": "#031427",
+                    "on-error": "#690005",
+                    "on-tertiary": "#402d00",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-bright": "#2a3a4f",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "primary-container": "#cbaa4d",
+                    "inverse-on-surface": "#213145",
+                    "surface-tint": "#b4c5ff",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary-container": "#ffeed3",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed": "#ffdf9f",
+                    "secondary": "#4cd7f6",
+                    "on-primary": "#002a78",
+                    "surface-container": "#102034",
+                    "surface-container-lowest": "#000f21",
+                    "secondary-fixed": "#acedff",
+                    "secondary-container": "#03b5d3",
+                    "tertiary": "#f9bd22",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary": "#cbaa4d",
+                    "surface-container-low": "#0b1c30",
+                    "on-secondary-fixed": "#001f26",
+                    "on-primary-container": "#eeefff",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#1b2b3f",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "error": "#ffb4ab",
+                    "on-surface": "#d3e4fe",
+                    "surface-variant": "#26364a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .glass-edge {
+            background: linear-gradient(to bottom, rgba(203, 170, 77, 0.1), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-black">
+<!-- SIDE NAV BAR (ANCHOR) -->
+<aside class="fixed left-0 h-screen w-64 border-r border-gold-accent/20 bg-slate-950 flex flex-col h-full py-6 z-50 shadow-[20px_0_40px_rgba(203,170,77,0.05)]">
+<div class="px-6 mb-10"><img alt="Khemet Voice Logo" class="w-full h-auto max-h-32 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/></div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-6 py-3 text-gold-accent border-l-2 border-gold-accent bg-gold-accent/10 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="smart_toy">smart_toy</span>
+                Agents
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="database">database</span>
+                Knowledge
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="forum">forum</span>
+                Conversations
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="person_add">person_add</span>
+                Leads
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="event_available">event_available</span>
+                Bookings
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="monitoring">monitoring</span>
+                Analytics
+            </a>
+</nav>
+<div class="px-6 pt-6 border-t border-gold-accent/10">
+<button class="w-full bg-gold-accent text-black py-3 rounded-sm font-headline font-bold text-xs tracking-widest uppercase hover:brightness-110 transition-all">
+                New Agent
+            </button>
+</div>
+<div class="mt-auto px-6 space-y-1">
+<a class="flex items-center py-2 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="language">language</span>
+                Language
+            </a>
+<a class="flex items-center py-2 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- TOP NAV BAR (ANCHOR) -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-gold-accent/10 flex items-center justify-between px-8 z-40">
+<div class="flex items-center space-x-6">
+<div class="flex items-center bg-surface-container-low px-4 py-2 border border-outline-variant/10">
+<span class="material-symbols-outlined text-gold-accent text-lg mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-headline tracking-widest text-slate-300 w-64 placeholder-slate-600" placeholder="QUERY SYSTEM..." type="text"/>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+<span class="font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase text-cyan-400">System Status: Active</span>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-gold-accent transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-gold-accent transition-all" data-icon="language">language</span>
+<div class="flex items-center space-x-3 cursor-pointer group">
+<span class="font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase text-slate-400 group-hover:text-gold-accent">Enterprise Menu</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-gold-accent" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT CANVAS -->
+<main class="ml-64 pt-16 min-h-screen bg-surface p-8 overflow-x-hidden">
+<!-- HEADER SECTION -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<div class="w-10 h-1 bg-gold-accent mb-4"></div>
+<h2 class="text-3xl font-headline font-bold text-on-surface tracking-tighter uppercase">Deployment Console</h2>
+<p class="text-slate-500 font-headline text-xs tracking-widest mt-1">CONFIGURING NEURAL AGENT-774 // SOVEREIGN_LAYER_01</p>
+</div>
+<div class="flex space-x-4">
+<button class="px-6 py-2 border border-outline-variant/30 text-slate-400 font-headline font-bold text-xs tracking-widest uppercase hover:bg-surface-container-high transition-all">Save Draft</button>
+<button class="px-6 py-2 bg-gold-accent/10 border border-gold-accent text-gold-accent font-headline font-bold text-xs tracking-widest uppercase hover:bg-gold-accent/20 transition-all">Test Agent</button>
+<button class="px-8 py-2 bg-gold-accent text-black font-headline font-bold text-xs tracking-widest uppercase hover:brightness-110 transition-all shadow-lg shadow-gold-accent/20">Initialize Deployment</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- LEFT: NAVIGATION STEPS -->
+<div class="col-span-3 space-y-4">
+<div class="bg-surface-container-low p-6 border-l-4 border-gold-accent">
+<p class="text-[10px] text-gold-accent tracking-widest font-headline font-bold uppercase mb-1">01</p>
+<h3 class="text-sm font-headline font-bold text-on-surface uppercase">Basic Info</h3>
+<p class="text-xs text-slate-500 mt-1">Identity and primary objective</p>
+</div>
+<div class="bg-surface-container-low/40 p-6 border-l-4 border-transparent hover:border-gold-accent/50 transition-all cursor-pointer">
+<p class="text-[10px] text-slate-600 tracking-widest font-headline font-bold uppercase mb-1">02</p>
+<h3 class="text-sm font-headline font-bold text-slate-400 uppercase">Personality</h3>
+<p class="text-xs text-slate-600 mt-1">Tone, warmth, and vocal authority</p>
+</div>
+<div class="bg-surface-container-low/40 p-6 border-l-4 border-transparent hover:border-gold-accent/50 transition-all cursor-pointer">
+<p class="text-[10px] text-slate-600 tracking-widest font-headline font-bold uppercase mb-1">03</p>
+<h3 class="text-sm font-headline font-bold text-slate-400 uppercase">Knowledge</h3>
+<p class="text-xs text-slate-600 mt-1">Custom datasets and documentation</p>
+</div>
+<div class="bg-surface-container-low/40 p-6 border-l-4 border-transparent hover:border-gold-accent/50 transition-all cursor-pointer">
+<p class="text-[10px] text-slate-600 tracking-widest font-headline font-bold uppercase mb-1">04</p>
+<h3 class="text-sm font-headline font-bold text-slate-400 uppercase">Logic</h3>
+<p class="text-xs text-slate-600 mt-1">Qualification and success paths</p>
+</div>
+<div class="bg-surface-container-low/40 p-6 border-l-4 border-transparent hover:border-gold-accent/50 transition-all cursor-pointer">
+<p class="text-[10px] text-slate-600 tracking-widest font-headline font-bold uppercase mb-1">05</p>
+<h3 class="text-sm font-headline font-bold text-slate-400 uppercase">Deployment</h3>
+<p class="text-xs text-slate-600 mt-1">Integration and API endpoints</p>
+</div>
+<!-- PREVIEW WIDGET -->
+<div class="mt-12 bg-surface-container-highest p-6 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-accent to-gold-accent/50"></div>
+<p class="text-[10px] text-gold-accent font-headline font-bold tracking-widest uppercase mb-4">Neural Preview</p>
+<div class="flex items-center space-x-4">
+<div class="w-16 h-16 rounded-sm bg-slate-900 border border-gold-accent/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-gold-accent" data-icon="graphic_eq">graphic_eq</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface uppercase">Agent Interface</p>
+<p class="text-[10px] text-slate-500 mt-1 uppercase">Ready for vocal test</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CENTER: FORM FIELDS -->
+<div class="col-span-6 space-y-8">
+<!-- MODULE 1: BASIC INFO -->
+<section class="bg-surface-container-low p-8 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-headline font-bold text-on-surface uppercase tracking-widest flex items-center">
+<span class="w-2 h-2 bg-gold-accent mr-3"></span>
+                            Basic Configuration
+                        </h4>
+<span class="text-[10px] font-mono text-slate-500">ID: KH-X9-01</span>
+</div>
+<div class="space-y-6">
+<div class="group">
+<label class="block text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-2 group-focus-within:text-gold-accent transition-colors">Agent Name</label>
+<input class="w-full bg-surface-container-high border-b-2 border-outline-variant focus:border-gold-accent px-4 py-3 text-on-surface focus:ring-0 transition-all placeholder-slate-700" placeholder="e.g., Cairo Support Alpha" type="text"/>
+</div>
+<div class="group">
+<label class="block text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-2 group-focus-within:text-gold-accent transition-colors">Strategic Objective</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="py-4 border-2 border-gold-accent bg-gold-accent text-black font-headline text-xs font-bold uppercase tracking-tighter">Lead Generation</button>
+<button class="py-4 border-2 border-outline-variant hover:border-slate-500 transition-all text-slate-500 font-headline text-xs font-bold uppercase tracking-tighter">Support Desk</button>
+<button class="py-4 border-2 border-outline-variant hover:border-slate-500 transition-all text-slate-500 font-headline text-xs font-bold uppercase tracking-tighter">Enterprise Sales</button>
+</div>
+</div>
+<div class="group">
+<label class="block text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-2 group-focus-within:text-gold-accent transition-colors">Language Matrices</label>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<div class="w-10 h-5 bg-gold-accent rounded-full flex items-center px-1">
+<div class="w-3 h-3 bg-white rounded-full translate-x-5"></div>
+</div>
+<span class="text-xs font-headline font-bold uppercase text-on-surface">Arabic</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-10 h-5 bg-gold-accent rounded-full flex items-center px-1">
+<div class="w-3 h-3 bg-white rounded-full translate-x-5"></div>
+</div>
+<span class="text-xs font-headline font-bold uppercase text-on-surface">English</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-10 h-5 bg-slate-800 rounded-full flex items-center px-1">
+<div class="w-3 h-3 bg-slate-600 rounded-full"></div>
+</div>
+<span class="text-xs font-headline font-bold uppercase text-slate-600">Bilingual Fusion</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODULE 2: PERSONALITY -->
+<section class="bg-surface-container-low p-8 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-headline font-bold text-on-surface uppercase tracking-widest flex items-center">
+<span class="w-2 h-2 bg-gold-accent mr-3"></span>
+                            Vocal Personality
+                        </h4>
+<div class="flex space-x-2">
+<div class="w-4 h-4 bg-gold-accent/20 flex items-center justify-center">
+<div class="w-1 h-2 bg-gold-accent animate-pulse"></div>
+</div>
+</div>
+</div>
+<div class="space-y-10">
+<div class="grid grid-cols-3 gap-6">
+<div class="text-center p-4 border border-outline-variant/20 hover:border-gold-accent transition-all cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 mb-2" data-icon="shield">shield</span>
+<p class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-400">Formal</p>
+</div>
+<div class="text-center p-4 border-2 border-gold-accent bg-gold-accent/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-gold-accent mb-2" data-icon="work">work</span>
+<p class="text-[10px] font-headline font-bold uppercase tracking-widest text-gold-accent">Professional</p>
+</div>
+<div class="text-center p-4 border border-outline-variant/20 hover:border-gold-accent transition-all cursor-pointer">
+<span class="material-symbols-outlined text-slate-500 mb-2" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+<p class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-400">Friendly</p>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between text-[10px] font-headline font-bold uppercase tracking-widest mb-4">
+<span class="text-slate-500">Empathy (Warmth)</span>
+<span class="text-on-surface">65%</span>
+<span class="text-slate-500">Authority (Command)</span>
+</div>
+<div class="h-1 bg-surface-container-highest relative">
+<div class="absolute inset-y-0 left-0 bg-gradient-to-r from-gold-accent to-gold-accent/50 w-[65%]"></div>
+<div class="absolute top-1/2 left-[65%] -translate-y-1/2 w-4 h-4 bg-white border-2 border-gold-accent shadow-lg"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-headline font-bold uppercase tracking-widest mb-4">
+<span class="text-slate-500">Conciseness</span>
+<span class="text-on-surface">40%</span>
+<span class="text-slate-500">Detail (Eloquence)</span>
+</div>
+<div class="h-1 bg-surface-container-highest relative">
+<div class="absolute inset-y-0 left-0 bg-gradient-to-r from-gold-accent to-gold-accent/50 w-[40%]"></div>
+<div class="absolute top-1/2 left-[40%] -translate-y-1/2 w-4 h-4 bg-white border-2 border-gold-accent shadow-lg"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODULE 3: GREETING -->
+<section class="bg-surface-container-low p-8 border border-outline-variant/10">
+<h4 class="font-headline font-bold text-on-surface uppercase tracking-widest flex items-center mb-6">
+<span class="w-2 h-2 bg-gold-accent mr-3"></span>
+                        First Contact Protocol
+                    </h4>
+<div class="space-y-4">
+<div class="bg-surface-container-high p-4 border border-outline-variant/10">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder-slate-600 resize-none" placeholder="Enter the agent's greeting text..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex space-x-2">
+<button class="p-2 border border-outline-variant/30 text-slate-500 hover:text-gold-accent transition-all">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="p-2 border border-outline-variant/30 text-slate-500 hover:text-gold-accent transition-all">
+<span class="material-symbols-outlined" data-icon="upload">upload</span>
+</button>
+</div>
+<span class="text-[10px] font-headline font-bold uppercase text-slate-500 tracking-widest">Audio Synthesis Ready</span>
+</div>
+</div>
+</section>
+<!-- MODULE 4: LOGIC -->
+<section class="bg-surface-container-low p-8 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline font-bold text-on-surface uppercase tracking-widest flex items-center">
+<span class="w-2 h-2 bg-gold-accent mr-3"></span>
+                            Qualification Logic
+                        </h4>
+<button class="text-[10px] font-headline font-bold uppercase text-gold-accent hover:text-gold-accent/80 transition-all">+ Add Parameter</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 border border-outline-variant/5">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-gold-accent mr-3 text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-xs font-headline font-medium text-on-surface">Confirm business size and industry focus</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm cursor-pointer hover:text-error" data-icon="delete">delete</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 border border-outline-variant/5">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-gold-accent mr-3 text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-xs font-headline font-medium text-on-surface">Identify primary decision-maker name</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm cursor-pointer hover:text-error" data-icon="delete">delete</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 border border-outline-variant/5">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-gold-accent mr-3 text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-xs font-headline font-medium text-on-surface">Verify budget threshold alignment</span>
+</div>
+<span class="material-symbols-outlined text-slate-600 text-sm cursor-pointer hover:text-error" data-icon="delete">delete</span>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT: TERMINAL PREVIEW & STATUS -->
+<div class="col-span-3 space-y-6">
+<!-- TERMINAL PREVIEW -->
+<div class="bg-[#010810] border border-gold-accent/20 rounded-sm overflow-hidden flex flex-col h-[500px]">
+<div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-gold-accent/10">
+<div class="flex items-center space-x-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-gold-accent/40"></div>
+</div>
+<span class="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Sys_Log: Configure</span>
+</div>
+<div class="p-4 font-mono text-[11px] space-y-2 overflow-y-auto no-scrollbar">
+<p class="text-gold-accent"># Initializing configuration sequence...</p>
+<p class="text-slate-400"># Identity: <span class="text-on-surface"> Cairo Support Alpha </span> confirmed.</p>
+<p class="text-slate-400"># Objective: <span class="text-gold-accent"> LEAD_GEN </span> mapped.</p>
+<p class="text-slate-400"># Locales: <span class="text-on-surface"> AR, EN </span> loaded.</p>
+<p class="text-slate-400"># Personality Matrix: PROFESSIONAL v2.1</p>
+<p class="text-slate-600">------------------------------------</p>
+<p class="text-green-500 flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="done">done</span>
+                            Neural layer weight adjusted (65/40)
+                        </p>
+<p class="text-slate-400"># Awaiting "First Greeting" audio synthesis...</p>
+<p class="text-gold-accent animate-pulse">_ blinking cursor waiting for input</p>
+<p class="text-slate-700"># [System Idle] Memory consumption: 1.2GB</p>
+<p class="text-slate-700"># [System Idle] Latency: 22ms</p>
+</div>
+</div>
+<!-- LIVE WAVEFORM WIDGET -->
+<div class="bg-surface-container-low p-6 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-tr from-gold-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<p class="text-[10px] font-headline font-bold uppercase text-slate-500 mb-4 tracking-widest">Active Voice Signature</p>
+<div class="flex items-center justify-between h-16 space-x-1">
+<div class="w-1 h-4 bg-gold-accent/20 rounded-full animate-[bounce_1s_infinite]"></div>
+<div class="w-1 h-8 bg-gold-accent rounded-full animate-[bounce_1.2s_infinite]"></div>
+<div class="w-1 h-12 bg-gold-accent rounded-full animate-[bounce_0.8s_infinite]"></div>
+<div class="w-1 h-6 bg-gold-accent/20 rounded-full animate-[bounce_1.5s_infinite]"></div>
+<div class="w-1 h-10 bg-gold-accent rounded-full animate-[bounce_0.9s_infinite]"></div>
+<div class="w-1 h-4 bg-gold-accent/20 rounded-full animate-[bounce_1.1s_infinite]"></div>
+<div class="w-1 h-14 bg-gold-accent rounded-full animate-[bounce_1.3s_infinite]"></div>
+<div class="w-1 h-6 bg-gold-accent/20 rounded-full animate-[bounce_0.7s_infinite]"></div>
+<div class="w-1 h-4 bg-gold-accent/20 rounded-full animate-[bounce_1.2s_infinite]"></div>
+</div>
+</div>
+<!-- IMAGE CONTEXT -->
+<div class="relative h-48 group cursor-crosshair">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border border-outline-variant/20" data-alt="Futuristic glowing neural network visualization in deep blue and gold tones with floating data particles and cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVlSV1ysTtlV6Jgxgq9nJgegr5eZu07hwc-4LcOB_fPF9R_3XnQrQeytGDC88po_FveGa-V_oD6xZm7Q94DXYQi6fNgABiuRVp2iadC-Mqdr3lMHXgTQcwCgzz0boG8KqRlyZzFx_nBivSXHUN0wXyGeUV5IYci59fj8LMMLZXjS9prwfnHon20o-NzZ7RopKCXTo5s0rqlPWentr6N9cfRnfWd4aAckmkxVMj8K0mWsY1h62psL4LaaDCOdwZftJ_m7yx-a_LQw1G"/>
+<div class="absolute inset-0 bg-gold-accent/20 mix-blend-overlay"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[10px] font-headline font-bold text-white bg-black/60 px-2 py-1 uppercase tracking-widest">Neural Map: Active</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

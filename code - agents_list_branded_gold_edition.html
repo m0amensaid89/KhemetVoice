@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khemet Voice | Agents List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#8b6700",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#003640",
+                      "surface-container-highest": "#26364a",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#d3e4fe",
+                      "inverse-primary": "#0053db",
+                      "inverse-surface": "#d3e4fe",
+                      "on-tertiary-fixed-variant": "#5c4300",
+                      "outline-variant": "#434655",
+                      "surface-dim": "#031427",
+                      "background": "#031427",
+                      "on-secondary-container": "#00424e",
+                      "outline": "#8d90a0",
+                      "surface": "#031427",
+                      "on-error": "#690005",
+                      "on-tertiary": "#402d00",
+                      "on-surface-variant": "#c3c6d7",
+                      "surface-bright": "#2a3a4f",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "primary-container": "#cbaa4d",
+                      "inverse-on-surface": "#213145",
+                      "surface-tint": "#cbaa4d",
+                      "on-tertiary-fixed": "#261a00",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary-container": "#ffeed3",
+                      "primary-fixed": "#ffdf9f",
+                      "secondary": "#cbaa4d",
+                      "on-primary": "#000000",
+                      "surface-container": "#102034",
+                      "surface-container-lowest": "#000f21",
+                      "secondary-fixed": "#acedff",
+                      "secondary-container": "#cbaa4d",
+                      "tertiary": "#cbaa4d",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#cbaa4d",
+                      "primary": "#cbaa4d",
+                      "surface-container-low": "#0b1c30",
+                      "on-secondary-fixed": "#001f26",
+                      "on-primary-container": "#000000",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#1b2b3f",
+                      "tertiary-fixed-dim": "#cbaa4d",
+                      "error": "#ffb4ab",
+                      "on-surface": "#d3e4fe",
+                      "surface-variant": "#26364a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(16, 32, 52, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container/30">
+<!-- SideNavBar Integration -->
+<aside class="fixed left-0 h-screen w-64 border-r border-slate-900/40 bg-slate-950 flex flex-col py-6 shadow-[20px_0_40px_rgba(203,170,77,0.05)] z-50">
+<div class="px-6 mb-10"><img alt="Khemet Voice Logo" class="w-full h-auto object-contain max-h-24 filter brightness-110 drop-shadow-[0_0_15px_rgba(203,170,77,0.3)]" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/></div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<!-- Agents (Active State) -->
+<a class="flex items-center px-6 py-3 text-primary border-l-2 border-primary bg-primary/10 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="smart_toy">smart_toy</span>
+                Agents
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="database">database</span>
+                Knowledge
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="forum">forum</span>
+                Conversations
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="person_add">person_add</span>
+                Leads
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="event_available">event_available</span>
+                Bookings
+            </a>
+<a class="flex items-center px-6 py-3 text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="monitoring">monitoring</span>
+                Analytics
+            </a>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full bg-primary text-on-primary py-3 rounded-sm font-headline font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Agent
+            </button>
+<div class="pt-4 border-t border-slate-900/20 space-y-2">
+<a class="flex items-center text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-xs uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="language">language</span>
+                    Language
+                </a>
+<a class="flex items-center text-slate-500 hover:text-slate-200 font-['Space_Grotesk'] tracking-tight text-xs uppercase font-bold" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Integration -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-slate-900/10 flex justify-between items-center px-8 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full focus-within:ring-1 ring-primary/30 transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-sm pl-10 pr-4 py-2 text-xs font-['Space_Grotesk'] uppercase tracking-widest text-on-surface placeholder:text-slate-600 focus:ring-0" placeholder="Search system nodes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-primary animate-pulse font-['Space_Grotesk'] text-[10px] font-bold tracking-widest uppercase">
+                System Status: Active
+            </div>
+<div class="flex items-center gap-4 border-l border-slate-900/20 pl-6">
+<button class="text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<div class="flex items-center gap-3 ml-2 group cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-all" data-icon="account_circle">account_circle</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase text-slate-400 group-hover:text-on-surface transition-all">Enterprise Menu</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen bg-gradient-to-br from-[#031427] to-[#010811]">
+<!-- Header & Action Bar -->
+<div class="flex justify-between items-end mb-8">
+<div class="relative">
+<div class="absolute -top-4 left-0 w-6 h-0.5 bg-primary"></div>
+<h2 class="text-3xl font-headline font-bold tracking-tighter text-on-surface uppercase">Agent Intelligence</h2>
+<p class="text-slate-500 font-label text-sm mt-1">Operational Overview &amp; Neural Deployment</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low p-1 rounded-sm border border-outline-variant/10">
+<button class="px-4 py-2 bg-primary text-on-primary font-headline text-[10px] font-bold uppercase tracking-widest rounded-sm">Grid</button>
+<button class="px-4 py-2 text-slate-500 hover:text-slate-200 font-headline text-[10px] font-bold uppercase tracking-widest rounded-sm">List</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2.5 border border-outline-variant/20 hover:bg-surface-container-high transition-colors text-on-surface font-headline text-[10px] font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                    Filter Parameters
+                </button>
+<button class="flex items-center gap-2 bg-primary px-6 py-2.5 text-on-primary font-headline text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    Initialize Agent
+                </button>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-4 gap-6 mb-10">
+<div class="bg-surface-container-low p-5 border-l-2 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="memory">memory</span>
+</div>
+<p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1">Total Instances</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">24 <span class="text-xs text-primary font-normal ml-2">/ 50 Max</span></h3>
+</div>
+<div class="bg-surface-container-low p-5 border-l-2 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1">Active Channels</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">18 <span class="text-xs text-primary font-normal ml-2">Operational</span></h3>
+</div>
+<div class="bg-surface-container-low p-5 border-l-2 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1">Avg Conversion</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">12.4% <span class="text-xs text-primary font-normal ml-2">+0.8%</span></h3>
+</div>
+<div class="bg-surface-container-low p-5 border-l-2 border-error-container relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="history">history</span>
+</div>
+<p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1">System Uptime</p>
+<h3 class="text-2xl font-headline font-bold text-on-surface">99.98% <span class="text-xs text-slate-500 font-normal ml-2">Stable</span></h3>
+</div>
+</div>
+<!-- Modular Grid of Agents -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Agent Module 1 -->
+<div class="bg-surface-container-low group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="h-1 w-full bg-gradient-to-r from-primary to-transparent"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-slate-900 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="robot_2">robot_2</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-widest border border-primary/20">Active</span>
+<span class="text-[9px] text-slate-500 font-bold uppercase mt-1 tracking-tighter">ID: KV-0982</span>
+</div>
+</div>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-1">Support Prime (Ar/En)</h4>
+<p class="text-xs text-slate-400 font-label mb-6">Main Enterprise Helpdesk &amp; Navigation</p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-slate-900/10 pt-4 mb-6">
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Language</p>
+<p class="text-xs text-on-surface font-bold uppercase">Bilingual (العربية/EN)</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Primary Channel</p>
+<p class="text-xs text-on-surface font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="language">language</span>
+                                Web Portal
+                            </p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Performance</p>
+<p class="text-xs text-primary font-bold">14.2% Conv.</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Last Node Activity</p>
+<p class="text-xs text-on-surface font-bold uppercase">2m ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-highest border border-outline-variant/10 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all">Analytics</button>
+<button class="flex-1 bg-surface-container-highest border border-outline-variant/10 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all">Edit</button>
+<button class="px-3 bg-surface-container-highest border border-outline-variant/10 flex items-center justify-center hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Agent Module 2 -->
+<div class="bg-surface-container-low group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="h-1 w-full bg-gradient-to-r from-slate-700 to-transparent"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-slate-900 border border-slate-700/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 bg-slate-800 text-slate-400 text-[9px] font-bold uppercase tracking-widest border border-slate-700">Idle</span>
+<span class="text-[9px] text-slate-500 font-bold uppercase mt-1 tracking-tighter">ID: KV-1145</span>
+</div>
+</div>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-1">Sales Prospector</h4>
+<p class="text-xs text-slate-400 font-label mb-6">Inbound Lead Qualifying Bot</p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-slate-900/10 pt-4 mb-6">
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Language</p>
+<p class="text-xs text-on-surface font-bold uppercase">English Only</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Primary Channel</p>
+<p class="text-xs text-on-surface font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="smartphone">smartphone</span>
+                                WhatsApp
+                            </p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Performance</p>
+<p class="text-xs text-slate-500 font-bold">8.7% Conv.</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Last Node Activity</p>
+<p class="text-xs text-on-surface font-bold uppercase">14h ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-on-primary py-2.5 text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all">Deploy</button>
+<button class="flex-1 bg-surface-container-highest border border-outline-variant/10 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all">Edit</button>
+<button class="px-3 bg-surface-container-highest border border-outline-variant/10 flex items-center justify-center hover:text-error transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Agent Module 3 -->
+<div class="bg-surface-container-low group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="h-1 w-full bg-gradient-to-r from-primary to-transparent"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-slate-900 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-widest border border-primary/20">Active</span>
+<span class="text-[9px] text-slate-500 font-bold uppercase mt-1 tracking-tighter">ID: KV-2201</span>
+</div>
+</div>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-1">Billing Assistant (Ar)</h4>
+<p class="text-xs text-slate-400 font-label mb-6">Payment Collection &amp; Dispute Resolution</p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-slate-900/10 pt-4 mb-6">
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Language</p>
+<p class="text-xs text-on-surface font-bold uppercase">Arabic (العربية)</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Primary Channel</p>
+<p class="text-xs text-on-surface font-bold uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="language">language</span>
+                                Web Portal
+                            </p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Performance</p>
+<p class="text-xs text-primary font-bold">22.1% Conv.</p>
+</div>
+<div>
+<p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest mb-1">Last Node Activity</p>
+<p class="text-xs text-on-surface font-bold uppercase">Just now</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-highest border border-outline-variant/10 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all">Analytics</button>
+<button class="flex-1 bg-surface-container-highest border border-outline-variant/10 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all">Edit</button>
+<button class="px-3 bg-surface-container-highest border border-outline-variant/10 flex items-center justify-center hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Placeholder for creation -->
+<div class="border-2 border-dashed border-slate-900/20 bg-surface-container-lowest/30 group hover:bg-primary/5 transition-all duration-300 flex flex-col items-center justify-center p-8 min-h-[360px] cursor-pointer">
+<div class="w-16 h-16 rounded-full border-2 border-dashed border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-primary transition-colors" data-icon="add_box">add_box</span>
+</div>
+<h4 class="font-headline font-bold text-slate-500 uppercase tracking-widest text-sm group-hover:text-on-surface transition-colors">Construct New Intelligence</h4>
+<p class="text-slate-600 font-label text-[10px] mt-2 text-center uppercase tracking-tighter">Define parameters, upload knowledge, and deploy.</p>
+</div>
+</div>
+<!-- Footer System Info -->
+<div class="mt-12 flex justify-between items-center border-t border-slate-900/10 pt-6">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest">Global Node Latency: 12ms</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-600" data-icon="database">database</span>
+<span class="text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest">Core Memory: 1.2TB / 4TB</span>
+</div>
+</div>
+<div class="text-[10px] font-headline font-bold text-slate-600 uppercase tracking-widest">
+                Protocol v4.2.0-Alpha | Khemet Sovereign Intelligence © 2024
+            </div>
+</div>
+</main>
+</body></html>

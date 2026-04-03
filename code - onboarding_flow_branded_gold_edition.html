@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khemet Voice — Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#8b6700",
+                        "primary-fixed-dim": "#f7d995",
+                        "on-secondary": "#003640",
+                        "surface-container-highest": "#26364a",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#d3e4fe",
+                        "inverse-primary": "#cbaa4d",
+                        "inverse-surface": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "outline-variant": "#434655",
+                        "surface-dim": "#031427",
+                        "background": "#031427",
+                        "on-secondary-container": "#00424e",
+                        "outline": "#8d90a0",
+                        "surface": "#031427",
+                        "on-error": "#690005",
+                        "on-tertiary": "#402d00",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface-bright": "#2a3a4f",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary-container": "#cbaa4d",
+                        "inverse-on-surface": "#213145",
+                        "surface-tint": "#f7d995",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-primary-fixed": "#241a00",
+                        "on-tertiary-container": "#ffeed3",
+                        "primary-fixed": "#f9e4b6",
+                        "tertiary-fixed": "#ffdf9f",
+                        "secondary": "#4cd7f6",
+                        "on-primary": "#1a1400",
+                        "surface-container": "#102034",
+                        "surface-container-lowest": "#000f21",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "tertiary": "#cbaa4d",
+                        "on-primary-fixed-variant": "#8b6700",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary": "#cbaa4d",
+                        "surface-container-low": "#0b1c30",
+                        "on-secondary-fixed": "#001f26",
+                        "on-primary-container": "#1a1400",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#1b2b3f",
+                        "tertiary-fixed-dim": "#f9bd22",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d3e4fe",
+                        "surface-variant": "#26364a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #031427;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(203, 170, 77, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(16, 32, 52, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(67, 70, 85, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body text-on-background min-h-screen flex flex-col items-center justify-center p-6 md:p-12 overflow-hidden">
+<!-- Top Navigation / Progress (Suppressed Standard Nav) -->
+<header class="fixed top-0 left-0 w-full h-20 flex items-center justify-between px-8 z-50">
+<div class="flex items-center gap-3">
+<img alt="Khemet Voice Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/>
+</div>
+<!-- Progress Bar Logic -->
+<div class="hidden md:flex flex-col items-end gap-2 w-1/3">
+<div class="flex justify-between w-full text-[10px] font-headline uppercase tracking-[0.2em] text-slate-500 font-bold">
+<span>Phase: Configuration</span>
+<span>Step 01 / 04</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-1/4"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 hover:text-on-background transition-colors">Save Progress</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative w-full max-w-5xl mx-auto flex flex-col items-center">
+<!-- Background Ambient Glow -->
+<div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-container/10 blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Onboarding Sequential Step -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Hero Content -->
+<div class="lg:col-span-5 space-y-8">
+<div class="space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 rounded-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-secondary">Initiating Protocol</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-headline font-bold tracking-tight leading-none text-white">
+                        Welcome to <span class="text-primary-container">Khemet Voice</span>
+</h1>
+<p class="text-lg text-slate-400 font-light leading-relaxed">
+                        Sovereign Command for the Enterprise. Let's configure your strategic intelligence environment.
+                    </p>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-sm bg-surface-container-high flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="business">business</span>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-wider text-on-surface">1. Company Profile</h3>
+<p class="text-xs text-slate-500">Define your organization's digital identity.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 opacity-40">
+<div class="flex-shrink-0 w-8 h-8 rounded-sm bg-surface-container-low flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-slate-500" data-icon="translate">translate</span>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-wider text-slate-500">2. Language Selection</h3>
+<p class="text-xs text-slate-600">Multilingual Arabic &amp; English nodes.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 opacity-40">
+<div class="flex-shrink-0 w-8 h-8 rounded-sm bg-surface-container-low flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-slate-500" data-icon="database">database</span>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-wider text-slate-500">3. Knowledge Upload</h3>
+<p class="text-xs text-slate-600">Train your agent with enterprise data.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interaction Card -->
+<div class="lg:col-span-7">
+<div class="glass-panel p-8 md:p-12 relative overflow-hidden">
+<!-- Accent Gold Line -->
+<div class="absolute top-0 left-0 w-12 h-[2px] bg-tertiary"></div>
+<div class="space-y-10">
+<div class="space-y-2">
+<h2 class="text-2xl font-headline font-bold text-white tracking-tight">Organization Genesis</h2>
+<p class="text-sm text-slate-400">Establish the core metadata for your sovereign AI cluster.</p>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500">Legal Entity Name</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary-container text-on-surface p-4 text-sm rounded-sm placeholder:text-slate-600" placeholder="e.g. Al-Futtaim Group" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500">Industry Vertical</label>
+<select class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary-container text-on-surface p-4 text-sm rounded-sm">
+<option>Government &amp; Public Sector</option>
+<option>Financial Services</option>
+<option>Logistics &amp; Energy</option>
+<option>Enterprise Retail</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500">Organization Logo (Optional)</label>
+<div class="w-full h-32 border-2 border-dashed border-outline-variant/20 rounded-sm flex flex-col items-center justify-center group hover:bg-surface-container-highest/50 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-3xl text-slate-600 group-hover:text-primary transition-colors" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mt-2">Drop SVGs or PNGs here</p>
+</div>
+</div>
+<div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-low object-cover" data-alt="portrait of a confident middle eastern executive man in a professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH2vyPdFr5t5CH_zN8Zh1MgJagDoKMEuT9hSYznTklcPw4Z7TgXdmbq_EGtdkBeO8ahucLuW2nJp_mVJBUhMm4sDy3L2Tsg9NDcviz-IDjsvT7eGhkeP2irOdEvUpW7hZwXJzaVaBw1i6jQb_ObPUwRfz8Y_YJd1N-tkwDCizoqukpiaFhfDQ5pG0_zOWF2MMtAG9132YNJe1W46Qw1vv8QUnjp5G_M898IA5lVQzQdstZqnUpSnaSmXsardzFkqV5UbuAx78Zt_LC"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-low object-cover" data-alt="professional woman in corporate attire smiling in an office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVfhtQ4COek5eliGKyBjJJ6tnD78ZNRYEAdlWhg_GSmGA6BtJfF7RE5dwridjkO4AV-RoApXueKIEr-3qF94Uizxg2npSfqfZWABfHyB19GA01b5Shj8Hc9mV2nnVle2a52549b73vs4I2_LgFeimWvm66q6jiPOLXZn8A1bMQZ6f1Aw6wZSHKdGqNrYn2HLCJPrSaUMTYPPl6_9HYR5WjQAYbanlthuId8tz9rYRmLWoSo_GibRw73HyxbMC1xLWXeQC_vtY2vgTw"/>
+</div>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500">12 Team members pending invite</span>
+</div>
+<button class="group relative w-full md:w-auto px-10 py-4 bg-primary-container text-black font-headline font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 overflow-hidden transition-all active:scale-95" type="button">
+<span class="relative z-10">Next Step</span>
+<span class="material-symbols-outlined text-sm relative z-10 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Strategic Context Note -->
+<div class="mt-8 p-4 bg-surface-container-low rounded-sm flex items-center gap-4 border-l-2 border-tertiary">
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="verified_user" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="text-xs text-slate-400 italic">
+                        "Your data remains within sovereign territorial boundaries. Khemet Voice ensures 100% data residency compliance for MENA enterprise standards."
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Decorative Elements -->
+<footer class="fixed bottom-0 left-0 w-full p-8 flex justify-between items-end pointer-events-none">
+<div class="space-y-1">
+<div class="text-[10px] font-headline font-bold uppercase tracking-[0.3em] text-slate-600">Node Location</div>
+<div class="text-[10px] font-headline font-bold uppercase tracking-[0.3em] text-primary">Dubai — DXB-01</div>
+</div>
+<!-- Subtle Waveform purely decorative -->
+<div class="flex items-end gap-[2px] h-12">
+<div class="w-[2px] bg-secondary/20 h-4"></div>
+<div class="w-[2px] bg-secondary/30 h-8"></div>
+<div class="w-[2px] bg-secondary/50 h-6"></div>
+<div class="w-[2px] bg-secondary/80 h-10"></div>
+<div class="w-[2px] bg-secondary h-4"></div>
+<div class="w-[2px] bg-secondary/60 h-8"></div>
+<div class="w-[2px] bg-secondary/40 h-12"></div>
+<div class="w-[2px] bg-secondary/20 h-5"></div>
+</div>
+<div class="text-right space-y-1">
+<div class="text-[10px] font-headline font-bold uppercase tracking-[0.3em] text-slate-600">System Entropy</div>
+<div class="text-[10px] font-headline font-bold uppercase tracking-[0.3em] text-secondary">Optimal — 0.002%</div>
+</div>
+</footer>
+<!-- Glassmorphism Floating Support (Minimal) -->
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-50 pointer-events-auto">
+<button class="flex items-center gap-2 px-4 py-2 glass-panel rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-xs text-slate-400" data-icon="help_outline">help_outline</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-400">Assistance</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 glass-panel rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-xs text-slate-400" data-icon="visibility">visibility</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-400">Preview UI</span>
+</button>
+</div>
+</body></html>

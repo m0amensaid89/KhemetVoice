@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Knowledge Base | Khemet Voice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #031427;
+            color: #d3e4fe;
+            font-family: 'Inter', sans-serif;
+        }
+        .headline-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(16, 32, 52, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "gold-accent": "#cbaa4d",
+                      "tertiary-container": "#8b6700",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#003640",
+                      "surface-container-highest": "#26364a",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#d3e4fe",
+                      "inverse-primary": "#0053db",
+                      "inverse-surface": "#d3e4fe",
+                      "on-tertiary-fixed-variant": "#5c4300",
+                      "outline-variant": "#434655",
+                      "surface-dim": "#031427",
+                      "background": "#031427",
+                      "on-secondary-container": "#00424e",
+                      "outline": "#8d90a0",
+                      "surface": "#031427",
+                      "on-error": "#690005",
+                      "on-tertiary": "#402d00",
+                      "on-surface-variant": "#c3c6d7",
+                      "surface-bright": "#2a3a4f",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "primary-container": "#cbaa4d",
+                      "inverse-on-surface": "#213145",
+                      "surface-tint": "#b4c5ff",
+                      "on-tertiary-fixed": "#261a00",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary-container": "#ffeed3",
+                      "primary-fixed": "#dbe1ff",
+                      "tertiary-fixed": "#ffdf9f",
+                      "secondary": "#cbaa4d",
+                      "on-primary": "#000000",
+                      "surface-container": "#102034",
+                      "surface-container-lowest": "#000f21",
+                      "secondary-fixed": "#acedff",
+                      "secondary-container": "#cbaa4d",
+                      "tertiary": "#f9bd22",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#cbaa4d",
+                      "primary": "#cbaa4d",
+                      "surface-container-low": "#0b1c30",
+                      "on-secondary-fixed": "#001f26",
+                      "on-primary-container": "#000000",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#1b2b3f",
+                      "tertiary-fixed-dim": "#f9bd22",
+                      "error": "#ffb4ab",
+                      "on-surface": "#d3e4fe",
+                      "surface-variant": "#26364a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-gold-accent/20 bg-slate-950 flex flex-col py-6 shadow-[20px_0_40px_rgba(203,170,77,0.05)]">
+<div class="px-6 mb-10"><img alt="Khemet Voice Logo" class="w-full h-auto object-contain filter drop-shadow-[0_0_15px_rgba(203,170,77,0.3)]" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/></div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+<span>Agents</span>
+</a>
+<!-- Active Tab: Knowledge -->
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-gold-accent border-l-2 border-amber-400 bg-gold-accent/10" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">database</span>
+<span>Knowledge</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">forum</span>
+<span>Conversations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">person_add</span>
+<span>Leads</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">event_available</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:bg-slate-900/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="px-4 mb-4">
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-gold-accent text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Agent
+            </button>
+</div>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">language</span>
+<span>Language</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 font-['Space_Grotesk'] tracking-tight text-sm uppercase font-bold text-slate-500 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-gold-accent/10 flex justify-between items-center px-8 z-10">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="w-full bg-surface-container-low border-none text-xs py-2 pl-10 pr-4 text-on-surface focus:ring-1 ring-gold-accent/30 transition-all placeholder:text-slate-600" placeholder="Search knowledge sources..." type="text"/>
+</div>
+<div class="h-4 w-px bg-gold-accent/20"></div>
+<span class="font-['Space_Grotesk'] text-xs font-bold tracking-widest uppercase text-gold-accent animate-pulse">System Status: Active</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-gold-accent transition-all material-symbols-outlined">notifications</button>
+<button class="text-slate-400 hover:text-gold-accent transition-all material-symbols-outlined">language</button>
+<button class="text-slate-400 hover:text-gold-accent transition-all material-symbols-outlined">account_circle</button>
+</div>
+<button class="bg-surface-container-high px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-on-surface hover:bg-surface-container-highest transition-colors">
+                Enterprise Menu
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-8 h-[calc(100vh-64px)] overflow-y-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<div class="w-6 h-0.5 bg-tertiary mb-2"></div>
+<h2 class="text-3xl headline-font font-bold tracking-tight text-white">Knowledge Base</h2>
+<p class="text-slate-500 text-sm mt-1">Sovereign training data and semantic intelligence layers.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-surface-container-high text-on-surface px-5 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm">sync</span>
+                    Sync All
+                </button>
+<button class="flex items-center gap-2 bg-gold-accent text-black px-5 py-2.5 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-all shadow-lg shadow-gold-accent/20">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                    Add Source
+                </button>
+</div>
+</div>
+<!-- Upper Grid: Metrics -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<!-- Knowledge Health Card -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-low p-8 relative overflow-hidden group">
+<div class="relative z-10 flex items-center justify-between">
+<div class="space-y-4">
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Global Training Readiness</p>
+<div>
+<h3 class="text-5xl headline-font font-bold text-white mb-2">98.4<span class="text-gold-accent text-2xl">%</span></h3>
+<p class="text-slate-400 text-sm max-w-xs">Optimal data coverage across all business verticals. Semantic index updated 12m ago.</p>
+</div>
+<div class="flex gap-6 pt-2">
+<div>
+<span class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Total Fragments</span>
+<span class="text-white headline-font font-bold">142,892</span>
+</div>
+<div>
+<span class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Query Latency</span>
+<span class="text-gold-accent headline-font font-bold">42ms</span>
+</div>
+</div>
+</div>
+<!-- Circular Glow Progress -->
+<div class="relative flex items-center justify-center w-48 h-48">
+<div class="absolute inset-0 rounded-full border-[8px] border-surface-container-high"></div>
+<div class="absolute inset-0 rounded-full border-[8px] border-gold-accent border-r-transparent border-b-transparent -rotate-45 shadow-[0_0_20px_rgba(203,170,77,0.3)]"></div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-gold-accent text-4xl" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="text-[10px] font-bold text-gold-accent uppercase tracking-widest mt-2">Elite Status</span>
+</div>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[240px]">hive</span>
+</div>
+</div>
+<!-- Distribution / Quick Links -->
+<div class="col-span-12 lg:col-span-5 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<div>
+<span class="block text-2xl headline-font font-bold text-white">42</span>
+<span class="text-[10px] uppercase font-bold text-slate-500">Documents</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-gold-accent">link</span>
+<div>
+<span class="block text-2xl headline-font font-bold text-white">128</span>
+<span class="text-[10px] uppercase font-bold text-slate-500">Web Sources</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-gold-accent">quiz</span>
+<div>
+<span class="block text-2xl headline-font font-bold text-white">550+</span>
+<span class="text-[10px] uppercase font-bold text-slate-500">FAQ Pairs</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-red-400">warning</span>
+<div>
+<span class="block text-2xl headline-font font-bold text-white">3</span>
+<span class="text-[10px] uppercase font-bold text-slate-500">Sync Conflicts</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Title: Data Sources -->
+<div class="flex items-center gap-4 mb-6">
+<h3 class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Synchronized Knowledge Assets</h3>
+<div class="h-px flex-1 bg-gold-accent/10"></div>
+</div>
+<!-- Data Source Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<!-- Source Card 1: PDF -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-all border-l-2 border-transparent hover:border-gold-accent group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gold-accent/20 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-gold-accent">picture_as_pdf</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-gold-accent transition-colors">2024_Corporate_Policy.pdf</h4>
+<p class="text-[10px] uppercase font-bold text-slate-600">Enterprise Document</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-slate-600 hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Sync Status</span>
+<span class="text-gold-accent font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
+                            Synchronized
+                        </span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Indexing</span>
+<span class="text-white font-medium">Completed</span>
+</div>
+<div class="pt-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[10px] uppercase font-bold text-slate-600">Knowledge Health</span>
+<span class="text-xs font-bold text-white">98% Coverage</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-gold-accent w-[98%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 2: URL -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-all border-l-2 border-transparent hover:border-gold-accent group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gold-accent/20 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-gold-accent">language</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-gold-accent transition-colors">khemetvoice.ai/docs/technical</h4>
+<p class="text-[10px] uppercase font-bold text-slate-600">Web Scraper</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-slate-600 hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Sync Status</span>
+<span class="text-gold-accent font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-gold-accent"></span>
+                            Synchronized
+                        </span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Indexing</span>
+<span class="text-white font-medium">Auto-refresh (1h)</span>
+</div>
+<div class="pt-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[10px] uppercase font-bold text-slate-600">Knowledge Health</span>
+<span class="text-xs font-bold text-white">85% Coverage</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-gold-accent w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 3: DOCX -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-all border-l-2 border-transparent hover:border-gold-accent group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-amber-900/20 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-tertiary">article</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-gold-accent transition-colors">Staff_Handbook_V2.docx</h4>
+<p class="text-[10px] uppercase font-bold text-slate-600">Internal Document</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-slate-600 hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Sync Status</span>
+<span class="text-tertiary font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                            Updating...
+                        </span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Indexing</span>
+<span class="text-white font-medium">In Queue</span>
+</div>
+<div class="pt-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[10px] uppercase font-bold text-slate-600">Knowledge Health</span>
+<span class="text-xs font-bold text-white">0% Coverage</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-0"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Card 4: FAQ -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-all border-l-2 border-transparent hover:border-gold-accent group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gold-accent/20 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-gold-accent">live_help</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-gold-accent transition-colors">Support_FAQ_Database</h4>
+<p class="text-[10px] uppercase font-bold text-slate-600">Question-Answer Pairs</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-slate-600 hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Sync Status</span>
+<span class="text-gold-accent font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-gold-accent"></span>
+                            Synchronized
+                        </span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-slate-500">Indexing</span>
+<span class="text-white font-medium">Completed</span>
+</div>
+<div class="pt-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[10px] uppercase font-bold text-slate-600">Knowledge Health</span>
+<span class="text-xs font-bold text-white">100% Coverage</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-gold-accent w-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Source Placeholder -->
+<div class="border-2 border-dashed border-gold-accent/20 bg-transparent p-5 flex flex-col items-center justify-center gap-3 group hover:border-gold-accent transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full border border-gold-accent/30 flex items-center justify-center text-slate-500 group-hover:text-gold-accent group-hover:border-gold-accent transition-all">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-slate-600 group-hover:text-gold-accent transition-colors">Add Data Source</span>
+</div>
+</div>
+<!-- Aesthetic Footer Widget (Editorial Moment) -->
+<div class="mt-12 flex items-center justify-between opacity-40">
+<div class="flex items-center gap-8">
+<div class="flex flex-col">
+<span class="text-[8px] uppercase tracking-widest text-slate-500">Sovereign Encryption</span>
+<span class="text-[10px] font-mono text-white">AES-256-GCM ACTIVE</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] uppercase tracking-widest text-slate-500">Neural Engine</span>
+<span class="text-[10px] font-mono text-white">KHEMET-3.5-TURBO</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] uppercase tracking-widest text-slate-500">Last Audit</span>
+<span class="text-[10px] font-mono text-white">2023.10.14_04:00_UTC</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="w-1 h-1 rounded-full bg-gold-accent"></div>
+<div class="w-1 h-1 rounded-full bg-gold-accent/50"></div>
+<div class="w-1 h-1 rounded-full bg-gold-accent/20"></div>
+</div>
+</div>
+</main>
+</body></html>

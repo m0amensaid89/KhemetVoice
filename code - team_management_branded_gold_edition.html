@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team &amp; Permissions | Khemet Voice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#8b6700",
+                        "primary-fixed-dim": "#d4c49d",
+                        "on-secondary": "#003640",
+                        "surface-container-highest": "#26364a",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#d3e4fe",
+                        "inverse-primary": "#cbaa4d",
+                        "inverse-surface": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "outline-variant": "#434655",
+                        "surface-dim": "#031427",
+                        "background": "#031427",
+                        "on-secondary-container": "#00424e",
+                        "outline": "#8d90a0",
+                        "surface": "#031427",
+                        "on-error": "#690005",
+                        "on-tertiary": "#402d00",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface-bright": "#2a3a4f",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary-container": "#cbaa4d",
+                        "inverse-on-surface": "#213145",
+                        "surface-tint": "#cbaa4d",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-primary-fixed": "#2b2100",
+                        "on-tertiary-container": "#ffeed3",
+                        "primary-fixed": "#f8ebd0",
+                        "tertiary-fixed": "#ffdf9f",
+                        "secondary": "#4cd7f6",
+                        "on-primary": "#000000",
+                        "surface-container": "#102034",
+                        "surface-container-lowest": "#000f21",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "tertiary": "#f9bd22",
+                        "on-primary-fixed-variant": "#7a631d",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary": "#cbaa4d",
+                        "surface-container-low": "#0b1c30",
+                        "on-secondary-fixed": "#001f26",
+                        "on-primary-container": "#000000",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#1b2b3f",
+                        "tertiary-fixed-dim": "#f9bd22",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d3e4fe",
+                        "surface-variant": "#26364a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #031427; }
+        ::-webkit-scrollbar-thumb { background: #1b2b3f; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-black">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-blue-900/20 bg-slate-950 flex flex-col py-6 shadow-[20px_0_40px_rgba(203,170,77,0.05)] z-50">
+<div class="px-6 mb-10">
+<div class="flex flex-col gap-2 w-full">
+<div class="flex items-center gap-3">
+<img alt="Khemet Voice Logo" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-primary font-headline">Khemet Voice</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Sovereign Intelligence</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span>Agents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Knowledge</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span>Conversations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary border-l-2 border-primary bg-primary/10 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span>Leads</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full mb-6 py-3 bg-primary-container text-black text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Agent
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+<span>Language</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 transition-colors duration-200 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-slate-950/80 backdrop-blur-xl border-b border-blue-900/10 z-40 flex items-center justify-between px-8">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none text-[10px] tracking-widest uppercase font-bold px-10 py-2 w-64 focus:ring-1 ring-primary/30 text-on-surface" placeholder="SEARCH SYSTEM..." type="text"/>
+</div>
+<div class="h-4 w-[1px] bg-blue-900/30"></div>
+<span class="text-xs font-bold tracking-widest uppercase text-primary animate-pulse">System Status: Active</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-primary transition-all focus-within:ring-1 ring-primary/30">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-all focus-within:ring-1 ring-primary/30">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-all focus-within:ring-1 ring-primary/30">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+<button class="px-4 py-1.5 border border-outline-variant/20 text-[10px] font-bold uppercase tracking-widest text-on-surface hover:bg-surface-container-high transition-all">
+                Enterprise Menu
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen p-8 bg-surface-dim">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<div class="h-0.5 w-6 bg-primary mb-2"></div>
+<h2 class="text-3xl font-headline font-bold tracking-tight text-white">Team Intelligence</h2>
+<p class="text-slate-500 text-sm mt-1 uppercase tracking-widest font-medium">Command structure and protocol access</p>
+</div>
+<button class="px-6 py-3 bg-primary-container text-black text-sm font-bold uppercase tracking-widest shadow-lg shadow-primary/20 active:opacity-80 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                Invite User
+            </button>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Team Members Table -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container-low p-1 relative">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50">
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Identity</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Protocol Role</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Status</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-slate-400">Last Sync</th>
+<th class="px-6 py-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-blue-900/10">
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-slate-800 overflow-hidden">
+<img alt="Sarah" class="w-full h-full object-cover" data-alt="professional portrait of a woman in business attire with minimalist digital background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCINJqOTggLhLvO87iLBSV7I5iFSyPqLNpG4Ft735Mu55BjzA9tWPjJJ0rNI4cfR4GT6syXHFlyv1IwPsebxIs0Qwq54irrf-zf1fGdW3yvvdlg2sJWthLaMnRp3UAZMORyFp9sYDfulhAxdQmP0kc44-OyvRJsFpvskwHJx3_qjTQjJA7BK7lAxKKdK6JiGZZT4HXnGWl6aXsjO1DBqhgln-PhhRC-IiSByY1naDjZ0s6RdbXN69xb5N9VD5ZQgwkXRa7fVCgmdhQe"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Sarah Al-Farsi</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-tighter">s.alfarsi@khemet.ai</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/30">Admin</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs text-slate-400">2 min ago</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-slate-800 overflow-hidden">
+<img alt="Ahmed" class="w-full h-full object-cover" data-alt="professional portrait of a man with spectacles in technical environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXBrvEOsmTNe9OwaoQ5FwB_RPhXtk3Zx8h7E21M7hKjDVuT0CrUvpur4oBitgzqbulBEN3CAJphOSkB6jonf1sYmovEFkqQ5IqViUGeOmfUIOZBTsL9rqU5DZ8u9OnzD0m1p_i0PbMSHZyhny4hCbCzqS788ybfMKRUwSTrM1u6gVobtkczP7dn8FudiyvHQVGPjlNmhbbY_lj2OLTpVobGte5F6uZVppCGGO2eqV6pRKL6aV76dKdNSXx1q4v87FcBn7lnvfgPqKa"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Ahmed Mansour</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-tighter">a.mansour@khemet.ai</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-surface-container-high text-slate-400 text-[10px] font-bold uppercase tracking-widest border border-outline-variant/20">Operator</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_#f9bd22]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Pending</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs text-slate-400">Never</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-slate-800 overflow-hidden">
+<img alt="Nour" class="w-full h-full object-cover" data-alt="modern abstract professional avatar with geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8cjL3cYJUfv7yDcS5swfqthRDkiOlk_8Ds-7WlLqIBZ047iT72kAFtzerbZBI-NkjOBm0YaGZ4RUbhKUsurMy8B1lx03094ShKXqdXHYklib1BZGTCgYiPLeDBmrTGgoyR38hseM5jl2WE5XUYAk8_E-jxEPRALeMqCZj-VNHeyEFjlfwQBSKtJmKf9Ao8mHmo-kvOleqvZt_E2xojY9pz-7PGBRMjdtc_SWdlOHznKHTNb450teZ1qoXVuCemF3t4S6cZ1ZEDfpC"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Nour Al-Sayed</p>
+<p class="text-[10px] text-slate-500 font-mono tracking-tighter">n.sayed@khemet.ai</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-surface-container-high text-slate-400 text-[10px] font-bold uppercase tracking-widest border border-outline-variant/20">Analyst</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Deactivated</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-xs text-slate-400">14 days ago</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Role Management Matrix -->
+<div class="bg-surface-container-low p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-headline font-bold text-white tracking-tight">Permissions Matrix</h3>
+<p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Cross-role authority mapping</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-high text-[10px] font-bold uppercase tracking-widest hover:text-primary transition-colors">Export Map</button>
+<button class="px-4 py-2 bg-surface-container-high text-[10px] font-bold uppercase tracking-widest hover:text-primary transition-colors">Protocol Log</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Permission Row -->
+<div class="grid grid-cols-4 items-center border-b border-blue-900/10 pb-4">
+<div class="col-span-1">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">Edit Knowledge</span>
+</div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-slate-700" data-icon="block">block</span></div>
+</div>
+<!-- Permission Row -->
+<div class="grid grid-cols-4 items-center border-b border-blue-900/10 pb-4">
+<div class="col-span-1">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">View Transcripts</span>
+</div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+</div>
+<!-- Permission Row -->
+<div class="grid grid-cols-4 items-center border-b border-blue-900/10 pb-4">
+<div class="col-span-1">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">Billing Access</span>
+</div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-slate-700" data-icon="block">block</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-slate-700" data-icon="block">block</span></div>
+</div>
+<!-- Permission Row -->
+<div class="grid grid-cols-4 items-center pb-4">
+<div class="col-span-1">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">Invite Members</span>
+</div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1">check_circle</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-slate-700" data-icon="block">block</span></div>
+<div class="flex justify-center"><span class="material-symbols-outlined text-slate-700" data-icon="block">block</span></div>
+</div>
+</div>
+<div class="grid grid-cols-4 mt-6">
+<div class="col-span-1"></div>
+<div class="text-center"><span class="text-[9px] uppercase tracking-widest text-slate-500 font-bold">Admin</span></div>
+<div class="text-center"><span class="text-[9px] uppercase tracking-widest text-slate-500 font-bold">Operator</span></div>
+<div class="text-center"><span class="text-[9px] uppercase tracking-widest text-slate-500 font-bold">Analyst</span></div>
+</div>
+</div>
+</div>
+<!-- Activity Log Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Activity Log Widget -->
+<div class="bg-surface-container-low border-t-2 border-primary">
+<div class="p-6 border-b border-blue-900/10 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+<h3 class="text-sm font-bold uppercase tracking-[0.2em] text-white">Event Log</h3>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex gap-4">
+<div class="relative flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-px h-full bg-blue-900/30 my-2"></div>
+</div>
+<div>
+<p class="text-xs text-on-surface leading-relaxed">
+<span class="font-bold text-white">Sarah Al-Farsi</span> invited <span class="font-bold text-white">Ahmed Mansour</span> to the protocol.
+                                </p>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-1 block">14:23 GST</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="relative flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-slate-700"></div>
+<div class="w-px h-full bg-blue-900/30 my-2"></div>
+</div>
+<div>
+<p class="text-xs text-on-surface leading-relaxed">
+<span class="font-bold text-white">System</span> updated permission node <span class="text-primary font-mono">X-77A</span> for Analyst role.
+                                </p>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-1 block">Yesterday</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="relative flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<div class="w-px h-full bg-blue-900/30 my-2"></div>
+</div>
+<div>
+<p class="text-xs text-on-surface leading-relaxed">
+<span class="font-bold text-white">Nour Al-Sayed</span> credentials <span class="text-error">revoked</span> due to inactivity.
+                                </p>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-1 block">3 days ago</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="relative flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-px h-full bg-blue-900/30 my-2 invisible"></div>
+</div>
+<div>
+<p class="text-xs text-on-surface leading-relaxed">
+<span class="font-bold text-white">Sarah Al-Farsi</span> modified <span class="font-bold text-white">Operator</span> level 2 permissions.
+                                </p>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-1 block">02 Oct 2023</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-surface-container-high/50 text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-primary transition-all">
+                        Full Audit Trail
+                    </button>
+</div>
+<!-- Role Quick Reference -->
+<div class="p-6 bg-surface-container-high border-l-2 border-primary-container">
+<h4 class="text-[10px] uppercase tracking-widest text-primary font-bold mb-4">Security Protocol</h4>
+<p class="text-xs text-slate-300 leading-relaxed italic">
+                        "Access to sovereign intelligence assets must be strictly monitored. Admin overrides are logged via immutable quantum chain."
+                    </p>
+<div class="mt-6 pt-6 border-t border-blue-900/20">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest">
+<span class="text-slate-500">Global Seat Limit</span>
+<span class="text-on-surface">08 / 15</span>
+</div>
+<div class="w-full h-1 bg-surface-container-lowest mt-2 overflow-hidden">
+<div class="w-[53%] h-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

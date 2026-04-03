@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khemet Voice | Access Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Cinzel+Decorative:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#8b6700",
+                        "primary-fixed-dim": "#d4c59f",
+                        "on-secondary": "#003640",
+                        "surface-container-highest": "#26364a",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#d3e4fe",
+                        "inverse-primary": "#cbaa4d",
+                        "inverse-surface": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "outline-variant": "#434655",
+                        "surface-dim": "#031427",
+                        "background": "#031427",
+                        "on-secondary-container": "#00424e",
+                        "outline": "#8d90a0",
+                        "surface": "#031427",
+                        "on-error": "#690005",
+                        "on-tertiary": "#402d00",
+                        "on-surface-variant": "#c3c6d7",
+                        "surface-bright": "#2a3a4f",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary-container": "#cbaa4d",
+                        "inverse-on-surface": "#213145",
+                        "surface-tint": "#cbaa4d",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-primary-fixed": "#261a00",
+                        "on-tertiary-container": "#ffeed3",
+                        "primary-fixed": "#ffdf9f",
+                        "tertiary-fixed": "#ffdf9f",
+                        "secondary": "#cbaa4d",
+                        "on-primary": "#000000",
+                        "surface-container": "#102034",
+                        "surface-container-lowest": "#000f21",
+                        "secondary-fixed": "#ffdf9f",
+                        "secondary-container": "#cbaa4d",
+                        "tertiary": "#cbaa4d",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "secondary-fixed-dim": "#cbaa4d",
+                        "primary": "#cbaa4d",
+                        "surface-container-low": "#0b1c30",
+                        "on-secondary-fixed": "#001f26",
+                        "on-primary-container": "#1a1a1a",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#1b2b3f",
+                        "tertiary-fixed-dim": "#cbaa4d",
+                        "error": "#ffb4ab",
+                        "on-surface": "#d3e4fe",
+                        "surface-variant": "#26364a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "brand": ["Cinzel Decorative"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-pattern {
+            background-image: linear-gradient(to right, rgba(203, 170, 77, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(203, 170, 77, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .architectural-glow {
+            background: radial-gradient(circle at center, rgba(203, 170, 77, 0.08) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- Suppression Logic: Navigation shell is hidden for transactional login page -->
+<div class="relative min-h-screen flex items-center justify-center p-6 grid-pattern">
+<!-- Background Architectural Motif -->
+<div class="absolute inset-0 architectural-glow pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-primary/10 rotate-45"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 -rotate-12"></div>
+</div>
+<!-- Top Right Language Toggle -->
+<div class="absolute top-8 right-8 flex items-center gap-4">
+<button class="text-xs font-headline font-bold tracking-widest text-on-surface-variant hover:text-secondary transition-colors uppercase">
+                Arabic
+            </button>
+<div class="w-px h-3 bg-outline-variant/30"></div>
+<button class="text-xs font-headline font-bold tracking-widest text-secondary transition-colors uppercase">
+                English
+            </button>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-[480px]">
+<!-- Brand Identity -->
+<div class="text-center mb-12">
+<div class="inline-block mb-6">
+<img alt="Khemet Voice Logo" class="h-48 w-auto mx-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/>
+</div>
+<div class="mt-4 flex justify-center items-center gap-3">
+<div class="h-px w-12 bg-tertiary/40"></div>
+<span class="text-[10px] font-headline font-bold tracking-[0.4em] text-on-surface-variant uppercase">Sovereign AI Command for the Enterprise</span>
+<div class="h-px w-12 bg-tertiary/40"></div>
+</div></div>
+<!-- Login Form Module -->
+<div class="bg-surface-container-low border border-outline-variant/10 p-10 backdrop-blur-xl shadow-2xl">
+<form class="space-y-6">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="block text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">
+                            Enterprise Identity
+                        </label>
+<div class="relative group">
+<input class="w-full bg-surface-container-highest border-b-2 border-transparent focus:border-primary-container text-on-surface p-4 text-sm font-body transition-all outline-none placeholder:text-outline/50 group-hover:bg-surface-container-high" placeholder="name@organization.com" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/30 text-xl">
+                                alternate_email
+                            </span>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">
+                                Access Key
+                            </label>
+<a class="text-[10px] font-headline font-bold tracking-widest text-secondary hover:text-tertiary transition-colors uppercase" href="#">
+                                Recover Access
+                            </a>
+</div>
+<div class="relative group">
+<input class="w-full bg-surface-container-highest border-b-2 border-transparent focus:border-primary-container text-on-surface p-4 text-sm font-body transition-all outline-none placeholder:text-outline/50 group-hover:bg-surface-container-high" placeholder="••••••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/30 text-xl">
+                                lock
+                            </span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container hover:brightness-110 text-black font-headline font-bold text-sm tracking-widest uppercase py-4 transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(203,170,77,0.2)]">
+                        Initialize Command
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/10"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-surface-container-low px-4 text-[10px] font-headline font-bold tracking-widest text-outline/40 uppercase">
+                            OR SECURE SSO
+                        </span>
+</div>
+</div>
+<!-- SSO Actions -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 bg-surface-container-high border border-outline-variant/20 py-3 hover:bg-surface-container-highest transition-colors active:scale-[0.98]">
+<img alt="Google" class="w-4 h-4 opacity-70" data-alt="Google logo icon in minimalist flat style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXdZ_3Bnr0RUiYCqeQkcOTQfjKgN1P4irkrDRimPakqbALgtDgRNT6G1ZPDhxkVo2-tRsi6nwECuiXumzMAnSnifOmMlhG_QkdgojuHu_eodhp730gYen_xRMdT0K24CBoV93Pk_Di_SlJZrprp1C_UOz1iOYaSLmatED_o7u1cxo4qNEl2oND8g8v3FmA1NGdPy64mjnfSenioDTpKJ9IIA_Yhnm-JKt2Sv1UjI_ghf2UTEee29vgwBNsUNQQclmB94iS9GAvciFG"/>
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">Workspace</span>
+</button>
+<button class="flex items-center justify-center gap-3 bg-surface-container-high border border-outline-variant/20 py-3 hover:bg-surface-container-highest transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">cloud</span>
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">Azure AD</span>
+</button>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="mt-8 flex justify-between items-center px-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">System Status: Optimal</span>
+</div>
+<div class="text-[10px] font-headline font-bold tracking-widest text-outline/30 uppercase">
+                    v4.0.2-Enterprise
+                </div>
+</div>
+</main>
+<!-- Bottom Visual Decor -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 opacity-20 grayscale pointer-events-none">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-1">memory</span>
+<span class="text-[8px] font-headline font-bold tracking-widest uppercase">Quantum Proc</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-1">security</span>
+<span class="text-[8px] font-headline font-bold tracking-widest uppercase">Encrypted Core</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-3xl mb-1">hub</span>
+<span class="text-[8px] font-headline font-bold tracking-widest uppercase">Neural Grid</span>
+</div>
+</div>
+</div>
+</body></html>

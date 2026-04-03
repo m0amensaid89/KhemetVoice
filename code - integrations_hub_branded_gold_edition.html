@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Khemet Voice — Integrations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "gold": "#cbaa4d",
+                    "tertiary-container": "#8b6700",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary": "#003640",
+                    "surface-container-highest": "#26364a",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#d3e4fe",
+                    "inverse-primary": "#0053db",
+                    "inverse-surface": "#d3e4fe",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "outline-variant": "#434655",
+                    "surface-dim": "#031427",
+                    "background": "#031427",
+                    "on-secondary-container": "#00424e",
+                    "outline": "#8d90a0",
+                    "surface": "#031427",
+                    "on-error": "#690005",
+                    "on-tertiary": "#402d00",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-bright": "#2a3a4f",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "primary-container": "#cbaa4d",
+                    "inverse-on-surface": "#213145",
+                    "surface-tint": "#cbaa4d",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary-container": "#ffeed3",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed": "#ffdf9f",
+                    "secondary": "#cbaa4d",
+                    "on-primary": "#000000",
+                    "surface-container": "#102034",
+                    "surface-container-lowest": "#000f21",
+                    "secondary-fixed": "#acedff",
+                    "secondary-container": "#cbaa4d",
+                    "tertiary": "#f9bd22",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-fixed-dim": "#cbaa4d",
+                    "primary": "#cbaa4d",
+                    "surface-container-low": "#0b1c30",
+                    "on-secondary-fixed": "#001f26",
+                    "on-primary-container": "#000000",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#1b2b3f",
+                    "tertiary-fixed-dim": "#f9bd22",
+                    "error": "#ffb4ab",
+                    "on-surface": "#d3e4fe",
+                    "surface-variant": "#26364a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(16, 32, 52, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #031427;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #26364a;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-black">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-gold/20 bg-slate-950 flex flex-col py-6 z-50 shadow-[20px_0_40px_rgba(203,170,77,0.05)]">
+<div class="px-6 mb-8">
+<div class="flex items-center"><img alt="Khemet Voice Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujSwVNtKQdYZBeMiGOIZRb8OoV1_GZn6z5wuK5j1EgccRUYPiDkLplq8fI_6_KA0pKtaF45QYyabPtrCtFugHvr0vPvh5y1Q7JOLxg5I6LQJ0GAEYHyFRNoyztY5F6Y80I7OzUNaiNif0UX_-rvuEJufEZDfdkgg1OThDIzNfLUP8M6qaP0zTEjHh_1y5RLjPTPePANekO4L02r_V6egOIREAvGSA8WQTieWpv_El_h73wL4lOMD2e5sSwl5sZ_kmXxFPoRJPs9BlY"/></div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">smart_toy</span> Agents
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">database</span> Knowledge
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">forum</span> Conversations
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">person_add</span> Leads
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">event_available</span> Bookings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-colors duration-200 text-slate-500 hover:text-slate-200 hover:bg-slate-900/50 font-headline tracking-tight text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span> Analytics
+            </a>
+</nav>
+<div class="mt-auto px-4 pt-6 border-t border-gold/10 space-y-1">
+<button class="w-full mb-4 py-2 bg-gold text-black font-headline text-xs font-bold uppercase tracking-widest rounded-sm active:opacity-80 transition-all">New Agent</button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-200 transition-colors font-headline text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">language</span> Language
+            </a>
+<!-- SETTINGS ACTIVE -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-gold border-l-2 border-gold bg-gold/10 font-headline text-sm uppercase font-bold" href="#">
+<span class="material-symbols-outlined text-xl">settings</span> Settings
+            </a>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 left-0 w-full h-16 bg-slate-950/80 backdrop-blur-xl border-b border-gold/10 flex justify-between items-center px-8 ml-64 z-40">
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-gold transition-colors">search</span>
+<input class="bg-surface-container-low border-none focus:ring-1 ring-gold/30 text-[10px] font-headline font-bold tracking-widest uppercase py-2 pl-10 pr-4 w-64 rounded-sm text-on-surface" placeholder="SEARCH INTEGRATIONS..." type="text"/>
+</div>
+<div class="h-4 w-px bg-gold/20"></div>
+<span class="text-gold animate-pulse font-headline text-xs font-bold tracking-widest uppercase">System Status: Active</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-400">
+<button class="hover:text-gold transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-gold transition-all"><span class="material-symbols-outlined">language</span></button>
+<button class="hover:text-gold transition-all"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+<button class="px-4 py-1.5 border border-outline-variant/20 hover:border-gold/50 text-white font-headline text-xs font-bold uppercase tracking-widest rounded-sm transition-all">Enterprise Menu</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen custom-scrollbar overflow-y-auto">
+<!-- Header Section -->
+<div class="flex items-end justify-between mb-10">
+<div>
+<div class="w-12 h-0.5 bg-gold mb-4"></div>
+<h2 class="text-4xl font-headline font-bold text-white tracking-tight">Ecosystem Bridge</h2>
+<p class="text-slate-500 font-label tracking-wide mt-2">Manage external system synchronizations and secure API endpoints.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-high hover:bg-surface-container-highest transition-colors text-white font-headline text-xs font-bold uppercase tracking-widest border-b-2 border-gold">Documentation</button>
+<button class="px-6 py-3 bg-gold hover:brightness-110 transition-all text-black font-headline text-xs font-bold uppercase tracking-widest">Add Integration</button>
+</div>
+</div>
+<!-- Bento Grid: Main Integrations -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<!-- CRM Group -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Salesforce -->
+<div class="bg-surface-container-low p-6 flex flex-col border-l-2 border-gold/30 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white flex items-center justify-center p-2 rounded-sm shadow-lg shadow-gold/5">
+<img alt="Salesforce" class="w-full object-contain" data-alt="Official Salesforce logo on a clean white background with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfEboiGp0hfxoYPyjN--mCOiUMc0g8uhGG7-kaHgoZWcn5fJiKqNHX4l15vZfvwe0LjyfUBrodXe9RS7dyDzf702Gng8ITadUJFs3u0Ww93EsrA0nhTLHpb-6WTyRoBqvGqdMD-nk28sKQwBH64jCGsBZcd0kvdvWO5YOVK855dV-NCa-sYZY0QqhxFYWqohFZr3RL9UVDYgdtY6JW67SrMWisKPz4rBBc5H3up0Vv-snwMSCtS7O4fdcjP1afCat8M645f0utuiYu"/>
+</div>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-bold tracking-tighter uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span> Connected
+                        </span>
+</div>
+<h3 class="text-lg font-headline font-bold text-white mb-1">Salesforce CRM</h3>
+<p class="text-xs text-slate-500 mb-6 font-label">Sync lead data and contact history directly to your workspace.</p>
+<div class="mt-auto flex gap-3">
+<button class="flex-1 py-2 bg-surface-container-highest text-white font-headline text-[10px] font-bold uppercase tracking-widest hover:bg-slate-700 transition-colors">Configure</button>
+<button class="flex-1 py-2 border border-outline-variant/20 text-error font-headline text-[10px] font-bold uppercase tracking-widest hover:bg-error/5 transition-colors">Disconnect</button>
+</div>
+</div>
+<!-- HubSpot -->
+<div class="bg-surface-container-low p-6 flex flex-col border-l-2 border-slate-500/30 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white flex items-center justify-center p-2 rounded-sm shadow-lg shadow-orange-500/5">
+<img alt="HubSpot" class="w-full object-contain" data-alt="Official HubSpot logo on white background, sharp vector representation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh0FQ3KNf-zowGW-ImirtcfoA5F2NHPdqnzIf90mJDzL7CeKrCF9k0_XZJed8-ADDPB02lPqajzcJAU0C5GTOoadhcJy1hS1xQLETQ8yn12AwOoPDPUbuvdSNqLFr9sgtyyIZUex-WVJgKalGuco64IhbDLTA7RYNKCRRXNXsZDmf9hy028icZdxwlId8bUYckl5GPSsb6F8EkzzA6Oz0xZzwlVnzC65JWBwYG2bII_DDmisJHJ47D_fIfCoT2VyMlGdRi5xWTyyCW"/>
+</div>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-500/10 text-slate-500 text-[10px] font-bold tracking-tighter uppercase">
+                            Disconnected
+                        </span>
+</div>
+<h3 class="text-lg font-headline font-bold text-white mb-1">HubSpot</h3>
+<p class="text-xs text-slate-500 mb-6 font-label">Automate outbound voice sequences based on CRM lifecycle stages.</p>
+<div class="mt-auto">
+<button class="w-full py-2 bg-gold text-black font-headline text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all">Authorize Access</button>
+</div>
+</div>
+<!-- MS Dynamics -->
+<div class="bg-surface-container-low p-6 flex flex-col border-l-2 border-slate-500/30 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white flex items-center justify-center p-2 rounded-sm shadow-lg shadow-blue-900/5">
+<img alt="Dynamics" class="w-full object-contain" data-alt="Microsoft corporate logo, clean minimalist corporate branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKlrOni8LEAD5By-cm326xFpY6akyosjs-g08jmamZ7JEvE09coDSlfdX9DpkGy87SbVytQzOu4KxI-ntZRfRoJuzrrMnWoKC0rgXepx_y1rVDgkgi73A_fUp1KjetR9MowY4JxoEtyiTFsm1Wft4rRmr9of-V9GaCNPwWGxaSwN6ftOeqoL9U1hA5m9prdz8_s7ugVjST1yNI11qesWTk2DtwcIJN-XC7bzYWITEVm7YcE5_SMcEfLykiujFQVyWhb6XOaBVKsoEm"/>
+</div>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-500/10 text-slate-500 text-[10px] font-bold tracking-tighter uppercase">
+                            Inactive
+                        </span>
+</div>
+<h3 class="text-lg font-headline font-bold text-white mb-1">Microsoft Dynamics</h3>
+<p class="text-xs text-slate-500 mb-6 font-label">Enterprise-grade synchronization for large-scale data sets.</p>
+<div class="mt-auto">
+<button class="w-full py-2 bg-surface-container-highest text-white font-headline text-[10px] font-bold uppercase tracking-widest hover:bg-slate-700 transition-colors">Setup Integration</button>
+</div>
+</div>
+<!-- Google Calendar -->
+<div class="bg-surface-container-low p-6 flex flex-col border-l-2 border-tertiary/50 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white flex items-center justify-center p-2 rounded-sm shadow-lg shadow-yellow-500/5">
+<img alt="Google" class="w-full object-contain" data-alt="Google G logo, colorful corporate identity on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPLmbX9mT09l2aI7ch69X1ji336nRCI5Ygdgx331dS6s0xa3lw0Po2XX-Yc-u6uEhNWSSd8AxsBhICNo7KBMUh-vjo8LCn1eg-xVXa-wuqecHFW6zlk2mQXzDuT5P1MxpLygQIb2VpwYkgde32uB4Wmk0oxXXuKb76F1RDofDgB8m8FVnXoO1pdGUalTULg5RWQ0xPL5i20XU7bhBNjPRmURoHnbPp7uZeCZ1Ddm1RYZCEo2C0CAPeYIqxMfrn2Z2Qoo_6HdWZEXL_"/>
+</div>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-bold tracking-tighter uppercase">
+<span class="material-symbols-outlined text-[10px]">warning</span> Connection Error
+                        </span>
+</div>
+<h3 class="text-lg font-headline font-bold text-white mb-1">Google Calendar</h3>
+<p class="text-xs text-slate-500 mb-6 font-label">Enable AI agents to book meetings directly into your team schedule.</p>
+<div class="mt-auto flex gap-3">
+<button class="flex-1 py-2 bg-tertiary text-on-tertiary font-headline text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all">Reconnect</button>
+<button class="flex-1 py-2 border border-outline-variant/20 text-white font-headline text-[10px] font-bold uppercase tracking-widest hover:bg-slate-800 transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Side Module: API Management -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- API Keys Card -->
+<div class="bg-surface-container-low border border-gold/10 p-6 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-gold">key</span>
+<h3 class="text-sm font-headline font-bold text-white uppercase tracking-widest">Security Credentials</h3>
+</div>
+<div class="space-y-4 mb-8">
+<div>
+<label class="block text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest mb-2">Production API Key</label>
+<div class="flex items-center bg-surface-container-lowest p-3 border border-outline-variant/20">
+<code class="text-xs text-gold font-mono flex-1 overflow-hidden whitespace-nowrap">kv_live_9f2...xZ9k0p4m</code>
+<button class="ml-2 p-1 hover:text-white text-slate-500 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest mb-2">Test API Key</label>
+<div class="flex items-center bg-surface-container-lowest p-3 border border-outline-variant/20">
+<code class="text-xs text-slate-500 font-mono flex-1 overflow-hidden whitespace-nowrap">kv_test_a1b...2c3d4e5f</code>
+<button class="ml-2 p-1 hover:text-white text-slate-500 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full py-3 border border-gold/20 text-gold font-headline text-[10px] font-bold uppercase tracking-widest hover:bg-gold/5 transition-all">Regenerate Keys</button>
+<p class="text-[9px] text-slate-600 font-label italic text-center leading-relaxed px-4">Keep your keys secret. Revoke them immediately if compromised.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Custom Webhook Management Section -->
+<div class="grid grid-cols-12 gap-6 items-stretch">
+<!-- Webhook Form -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-low p-8 border border-gold/10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-gold">dynamic_feed</span>
+<h3 class="text-xl font-headline font-bold text-white uppercase tracking-tighter">Webhook Configuration</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest">Endpoint URL</label>
+<input class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/20 focus:ring-gold text-sm py-3 px-4 text-white" placeholder="https://api.yourdomain.com/webhooks" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest">Trigger Event</label>
+<select class="w-full bg-surface-container-lowest border-none ring-1 ring-outline-variant/20 focus:ring-gold text-sm py-3 px-4 text-white appearance-none">
+<option>Lead Captured</option>
+<option>Call Completed</option>
+<option>Appointment Scheduled</option>
+<option>Agent Disconnected</option>
+</select>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-[10px] font-headline font-bold text-slate-500 uppercase tracking-widest">Active Triggers</p>
+<div class="flex flex-wrap gap-3">
+<label class="flex items-center gap-3 p-3 bg-surface-container-highest/30 border border-outline-variant/10 cursor-pointer hover:border-gold/30 transition-all">
+<input checked="" class="w-4 h-4 rounded-none bg-slate-900 border-gold/50 text-gold focus:ring-0" type="checkbox"/>
+<span class="text-xs font-headline font-bold text-slate-300">VOICE_COMPLETED</span>
+</label>
+<label class="flex items-center gap-3 p-3 bg-surface-container-highest/30 border border-outline-variant/10 cursor-pointer hover:border-gold/30 transition-all">
+<input checked="" class="w-4 h-4 rounded-none bg-slate-900 border-gold/50 text-gold focus:ring-0" type="checkbox"/>
+<span class="text-xs font-headline font-bold text-slate-300">LEAD_SCORING</span>
+</label>
+<label class="flex items-center gap-3 p-3 bg-surface-container-highest/30 border border-outline-variant/10 cursor-pointer hover:border-gold/30 transition-all">
+<input class="w-4 h-4 rounded-none bg-slate-900 border-gold/50 text-gold focus:ring-0" type="checkbox"/>
+<span class="text-xs font-headline font-bold text-slate-300">ERROR_REPORT</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-gold/10 flex justify-end">
+<button class="px-8 py-3 bg-gold text-black font-headline text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all">Establish Hook</button>
+</div>
+</div>
+</div>
+<!-- Recent Hook History / Log -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-low p-8 border border-gold/10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-sm font-headline font-bold text-white uppercase tracking-widest">Recent Activity</h3>
+<span class="text-[10px] font-headline font-bold text-slate-500 bg-slate-900 px-2 py-1">REAL-TIME LOG</span>
+</div>
+<div class="space-y-4">
+<!-- Log Item 1 -->
+<div class="flex items-start gap-4 p-3 bg-slate-950/40 border-l-2 border-gold">
+<div class="text-[10px] font-mono text-slate-600 mt-1">14:22:01</div>
+<div class="flex-1">
+<p class="text-[11px] font-headline font-bold text-white">EVENT: LEAD_CAPTURED</p>
+<p class="text-[10px] text-slate-500 font-mono mt-1 truncate max-w-[200px]">POST 200 OK | Payload: {id: "9212"...}</p>
+</div>
+<span class="material-symbols-outlined text-gold text-sm">check_circle</span>
+</div>
+<!-- Log Item 2 -->
+<div class="flex items-start gap-4 p-3 bg-slate-950/40 border-l-2 border-gold">
+<div class="text-[10px] font-mono text-slate-600 mt-1">13:58:44</div>
+<div class="flex-1">
+<p class="text-[11px] font-headline font-bold text-white">EVENT: CALL_COMPLETED</p>
+<p class="text-[10px] text-slate-500 font-mono mt-1 truncate max-w-[200px]">POST 200 OK | duration: 184s</p>
+</div>
+<span class="material-symbols-outlined text-gold text-sm">check_circle</span>
+</div>
+<!-- Log Item 3 -->
+<div class="flex items-start gap-4 p-3 bg-slate-950/40 border-l-2 border-tertiary">
+<div class="text-[10px] font-mono text-slate-600 mt-1">12:10:15</div>
+<div class="flex-1">
+<p class="text-[11px] font-headline font-bold text-white">EVENT: LEAD_CAPTURED</p>
+<p class="text-[10px] text-slate-500 font-mono mt-1 truncate max-w-[200px]">POST 404 NOT_FOUND | URL incorrect</p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-sm">error</span>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-surface-container-highest text-slate-400 font-headline text-[10px] font-bold uppercase tracking-widest hover:text-white transition-all">View All Audit Logs</button>
+</div>
+</div>
+<!-- Footer Visual Hint -->
+<div class="mt-16 flex items-center gap-4 opacity-20 pointer-events-none">
+<div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold"></div>
+<span class="material-symbols-outlined text-gold">lan</span>
+<div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold"></div>
+</div>
+</main>
+<!-- Aesthetic Floating Status Decorator -->
+<div class="fixed bottom-6 right-6 z-50">
+<div class="glass-panel p-4 border border-gold/20 shadow-2xl flex items-center gap-4">
+<div class="relative">
+<div class="w-2 h-2 bg-gold rounded-full absolute -top-1 -right-1 animate-ping"></div>
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-gold">sync_alt</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-headline font-bold text-white uppercase tracking-widest">Gateway Monitor</p>
+<p class="text-[9px] text-slate-400 font-label">Tunnel Active • Latency 14ms</p>
+</div>
+</div>
+</div>
+</body></html>
