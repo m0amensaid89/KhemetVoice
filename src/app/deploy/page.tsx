@@ -1,7 +1,11 @@
+'use client';
+
 import { AppShell } from "@/components/layout/AppShell";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { Toggle } from "@/components/ui/Toggle";
+import { Chip } from "@/components/ui/Chip";
 import { Code, Copy, Globe, Terminal, Bot } from "lucide-react";
 
 export default function DeployPage() {
@@ -13,8 +17,11 @@ export default function DeployPage() {
 
           {/* Configuration */}
           <div className="flex flex-col gap-6">
-            <Card className="p-6">
-              <h3 className="text-lg font-display font-medium text-white mb-4">Widget Configuration</h3>
+            <Card className="p-6 relative">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-display font-medium text-white">Widget Configuration</h3>
+                <Badge variant="success">Deployed</Badge>
+              </div>
               <div className="space-y-6">
                 <div>
                   <label className="text-xs font-medium tracking-[0.05em] uppercase text-text-secondary block mb-2">Select Agent</label>
@@ -22,6 +29,31 @@ export default function DeployPage() {
                     <option>Sales Qualification Bot</option>
                     <option>Customer Support L1</option>
                   </select>
+                </div>
+
+                <div className="pt-4 border-t border-white/5">
+                  <Toggle
+                    label="Test Mode"
+                    description="When enabled, the widget only loads for internal IP addresses."
+                    defaultChecked={false}
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs font-medium tracking-[0.05em] uppercase text-text-secondary block mb-2">Domain Allowlist</label>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <Chip onRemove={() => {}}>khemet.ai</Chip>
+                    <Chip onRemove={() => {}}>app.khemet.ai</Chip>
+                    <Chip onRemove={() => {}}>docs.khemet.ai</Chip>
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="e.g. yourcompany.com"
+                      className="flex-1 bg-surface-high border border-white/10 rounded-sm px-3 py-2 text-sm text-white focus:outline-none focus:border-primary transition-colors"
+                    />
+                    <Button variant="secondary" size="sm">Add</Button>
+                  </div>
                 </div>
 
                 <div>
