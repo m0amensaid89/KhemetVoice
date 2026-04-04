@@ -23,8 +23,11 @@ export default function LoginPage() {
           </span>
         </div>
         <Link href="#login">
-          <Button size="sm" variant="secondary" className="gap-2 border-white/20">
-            Sign In <ArrowRight className="w-3 h-3" />
+          <Button
+            className="bg-secondary hover:bg-secondary/90 text-obsidian rounded-full px-8 py-6 font-bold tracking-wide uppercase flex items-center gap-3 transition-colors"
+          >
+            <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-obsidian border-b-[6px] border-b-transparent"></div>
+            REGISTER NOW
           </Button>
         </Link>
       </nav>
@@ -218,9 +221,10 @@ export default function LoginPage() {
       </div>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer className="border-t border-white/5 py-6 px-8 flex items-center justify-between text-xs text-text-secondary">
-        <span>© 2026 Khemet Voice. All rights reserved.</span>
-        <span>Built for the MENA enterprise.</span>
+      <footer className="border-t border-white/5 py-6 px-8 flex justify-center text-center text-sm text-white/70">
+        <span className="font-cinzel tracking-wide whitespace-nowrap">
+          The Rise of the Voice • Intelligence now speaks. © Voice of Khemet — All rights reserved 2026
+        </span>
       </footer>
     </div>
   );
