@@ -26,7 +26,7 @@ const EGYPTIAN_SYMBOLS = [
 export const VoiceHero: React.FC = () => {
   const [playingVoice, setPlayingVoice] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoMode, setIsAutoMode] = useState(true);
+  const [isAutoMode, setIsAutoMode] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
   // Force Dark Mode
@@ -37,14 +37,25 @@ export const VoiceHero: React.FC = () => {
   // Automatically start playing when active index changes
   const handleVoiceChange = (index: number) => {
     setActiveIndex(index);
-    if (!isMuted) {
+    if (isAutoMode) {
       setPlayingVoice(VOICE_DATA[index].name);
     }
   };
 
   const handlePlayToggle = (voiceName: string) => {
-    if (isMuted) setIsMuted(false);
-    setPlayingVoice(current => current === voiceName ? null : voiceName);
+    const isNowPlaying = playingVoice !== voiceName;
+
+    if (isNowPlaying) {
+      // Starting playback
+      setPlayingVoice(voiceName);
+      setIsMuted(false);
+      setIsAutoMode(true);
+    } else {
+      // Stopping playback
+      setPlayingVoice(null);
+      setIsMuted(true);
+      setIsAutoMode(false);
+    }
   };
 
   const handleMuteToggle = () => {
@@ -52,9 +63,16 @@ export const VoiceHero: React.FC = () => {
     setIsMuted(newMutedState);
     setIsAutoMode(!newMutedState); // Unmute = AutoPlay ON, Mute = AutoPlay OFF
 
-    // If we just unmuted, ensure the current voice is playing
-    if (!newMutedState && !playingVoice) {
-      setPlayingVoice(VOICE_DATA[activeIndex].name);
+    if (!newMutedState) {
+      // User unmuted -> Start playing current card immediately
+      // This guarantees the audio plays from the beginning on user click
+      setPlayingVoice(null); // Force reset to trigger a fresh play
+      setTimeout(() => {
+          setPlayingVoice(VOICE_DATA[activeIndex].name);
+      }, 50);
+    } else {
+      // User muted -> Stop playing entirely
+      setPlayingVoice(null);
     }
   };
 
@@ -69,13 +87,6 @@ export const VoiceHero: React.FC = () => {
         setPlayingVoice(VOICE_DATA[nextIndex].name);
     }, 500);
   }, [activeIndex, isAutoMode]);
-
-  // When auto mode is turned on, start playing if nothing is playing
-  useEffect(() => {
-      if (isAutoMode && !playingVoice) {
-          setPlayingVoice(VOICE_DATA[activeIndex].name);
-      }
-  }, [isAutoMode, activeIndex, playingVoice]);
 
   return (
     <div className="h-[800px] w-full bg-[#09090b] text-zinc-100 font-sans overflow-hidden flex flex-col relative transition-colors duration-300 dark">
@@ -137,7 +148,7 @@ export const VoiceHero: React.FC = () => {
                     className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] bg-[#D4AF37] text-black border border-[#D4AF37]/50 hover:scale-105 active:scale-95"
                 >
                     {isMuted ? <VolumeX size={16} fill="currentColor" /> : <Volume2 size={16} fill="currentColor" />}
-                    {isMuted ? 'MUTE (AUTO PLAY OFF)' : 'UNMUTE (AUTO PLAY ON)'}
+                    {isMuted ? 'UNMUTE (AUTO PLAY OFF)' : 'MUTE (AUTO PLAY ON)'}
                 </button>
             </div>
 
