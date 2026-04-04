@@ -39,11 +39,13 @@ export function Sidebar({ className }: { className?: string }) {
       {/* Brand */}
       <div className="h-16 flex items-center px-6 border-b border-white/5">
         <Link href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display">
-            KV
-          </div>
-          <span className="font-display font-bold text-lg tracking-wide text-white">
-            KHEMET
+          <img
+            src="/logo.png"
+            alt="Khemet Voice"
+            className="h-8 w-auto object-contain"
+          />
+          <span className="font-cinzel font-bold text-lg tracking-wide text-white whitespace-nowrap">
+            VOICE OF KHEMET
           </span>
         </Link>
       </div>

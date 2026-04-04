@@ -18,6 +18,9 @@ export default function LoginPage() {
             alt="Khemet Voice"
             className="h-10 w-auto object-contain"
           />
+          <span className="font-cinzel font-bold text-xl tracking-wide text-white">
+            VOICE OF KHEMET
+          </span>
         </div>
         <Link href="#login">
           <Button size="sm" variant="secondary" className="gap-2 border-white/20">
@@ -69,6 +72,9 @@ export default function LoginPage() {
               alt="Khemet Voice"
               className="h-10 w-auto object-contain"
             />
+            <span className="font-cinzel font-bold text-xl tracking-wide text-white">
+              VOICE OF KHEMET
+            </span>
           </div>
 
           <div className="relative z-10 max-w-lg mt-auto pb-12">
@@ -103,6 +109,9 @@ export default function LoginPage() {
                 alt="Khemet Voice"
                 className="h-10 w-auto object-contain"
               />
+              <span className="font-cinzel font-bold text-xl tracking-wide text-white">
+                VOICE OF KHEMET
+              </span>
             </div>
 
             <div>

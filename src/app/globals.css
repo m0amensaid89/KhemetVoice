@@ -15,6 +15,7 @@
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
+  --font-cinzel: var(--font-cinzel);
 
   --radius-sm: 0.125rem;
   --radius-md: 0.375rem;
