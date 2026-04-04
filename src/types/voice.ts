@@ -18,3 +18,9 @@ export interface Voice {
   symbol: string;
   cardColor?: string;
 }
+
+export interface AiRecommendation {
+  voiceNames: string[];
+  systemInstruction: string;
+  sampleText: string;
+}
