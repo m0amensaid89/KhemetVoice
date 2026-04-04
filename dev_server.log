@@ -1,0 +1,872 @@
+
+> khemet-voice@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 551ms
+
+○ Compiling / ...
+ GET / 200 in 8.0s (next.js: 7.0s, application-code: 972ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/page.tsx">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <nav>
+                  <section className="w-full">
+                    <VoiceHero>
+                      <div className="h-[800px] ...">
+                        <div>
+                        <div className="absolute i..." aria-hidden="true">
+                          <div>
+                          <div>
+                          <motion.div className="absolute o..." initial={{x:"77.7634...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(77.76343738078495%) translateY(44.20603991198596%) scale(0.8919..."
+-                               transform: "translateX(38.4542%) translateY(40.994%) scale(0.605016) rotate(164.509deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"11.9850...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(11.985023495625535%) translateY(69.48590054541164%) scale(1.444..."
+-                               transform: "translateX(23.2574%) translateY(49.5411%) scale(1.4281) rotate(12.6772deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"83.1795...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(83.17959042257097%) translateY(83.6706057685736%) scale(0.49930..."
+-                               transform: "translateX(47.8714%) translateY(57.4867%) scale(1.10404) rotate(261.061deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"23.7900...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(23.790095238104914%) translateY(32.97106064820296%) scale(1.480..."
+-                               transform: "translateX(98.6732%) translateY(61.7747%) scale(1.42388) rotate(6.94655deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"40.6724...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(40.6724256681132%) translateY(72.63924798738034%) scale(0.53589..."
+-                               transform: "translateX(33.8533%) translateY(69.5037%) scale(1.25879) rotate(179.84deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"11.7951...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(11.795148448201543%) translateY(70.20350847772941%) scale(0.832..."
+-                               transform: "translateX(45.6204%) translateY(75.4895%) scale(0.827091) rotate(81.993deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"82.9040...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(82.90400343936835%) translateY(25.480252663844404%) scale(0.632..."
+-                               transform: "translateX(10.6683%) translateY(95.4048%) scale(0.742315) rotate(187.143deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"4.22571...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(4.225714688148951%) translateY(73.02986113992674%) scale(0.8784..."
+-                               transform: "translateX(89.1123%) translateY(32.0853%) scale(1.12775) rotate(310.078deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"41.0328...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(41.032816461405666%) translateY(13.231647936047796%) scale(1.40..."
+-                               transform: "translateX(44.3531%) translateY(78.8399%) scale(1.07331) rotate(2.32621deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"97.3684...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(97.36848358773196%) translateY(57.92976688340674%) scale(0.7388..."
+-                               transform: "translateX(62.9737%) translateY(6.66298%) scale(0.64204) rotate(50.8585deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"48.9635...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(48.96352188051035%) translateY(28.52097860896223%) scale(0.9375..."
+-                               transform: "translateX(98.7591%) translateY(20.0054%) scale(0.545949) rotate(280.251deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"5.21304...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(5.213041546092034%) translateY(94.20512373219765%) scale(0.7999..."
+-                               transform: "translateX(25.2035%) translateY(68.9579%) scale(1.48702) rotate(6.07454deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"44.3895...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(44.38950069403075%) translateY(69.38350080283017%) scale(0.5557..."
+-                               transform: "translateX(63.3375%) translateY(48.633%) scale(0.713451) rotate(246.235deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"40.4620...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(40.462098091573814%) translateY(15.27020511703837%) scale(0.677..."
+-                               transform: "translateX(95.9313%) translateY(56.4005%) scale(0.738644) rotate(258.124deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"77.1365...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(77.13655059812888%) translateY(18.55270522050857%) scale(1.0985..."
+-                               transform: "translateX(40.6315%) translateY(91.296%) scale(0.623475) rotate(61.9331deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"86.8594...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(86.85948828592083%) translateY(48.28783916731834%) scale(1.2831..."
+-                               transform: "translateX(83.684%) translateY(63.4084%) scale(1.49702) rotate(228.664deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"88.5245...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(88.52456710799792%) translateY(24.962002630340518%) scale(1.056..."
+-                               transform: "translateX(52.7487%) translateY(40.2579%) scale(0.620588) rotate(204.542deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"6.80903...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(6.809035746213832%) translateY(34.426859255362494%) scale(0.485..."
+-                               transform: "translateX(49.4414%) translateY(26.1346%) scale(1.22493) rotate(137.397deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"60.0580...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(60.05800749251268%) translateY(24.3265373231626%) scale(0.41280..."
+-                               transform: "translateX(10.4413%) translateY(97.3302%) scale(1.1603) rotate(75.8824deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"48.7102...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(48.710224681554436%) translateY(18.919031800555707%) scale(0.47..."
+-                               transform: "translateX(45.8903%) translateY(39.8243%) scale(0.578205) rotate(212.602deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                        ...
+                  ...
+            ...
+          ...
+
+ GET / 200 in 177ms (next.js: 6ms, application-code: 171ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/page.tsx">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <nav>
+                  <section className="w-full">
+                    <VoiceHero>
+                      <div className="h-[800px] ...">
+                        <div>
+                        <div className="absolute i..." aria-hidden="true">
+                          <div>
+                          <div>
+                          <motion.div className="absolute o..." initial={{x:"76.0494...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(76.04946260465655%) translateY(41.67868172376632%) scale(1.2351..."
+-                               transform: "translateX(53.7236%) translateY(95.8601%) scale(1.11832) rotate(338.119deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"36.9037...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(36.90375812399552%) translateY(96.85394442355886%) scale(0.4758..."
+-                               transform: "translateX(44.5331%) translateY(2.14742%) scale(1.02765) rotate(145.03deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"78.8382...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(78.83825465812967%) translateY(38.928355278982764%) scale(1.152..."
+-                               transform: "translateX(66.0729%) translateY(8.75314%) scale(0.524481) rotate(86.3229deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"37.0777...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(37.07779371189559%) translateY(20.046912485234692%) scale(1.327..."
+-                               transform: "translateX(79.8734%) translateY(63.0828%) scale(1.10646) rotate(41.1048deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"52.8963...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(52.89637940773756%) translateY(17.992031057993742%) scale(1.368..."
+-                               transform: "translateX(21.254%) translateY(50.7646%) scale(0.974083) rotate(292.239deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"21.7304...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(21.73048166215291%) translateY(53.92875099907396%) scale(0.4761..."
+-                               transform: "translateX(93.0047%) translateY(30.9723%) scale(0.56831) rotate(30.8337deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"98.0254...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(98.02544559910099%) translateY(87.02614063769327%) scale(1.4372..."
+-                               transform: "translateX(17.2649%) translateY(53.0803%) scale(0.842021) rotate(40.5746deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"35.0559...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(35.05596765886318%) translateY(81.96882586153984%) scale(0.4130..."
+-                               transform: "translateX(55.8984%) translateY(98.7315%) scale(0.986372) rotate(245.333deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"43.8907...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(43.89075710429471%) translateY(98.52898467751635%) scale(0.5557..."
+-                               transform: "translateX(86.7589%) translateY(76.2195%) scale(1.23724) rotate(49.9757deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"70.0897...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(70.08972779894226%) translateY(9.07072942528856%) scale(1.25188..."
+-                               transform: "translateX(32.758%) translateY(87.6762%) scale(0.371727) rotate(52.5869deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"86.9860...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(86.98600693772245%) translateY(3.0045230664476175%) scale(0.317..."
+-                               transform: "translateX(66.9129%) translateY(71.481%) scale(0.593375) rotate(73.3119deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"64.2506...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(64.25066891050989%) translateY(74.87342905755168%) scale(0.9223..."
+-                               transform: "translateX(78.5688%) translateY(41.5144%) scale(1.13734) rotate(84.5066deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"79.1268...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(79.12681512199713%) translateY(11.489699736669735%) scale(1.203..."
+-                               transform: "translateX(35.3424%) translateY(35.4476%) scale(1.22896) rotate(331.207deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"98.5110...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(98.51109216358455%) translateY(25.76695316892932%) scale(0.7180..."
+-                               transform: "translateX(49.2806%) translateY(87.4826%) scale(0.367139) rotate(248.266deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"16.6922...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(16.692240072914377%) translateY(5.466470510819876%) scale(0.438..."
+-                               transform: "translateX(76.0765%) translateY(66.9532%) scale(1.06175) rotate(132.351deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"84.2496...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(84.24963818843477%) translateY(18.302243971683254%) scale(0.874..."
+-                               transform: "translateX(93.9258%) translateY(15.8452%) scale(1.29102) rotate(13.044deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"79.3164...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(79.31643841336444%) translateY(83.1700886529525%) scale(1.26247..."
+-                               transform: "translateX(25.5822%) translateY(76.4824%) scale(1.02084) rotate(248.223deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"42.1624...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(42.16248316827701%) translateY(29.482292302517333%) scale(0.448..."
+-                               transform: "translateX(79.4394%) translateY(53.469%) scale(1.17449) rotate(141.133deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"13.8182...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(13.81825780122048%) translateY(97.32604415573884%) scale(0.8253..."
+-                               transform: "translateX(23.6264%) translateY(42.2334%) scale(0.458974) rotate(81.3894deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"28.3300...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(28.330033411332177%) translateY(73.91100645728037%) scale(0.890..."
+-                               transform: "translateX(36.6521%) translateY(45.3832%) scale(0.409029) rotate(328.265deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                        ...
+                  ...
+            ...
+          ...
+
+✓ Compiled in 89ms
+✓ Compiled in 52ms
+ GET / 200 in 271ms (next.js: 8ms, application-code: 264ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/page.tsx">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <nav>
+                  <section className="w-full">
+                    <VoiceHero>
+                      <div className="h-[800px] ...">
+                        <div>
+                        <div className="absolute i..." aria-hidden="true">
+                          <div>
+                          <div>
+                          <motion.div className="absolute o..." initial={{x:"14.0198...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(14.019833569249762%) translateY(80.45045655769815%) scale(1.370..."
+-                               transform: "translateX(91.2363%) translateY(75.9855%) scale(0.33796) rotate(45.0794deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"22.8456...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(22.845607010736135%) translateY(76.57652773974932%) scale(1.487..."
+-                               transform: "translateX(22.0905%) translateY(0.0985096%) scale(0.886552) rotate(263.091..."
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"0.71817...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(0.7181790820590117%) translateY(48.679402065932706%) scale(0.71..."
+-                               transform: "translateX(40.8851%) translateY(98.1193%) scale(0.633751) rotate(239.632deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"50.6298...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(50.62984558603063%) translateY(73.7796916629829%) scale(1.41107..."
+-                               transform: "translateX(43.6122%) translateY(35.8007%) scale(0.969711) rotate(268.094deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"75.2587...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(75.25879542630054%) translateY(76.7496984173555%) scale(0.43335..."
+-                               transform: "translateX(26.5055%) translateY(21.2133%) scale(1.49876) rotate(39.547deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"37.6996...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(37.69965502660896%) translateY(79.73195934862873%) scale(1.1445..."
+-                               transform: "translateX(1.4382%) translateY(34.0149%) scale(0.607728) rotate(156.101deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"32.1077...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(32.107757736092864%) translateY(4.173726939550592%) scale(1.392..."
+-                               transform: "translateX(6.91421%) translateY(50.9641%) scale(0.875738) rotate(176.526deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"23.8157...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(23.815719157118544%) translateY(3.1029565528277625%) scale(0.42..."
+-                               transform: "translateX(83.6102%) translateY(11.7989%) scale(1.24964) rotate(144.499deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"64.4089...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(64.40899806926139%) translateY(33.23958759017249%) scale(0.5462..."
+-                               transform: "translateX(92.0102%) translateY(36.6558%) scale(1.10982) rotate(212.677deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"7.55114...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(7.551145147931127%) translateY(74.50419229895736%) scale(0.4282..."
+-                               transform: "translateX(96.367%) translateY(83.9609%) scale(1.12419) rotate(273.11deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"11.7084...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(11.708435469142342%) translateY(50.57195019780295%) scale(1.496..."
+-                               transform: "translateX(24.0698%) translateY(30.9859%) scale(1.23656) rotate(309.877deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"78.3454...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(78.34543258692597%) translateY(20.672053466897676%) scale(0.542..."
+-                               transform: "translateX(98.8716%) translateY(56.3829%) scale(1.30828) rotate(338.619deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"51.5749...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(51.57491337653081%) translateY(53.61512415683952%) scale(1.4457..."
+-                               transform: "translateX(43.8401%) translateY(0.188616%) scale(1.02644) rotate(230.592deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"87.2634...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(87.26343059991494%) translateY(37.368607677477314%) scale(0.361..."
+-                               transform: "translateX(36.5116%) translateY(68.2092%) scale(0.448525) rotate(174.448deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"74.8429...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(74.84294272733818%) translateY(21.05340848217493%) scale(1.0236..."
+-                               transform: "translateX(13.0564%) translateY(7.13168%) scale(0.977757) rotate(231.534deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"73.2811...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(73.28114366882681%) translateY(78.10283230976381%) scale(1.4903..."
+-                               transform: "translateX(23.2417%) translateY(72.4456%) scale(0.63993) rotate(235.176deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"67.9365...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(67.93650243727814%) translateY(55.52716859004679%) scale(1.0433..."
+-                               transform: "translateX(61.9728%) translateY(67.8082%) scale(0.938794) rotate(254.66deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"99.8997...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(99.8997704387985%) translateY(0.9060616377815855%) scale(0.4504..."
+-                               transform: "translateX(54.4044%) translateY(96.5241%) scale(1.3385) rotate(100.564deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"91.0114...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(91.01148031599425%) translateY(56.07255571350132%) scale(1.3536..."
+-                               transform: "translateX(55.3044%) translateY(89.0668%) scale(0.810884) rotate(305.831deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"62.2377...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(62.23776167772394%) translateY(40.76824275993683%) scale(0.8309..."
+-                               transform: "translateX(81.9381%) translateY(61.879%) scale(1.34537) rotate(85.8443deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                        ...
+                  ...
+            ...
+          ...
+
+✓ Compiled in 49ms
+ GET / 200 in 171ms (next.js: 7ms, application-code: 164ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/page.tsx">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <nav>
+                  <section className="w-full">
+                    <VoiceHero>
+                      <div className="h-[800px] ...">
+                        <div>
+                        <div className="absolute i..." aria-hidden="true">
+                          <div>
+                          <div>
+                          <motion.div className="absolute o..." initial={{x:"41.6986...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(41.698677122997665%) translateY(75.00228398586488%) scale(0.873..."
+-                               transform: "translateX(42.9887%) translateY(39.5368%) scale(1.35631) rotate(172.002deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"48.1893...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(48.18936612004949%) translateY(6.40807550684025%) scale(0.90064..."
+-                               transform: "translateX(49.8196%) translateY(40.0101%) scale(1.1546) rotate(132.87deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"32.6810...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(32.68106072781279%) translateY(63.4549692274592%) scale(1.27413..."
+-                               transform: "translateX(43.8967%) translateY(34.9059%) scale(1.02288) rotate(323.561deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"38.6853...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(38.68538813579032%) translateY(33.507693115651534%) scale(0.890..."
+-                               transform: "translateX(4.51261%) translateY(32.6352%) scale(0.696607) rotate(13.786deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"67.8581...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(67.85816046620585%) translateY(51.011061582485176%) scale(0.337..."
+-                               transform: "translateX(74.8724%) translateY(39.7712%) scale(0.940893) rotate(336.565deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"1.53945...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(1.5394572447120503%) translateY(63.05140919862229%) scale(1.301..."
+-                               transform: "translateX(21.8889%) translateY(93.4703%) scale(0.4895) rotate(117.205deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"31.8076...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(31.807678811769613%) translateY(91.20461197093034%) scale(1.109..."
+-                               transform: "translateX(9.95086%) translateY(23.6952%) scale(1.20878) rotate(240.068deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"90.5320...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(90.5320292431245%) translateY(77.01685833232686%) scale(0.38818..."
+-                               transform: "translateX(74.3352%) translateY(48.795%) scale(0.507974) rotate(139.196deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"74.6112...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(74.61120830042965%) translateY(59.5696322245204%) scale(1.19546..."
+-                               transform: "translateX(65.9722%) translateY(36.7571%) scale(0.773741) rotate(312.395deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"21.3725...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(21.37250612730498%) translateY(62.82233582459062%) scale(0.5094..."
+-                               transform: "translateX(72.5333%) translateY(92.0954%) scale(1.36312) rotate(285.243deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"83.5156...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(83.51562408853445%) translateY(22.237039858353892%) scale(0.511..."
+-                               transform: "translateX(56.8704%) translateY(14.6583%) scale(0.686064) rotate(129.256deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"8.72921...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(8.729219604759342%) translateY(97.11352115393797%) scale(1.4026..."
+-                               transform: "translateX(42.9959%) translateY(51.9569%) scale(1.27979) rotate(124.783deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"55.2673...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(55.26736791254924%) translateY(4.7469460665543135%) scale(1.088..."
+-                               transform: "translateX(88.2167%) translateY(32.8832%) scale(0.931913) rotate(4.41254deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"87.0470...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(87.0470192805362%) translateY(75.31537888243504%) scale(0.69259..."
+-                               transform: "translateX(14.829%) translateY(59.3512%) scale(0.984857) rotate(355.302deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"77.6064...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(77.60640980425669%) translateY(40.23259384845987%) scale(1.4183..."
+-                               transform: "translateX(28.5448%) translateY(99.5905%) scale(1.35043) rotate(12.6763deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"58.7665...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(58.76658158349195%) translateY(30.305978335453077%) scale(1.301..."
+-                               transform: "translateX(62.7799%) translateY(88.838%) scale(1.08501) rotate(249.641deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"1.85513...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(1.8551398132340635%) translateY(77.90495573475698%) scale(0.471..."
+-                               transform: "translateX(24.9622%) translateY(91.0016%) scale(1.46008) rotate(324.055deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"15.9256...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(15.925698910753116%) translateY(44.943785754244345%) scale(1.49..."
+-                               transform: "translateX(82.7339%) translateY(64.5401%) scale(1.41989) rotate(343.533deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"3.88913...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(3.889134033785502%) translateY(58.06060550021075%) scale(0.7227..."
+-                               transform: "translateX(2.179%) translateY(73.1783%) scale(1.38786) rotate(104.117deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div className="absolute o..." initial={{x:"74.2703...", ...}} animate={{y:[...], ...}} ...>
+                            <div
+                              className="absolute opacity-[0.08] grayscale invert"
+                              style={{
++                               transform: "translateX(74.27039816298809%) translateY(1.9764877210595833%) scale(1.197..."
+-                               transform: "translateX(59.2368%) translateY(85.5639%) scale(1.482) rotate(98.6494deg)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                        ...
+                  ...
+            ...
+          ...
