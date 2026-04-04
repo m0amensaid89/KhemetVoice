@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { VOICE_DATA } from '@/data/voiceData';
 import Carousel3D from '@/components/VoiceCarousel';
 import { motion } from 'framer-motion';
-import { Play, Pause, RotateCcw } from 'lucide-react';
+import { Play, Pause, VolumeX } from 'lucide-react';
 
 const EGYPTIAN_SYMBOLS = [
   "ankh",
@@ -27,6 +27,7 @@ export const VoiceHero: React.FC = () => {
   const [playingVoice, setPlayingVoice] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoMode, setIsAutoMode] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   // Force Dark Mode
   useEffect(() => {
@@ -34,6 +35,7 @@ export const VoiceHero: React.FC = () => {
   }, []);
 
   const handlePlayToggle = (voiceName: string) => {
+    if (isMuted) setIsMuted(false);
     setPlayingVoice(current => current === voiceName ? null : voiceName);
   };
 
@@ -118,7 +120,7 @@ export const VoiceHero: React.FC = () => {
         </header>
 
         <main className="flex-1 relative flex flex-col overflow-hidden">
-            <div className="w-full flex-1 flex items-center justify-center pb-8 min-h-0">
+            <div className="w-full flex-1 flex items-center justify-center pb-8 min-h-0 relative">
                  <Carousel3D
                     voices={VOICE_DATA}
                     activeIndex={activeIndex}
@@ -126,7 +128,21 @@ export const VoiceHero: React.FC = () => {
                     playingVoice={playingVoice}
                     onPlayToggle={handlePlayToggle}
                     onEnded={handleAutoAdvance}
+                    isMuted={isMuted}
                  />
+
+                 {/* Tap to Unmute Overlay */}
+                 {isMuted && (
+                    <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
+                        <button
+                            onClick={() => setIsMuted(false)}
+                            className="pointer-events-auto flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white font-medium tracking-wide transition-all hover:scale-105 active:scale-95 shadow-2xl mt-48 animate-pulse hover:animate-none"
+                        >
+                            <VolumeX size={20} />
+                            TAP TO UNMUTE
+                        </button>
+                    </div>
+                 )}
             </div>
 
             <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none">

@@ -18,6 +18,7 @@ interface Carousel3DProps {
   onPlayToggle: (voiceName: string) => void;
   onEnded?: () => void;
   disabled?: boolean;
+  isMuted?: boolean;
 }
 
 const Carousel3D: React.FC<Carousel3DProps> = ({
@@ -27,7 +28,8 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
   playingVoice,
   onPlayToggle,
   onEnded,
-  disabled = false
+  disabled = false,
+  isMuted = false
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -181,7 +183,7 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
   return (
     <div className="relative w-full h-full flex items-center justify-center">
 
-      <audio ref={audioRef} onEnded={handleAudioEnded} preload="none" />
+      <audio ref={audioRef} onEnded={handleAudioEnded} preload="none" muted={isMuted} />
 
       {/* Navigation Arrows */}
       <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 sm:px-12 z-50 pointer-events-none">
