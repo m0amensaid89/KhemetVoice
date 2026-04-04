@@ -877,3 +877,6 @@ https://react.dev/link/hydration-mismatch
 ✓ Compiled in 2.1s
 ✓ Compiled in 168ms
  GET / 200 in 1015ms (next.js: 96ms, application-code: 920ms)
+✓ Compiled in 921ms
+ GET / 200 in 1981ms (next.js: 920ms, application-code: 1061ms)
+[browser] Play failed for source 1: play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD (src/components/VoiceCarousel.tsx:105:29)

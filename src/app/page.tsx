@@ -221,7 +221,7 @@ export default function LoginPage() {
       </div>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer className="border-t border-white/5 py-6 px-8 flex justify-center text-center text-sm text-white/70">
+      <footer className="border-t border-white/5 py-6 px-8 flex justify-center text-center text-sm text-secondary">
         <span className="font-cinzel tracking-wide whitespace-nowrap">
           The Rise of the Voice • Intelligence now speaks. © Voice of Khemet — All rights reserved 2026
         </span>
