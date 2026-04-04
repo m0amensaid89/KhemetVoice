@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { VOICE_DATA } from '@/data/voiceData';
 import Carousel3D from '@/components/VoiceCarousel';
 import { motion } from 'framer-motion';
-import { Play, Pause, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 const EGYPTIAN_SYMBOLS = [
   "ankh",
@@ -34,9 +34,28 @@ export const VoiceHero: React.FC = () => {
     document.documentElement.classList.add('dark');
   }, []);
 
+  // Automatically start playing when active index changes
+  const handleVoiceChange = (index: number) => {
+    setActiveIndex(index);
+    if (!isMuted) {
+      setPlayingVoice(VOICE_DATA[index].name);
+    }
+  };
+
   const handlePlayToggle = (voiceName: string) => {
     if (isMuted) setIsMuted(false);
     setPlayingVoice(current => current === voiceName ? null : voiceName);
+  };
+
+  const handleMuteToggle = () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    setIsAutoMode(!newMutedState); // Unmute = AutoPlay ON, Mute = AutoPlay OFF
+
+    // If we just unmuted, ensure the current voice is playing
+    if (!newMutedState && !playingVoice) {
+      setPlayingVoice(VOICE_DATA[activeIndex].name);
+    }
   };
 
   const handleAutoAdvance = useCallback(() => {
@@ -108,41 +127,30 @@ export const VoiceHero: React.FC = () => {
           })}
       </div>
 
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <header className="absolute top-8 right-8 z-50 flex justify-end pointer-events-none">
-            <button
-                onClick={() => setIsAutoMode(!isAutoMode)}
-                className={`pointer-events-auto flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all backdrop-blur-md border shadow-2xl ${isAutoMode ? 'bg-[#D4AF37] text-black border-[#D4AF37]/50 shadow-[0_0_20px_rgba(212,175,55,0.4)]' : 'bg-black/40 text-white/60 border-white/10 hover:bg-black/60'}`}
-            >
-                {isAutoMode ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
-                {isAutoMode ? 'Auto Play ON' : 'Auto Play OFF'}
-            </button>
-        </header>
+      <div className="flex flex-col flex-1 overflow-hidden relative">
 
         <main className="flex-1 relative flex flex-col overflow-hidden">
+            {/* Unified Mute/Autoplay Toggle Button */}
+            <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50">
+                <button
+                    onClick={handleMuteToggle}
+                    className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] bg-[#D4AF37] text-black border border-[#D4AF37]/50 hover:scale-105 active:scale-95"
+                >
+                    {isMuted ? <VolumeX size={16} fill="currentColor" /> : <Volume2 size={16} fill="currentColor" />}
+                    {isMuted ? 'MUTE (AUTO PLAY OFF)' : 'UNMUTE (AUTO PLAY ON)'}
+                </button>
+            </div>
+
             <div className="w-full flex-1 flex items-center justify-center pb-8 min-h-0 relative">
                  <Carousel3D
                     voices={VOICE_DATA}
                     activeIndex={activeIndex}
-                    onChange={setActiveIndex}
+                    onChange={handleVoiceChange}
                     playingVoice={playingVoice}
                     onPlayToggle={handlePlayToggle}
                     onEnded={handleAutoAdvance}
                     isMuted={isMuted}
                  />
-
-                 {/* Tap to Unmute Overlay */}
-                 {isMuted && (
-                    <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
-                        <button
-                            onClick={() => setIsMuted(false)}
-                            className="pointer-events-auto flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white font-medium tracking-wide transition-all hover:scale-105 active:scale-95 shadow-2xl mt-48 animate-pulse hover:animate-none"
-                        >
-                            <VolumeX size={20} />
-                            TAP TO UNMUTE
-                        </button>
-                    </div>
-                 )}
             </div>
 
             <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none">

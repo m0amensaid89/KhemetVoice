@@ -882,3 +882,5 @@ https://react.dev/link/hydration-mismatch
 [browser] Play failed for source 1: play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD (src/components/VoiceCarousel.tsx:105:29)
  GET / 200 in 2.5s (next.js: 1346ms, application-code: 1152ms)
 [browser] Play failed for source 1: play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD (src/components/VoiceCarousel.tsx:105:29)
+ GET / 200 in 2.6s (next.js: 1146ms, application-code: 1446ms)
+[browser] Play failed for source 1: play() failed because the user didn't interact with the document first. https://goo.gl/xX8pDD (src/components/VoiceCarousel.tsx:105:29)
