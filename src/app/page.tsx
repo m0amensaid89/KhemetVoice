@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { VoiceDemo } from "@/components/VoiceDemo";
+import { VoiceHero } from "@/components/VoiceHero";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
@@ -12,12 +13,11 @@ export default function LoginPage() {
       {/* ── TOP NAV ─────────────────────────────────────────── */}
       <nav className="w-full flex items-center justify-between px-8 py-5 border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display text-sm">
-            KV
-          </div>
-          <span className="font-display font-bold text-xl tracking-wide text-white">
-            KHEMET VOICE
-          </span>
+          <img
+            src="/logo.png"
+            alt="Khemet Voice"
+            className="h-10 w-auto object-contain"
+          />
         </div>
         <Link href="#login">
           <Button size="sm" variant="secondary" className="gap-2 border-white/20">
@@ -27,45 +27,8 @@ export default function LoginPage() {
       </nav>
 
       {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 via-obsidian to-obsidian pointer-events-none" />
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-
-        <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
-          <Badge>Enterprise Voice AI · MENA-Native</Badge>
-
-          <h1 className="font-display text-5xl lg:text-6xl font-medium text-white leading-tight">
-            The Voice of Your{" "}
-            <span className="text-tertiary">Empire.</span>
-          </h1>
-
-          <p className="text-text-secondary text-lg max-w-xl">
-            Secure, intelligent, multilingual voice agents built for high-stakes
-            enterprise operations across Egypt, UAE, and KSA.
-          </p>
-
-          <div className="flex items-center gap-4 mt-2">
-            <Link href="#login">
-              <Button size="lg" className="gap-2">
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="#demo">
-              <Button size="lg" variant="secondary" className="gap-2 border-white/20">
-                Hear It Live
-              </Button>
-            </Link>
-          </div>
-        </div>
+      <section className="w-full">
+        <VoiceHero />
       </section>
 
       {/* ── VOICE DEMO ──────────────────────────────────────── */}
@@ -101,12 +64,11 @@ export default function LoginPage() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/20 via-obsidian to-obsidian" />
 
           <div className="relative z-10 flex items-center gap-3">
-            <div className="w-10 h-10 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display text-xl">
-              KV
-            </div>
-            <span className="font-display font-bold text-2xl tracking-wide text-white">
-              KHEMET
-            </span>
+            <img
+              src="/logo.png"
+              alt="Khemet Voice"
+              className="h-10 w-auto object-contain"
+            />
           </div>
 
           <div className="relative z-10 max-w-lg mt-auto pb-12">
@@ -136,12 +98,11 @@ export default function LoginPage() {
         <div className="flex-1 flex flex-col justify-center items-center p-8 py-16 relative">
           <div className="w-full max-w-md flex flex-col gap-8">
             <div className="md:hidden flex items-center gap-3 mb-4 justify-center">
-              <div className="w-8 h-8 bg-tertiary rounded-sm flex items-center justify-center text-obsidian font-bold font-display">
-                KV
-              </div>
-              <span className="font-display font-bold text-xl tracking-wide text-white">
-                KHEMET
-              </span>
+              <img
+                src="/logo.png"
+                alt="Khemet Voice"
+                className="h-10 w-auto object-contain"
+              />
             </div>
 
             <div>
