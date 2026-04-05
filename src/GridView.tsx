@@ -4,7 +4,7 @@
 */
 
 import React from 'react';
-import { Voice } from '../types';
+import { Voice } from '@/types/voice';
 import VoiceCard from './VoiceCard';
 
 interface GridViewProps {

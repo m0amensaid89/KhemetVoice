@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Search, Sparkles, SlidersHorizontal, Loader2, X, Check, LayoutGrid, GalleryHorizontalEnd } from 'lucide-react';
-import { FilterState } from '../types';
+import { FilterState } from '@/types/voice';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ControlBarProps {

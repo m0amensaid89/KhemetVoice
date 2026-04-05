@@ -5,7 +5,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { Play, Pause, Activity } from 'lucide-react';
-import { Voice } from '../types';
+import { Voice } from '@/types/voice';
 import AudioVisualizer from './AudioVisualizer';
 
 interface VoiceCardProps {

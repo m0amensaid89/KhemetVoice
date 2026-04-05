@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
-import { Voice } from './types';
+import { Voice } from '@/types/voice';
 
 // Raw data from the user request
 const rawData = [

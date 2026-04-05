@@ -4,7 +4,7 @@
 */
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { AiRecommendation, Voice } from '../types';
+import { AiRecommendation, Voice } from '@/types/voice';
 import { Sparkles, Copy, Check, Quote, X } from 'lucide-react';
 import AiTtsPreview from './AiTtsPreview';
 import ReactMarkdown from 'react-markdown';

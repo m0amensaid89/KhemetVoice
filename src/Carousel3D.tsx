@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { Voice } from '../types';
+import { Voice } from '@/types/voice';
 import { Play, Pause, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import AudioVisualizer from './AudioVisualizer';
 

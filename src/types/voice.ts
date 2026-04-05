@@ -18,3 +18,15 @@ export interface Voice {
   symbol: string;
   cardColor?: string;
 }
+
+export interface FilterState {
+  gender: string | 'All';
+  pitch: string | 'All';
+  search: string;
+}
+
+export interface AiRecommendation {
+  voiceNames: string[];
+  systemInstruction: string;
+  sampleText: string;
+}

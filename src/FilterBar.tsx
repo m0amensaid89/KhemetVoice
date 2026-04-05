@@ -4,7 +4,7 @@
 */
 
 import React from 'react';
-import { FilterState } from '../types';
+import { FilterState } from '@/types/voice';
 import { Search, Sparkles, ChevronDown, Mic, LayoutGrid, GalleryHorizontalEnd, Sun, Moon } from 'lucide-react';
 
 interface FilterBarProps {

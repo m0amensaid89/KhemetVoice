@@ -6,7 +6,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { Play, Square, Loader2, Volume2, AlertCircle, ChevronDown } from 'lucide-react';
-import { Voice } from '../types';
+import { Voice } from '@/types/voice';
 import AudioVisualizer from './AudioVisualizer';
 
 interface AiTtsPreviewProps {

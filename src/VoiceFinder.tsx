@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenAI, Type } from "@google/genai";
 import { Sparkles, Loader2, X, ArrowRight, Wand2 } from 'lucide-react';
-import { Voice, AiRecommendation } from '../types';
+import { Voice, AiRecommendation } from '@/types/voice';
 
 interface VoiceFinderProps {
   voices: Voice[];
