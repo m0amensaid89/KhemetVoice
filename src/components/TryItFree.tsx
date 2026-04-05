@@ -436,27 +436,34 @@ export function TryItFree() {
 
         {/* 1 SPEAKER MODE LAYOUT */}
         {speakersMode === 1 && (
-          <div className="flex flex-col md:flex-row gap-8 max-w-[1000px] mx-auto">
-            <div className="flex-1 flex flex-col gap-8">
-              <div>
-                <div className="flex justify-center mb-6">
-                  <div className="flex gap-3">
-                    {[1, 2].map((num) => (
-                      <button
-                        key={num}
-                        onClick={() => setSpeakersMode(num as 1 | 2)}
-                        className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
-                          speakersMode === num
-                            ? 'border-[#D4AF37] text-[#D4AF37]'
-                            : 'border-white/10 text-zinc-400 hover:border-white/20'
-                        }`}
-                      >
-                        {num} Speaker{num > 1 ? 's' : ''}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+          <div className="flex flex-col gap-8 max-w-[1000px] mx-auto">
+            {/* Mode Select */}
+            <div className="flex justify-center">
+              <div className="flex gap-3">
+                {[1, 2].map((num) => (
+                  <button
+                    key={num}
+                    onClick={() => setSpeakersMode(num as 1 | 2)}
+                    className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
+                      speakersMode === num
+                        ? 'border-[#D4AF37] text-[#D4AF37]'
+                        : 'border-white/10 text-zinc-400 hover:border-white/20'
+                    }`}
+                  >
+                    {num} Speaker{num > 1 ? 's' : ''}
+                  </button>
+                ))}
+              </div>
+            </div>
 
+            {/* Visualizer */}
+            <div className="relative flex flex-col items-center justify-center min-h-[320px] w-full bg-black rounded-xl border border-white/5 overflow-hidden">
+              {visualizerContent}
+            </div>
+
+            {/* Voice and Script */}
+            <div className="flex flex-col gap-6">
+              <div>
                 <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Select Voice</div>
                 {renderVoiceRow(selectedVoiceA, setSelectedVoiceA)}
               </div>
@@ -474,10 +481,13 @@ export function TryItFree() {
                   <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
                 </div>
               </div>
+            </div>
 
-              <div>
+            {/* Style and Generate */}
+            <div className="flex flex-col items-center gap-8 border-t border-white/5 pt-8">
+              <div className="w-full">
                 <div className="text-sm text-zinc-400 mb-3 text-center">Speaking Style</div>
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
+                <div className="flex flex-wrap justify-center gap-2">
                   {STYLES.map(style => (
                     <button
                       key={style}
@@ -492,27 +502,23 @@ export function TryItFree() {
                     </button>
                   ))}
                 </div>
-
-                <button
-                  onClick={handleGenerate}
-                  disabled={isGenerateDisabled}
-                  className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
-                    isGenerateDisabled
-                      ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
-                      : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
-                  }`}
-                >
-                  {isGenerating ? (
-                    <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
-                  ) : (
-                    "Generate Voice"
-                  )}
-                </button>
               </div>
-            </div>
 
-            <div className="flex-1 relative flex flex-col items-center justify-center min-h-[400px] bg-black rounded-xl border border-white/5 overflow-hidden">
-              {visualizerContent}
+              <button
+                onClick={handleGenerate}
+                disabled={isGenerateDisabled}
+                className={`w-full max-w-lg py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
+                  isGenerateDisabled
+                    ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                    : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
+                }`}
+              >
+                {isGenerating ? (
+                  <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
+                ) : (
+                  "Generate Voice"
+                )}
+              </button>
             </div>
           </div>
         )}
