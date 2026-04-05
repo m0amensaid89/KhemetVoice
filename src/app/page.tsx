@@ -19,9 +19,9 @@ export default function LandingPage() {
           />
         </div>
         <Link href="/auth">
-          <Button size="sm" variant="secondary" className="gap-2 border-white/20">
-            Sign In <ArrowRight className="w-3 h-3" />
-          </Button>
+          <button className="flex items-center gap-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-black px-6 py-2.5 rounded-full font-bold text-sm transition-colors uppercase tracking-wide">
+            Register now <ArrowRight className="w-4 h-4" />
+          </button>
         </Link>
       </nav>
 
