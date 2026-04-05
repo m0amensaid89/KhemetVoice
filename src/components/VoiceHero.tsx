@@ -23,9 +23,20 @@ const EGYPTIAN_SYMBOLS = [
   "eye-of-horus"
 ];
 
-export const VoiceHero: React.FC = () => {
+interface VoiceHeroProps {
+  activeIndex: number;
+  setActiveIndex: (index: number) => void;
+  generatedAudioUrl?: string;
+  generatedVoiceName?: string;
+}
+
+export const VoiceHero: React.FC<VoiceHeroProps> = ({
+  activeIndex,
+  setActiveIndex,
+  generatedAudioUrl,
+  generatedVoiceName
+}) => {
   const [playingVoice, setPlayingVoice] = useState<string | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoMode, setIsAutoMode] = useState(true);
   const [hasStarted, setHasStarted] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -33,6 +44,17 @@ export const VoiceHero: React.FC = () => {
   // Force Dark Mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
+  }, []);
+
+  // Listen for the custom event to play generated audio
+  useEffect(() => {
+    const handlePlayGenerated = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setIsMuted(false);
+      setPlayingVoice(customEvent.detail);
+    };
+    window.addEventListener('playGeneratedVoice', handlePlayGenerated);
+    return () => window.removeEventListener('playGeneratedVoice', handlePlayGenerated);
   }, []);
 
   const handleUnmute = () => {
@@ -79,10 +101,10 @@ export const VoiceHero: React.FC = () => {
   useEffect(() => {
     if (!isMuted || !isAutoMode) return;
     const timer = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % VOICE_DATA.length);
+      setActiveIndex(activeIndex < VOICE_DATA.length - 1 ? activeIndex + 1 : 0);
     }, 4000);
     return () => clearInterval(timer);
-  }, [isMuted, isAutoMode]);
+  }, [isMuted, isAutoMode, activeIndex, setActiveIndex]);
 
   return (
     <div className="h-[800px] w-full bg-[#09090b] text-zinc-100 font-sans overflow-hidden flex flex-col relative transition-colors duration-300 dark">
@@ -167,6 +189,8 @@ export const VoiceHero: React.FC = () => {
                     playingVoice={playingVoice}
                     onPlayToggle={handlePlayToggle}
                     onEnded={handleAutoAdvance}
+                    generatedAudioUrl={generatedAudioUrl}
+                    generatedVoiceName={generatedVoiceName}
                  />
             </div>
 

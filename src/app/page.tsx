@@ -1,10 +1,64 @@
+"use client"
+import { useState } from "react";
 import { VoiceHero } from "@/components/VoiceHero";
 import { TryItFree } from "@/components/TryItFree";
 import { PricingSection } from "@/components/PricingSection";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { Loader2 } from "lucide-react";
+import { VOICE_DATA } from "@/data/voiceData";
+import { LiveVoiceAgents } from "@/components/LiveVoiceAgents";
+
 export default function HomePage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedAudioUrl, setGeneratedAudioUrl] = useState<string | undefined>();
+  const [generatedVoiceName, setGeneratedVoiceName] = useState<string | undefined>();
+
+  const handleGenerateVoice = async () => {
+    if (!text.trim()) return;
+    setIsGenerating(true);
+    setGeneratedAudioUrl(undefined);
+    setGeneratedVoiceName(undefined);
+
+    try {
+      const selectedVoice = VOICE_DATA[activeIndex];
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, voiceKey: selectedVoice.name }),
+      });
+
+      if (!res.ok) throw new Error("Failed to generate TTS");
+
+      const data = await res.json();
+      if (data.audioBase64) {
+        const audioUrl = `data:${data.mimeType || 'audio/mp3'};base64,${data.audioBase64}`;
+        setGeneratedAudioUrl(audioUrl);
+        setGeneratedVoiceName(selectedVoice.name);
+
+        // Wait a tick for the VoiceCarousel to re-render with the new props,
+        // then trigger play by setting it to the unmuted playing state if needed.
+        // We'll dispatch a custom event or let VoiceHero/VoiceCarousel pick it up.
+        // Actually, since VoiceCarousel listens to `playingVoice`, we might need
+        // to pass a handler to trigger play, or we can just update `playingVoice` in VoiceHero.
+        // Wait, VoiceHero manages `playingVoice`. We don't have access to `setPlayingVoice` here.
+        // Let's pass a custom event or ref. Or just let the user click play.
+        // The instructions say: "When the user selects any of the 7 heroes and clicks "Generate Voice", it sends the exact voiceKey + text to /api/tts and plays the returned audio in the existing Framer Motion player."
+        // We should dispatch an event that VoiceHero can listen to, or lift `playingVoice` state too.
+        // Let's add a simple global event to trigger play.
+        window.dispatchEvent(new CustomEvent('playGeneratedVoice', { detail: selectedVoice.name }));
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Error generating voice. Please check the console.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#09090b]">
 
@@ -29,8 +83,49 @@ export default function HomePage() {
 
       {/* ── 3D CAROUSEL HERO ── */}
       <section className="w-full">
-        <VoiceHero />
+        <VoiceHero
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          generatedAudioUrl={generatedAudioUrl}
+          generatedVoiceName={generatedVoiceName}
+        />
       </section>
+
+      {/* ── GENERATE VOICE SECTION ── */}
+      <section className="w-full py-12 px-6 relative flex flex-col items-center border-t border-white/5">
+        <div className="max-w-2xl w-full flex flex-col gap-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-serif text-white mb-2">Generate Custom Voice</h2>
+            <p className="text-zinc-400 text-sm">
+              Type something below and hear {VOICE_DATA[activeIndex]?.name} speak it using Gemini 2.5 Flash TTS.
+            </p>
+          </div>
+
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={`Enter text for ${VOICE_DATA[activeIndex]?.name} to say...`}
+            className="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all resize-none"
+          />
+
+          <div className="flex justify-center">
+            <button
+              onClick={handleGenerateVoice}
+              disabled={isGenerating || !text.trim()}
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-[#D4AF37] text-black font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none shadow-[0_0_20px_rgba(212,175,55,0.2)]"
+            >
+              {isGenerating ? (
+                <><Loader2 className="w-4 h-4 animate-spin" /> GENERATING...</>
+              ) : (
+                <>GENERATE VOICE</>
+              )}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LIVE VOICE AGENTS ── */}
+      <LiveVoiceAgents activeIndex={activeIndex} />
 
       {/* ── TRY IT FREE ── */}
       <TryItFree />

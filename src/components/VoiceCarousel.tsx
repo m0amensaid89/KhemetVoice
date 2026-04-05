@@ -18,6 +18,8 @@ interface Carousel3DProps {
   onPlayToggle: (voiceName: string) => void;
   onEnded?: () => void;
   disabled?: boolean;
+  generatedAudioUrl?: string;
+  generatedVoiceName?: string;
 }
 
 const Carousel3D: React.FC<Carousel3DProps> = ({
@@ -27,7 +29,9 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
   playingVoice,
   onPlayToggle,
   onEnded,
-  disabled = false
+  disabled = false,
+  generatedAudioUrl,
+  generatedVoiceName
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -72,18 +76,23 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
 
           const sources: string[] = [];
 
-          // Primary source: audioSampleUrl (could be Drive or Gemini)
-          let primarySrc = voice.audioSampleUrl;
-          if (primarySrc.includes('drive.google.com')) {
-            primarySrc = getDriveUrl(primarySrc);
-          } else if (primarySrc.includes('generativelanguage.googleapis.com')) {
-            primarySrc = getGeminiUrl(primarySrc);
-          }
-          sources.push(primarySrc);
+          // If we have generated audio for this specific voice, use that instead
+          if (generatedAudioUrl && generatedVoiceName === voice.name) {
+            sources.push(generatedAudioUrl);
+          } else {
+            // Primary source: audioSampleUrl (could be Drive or Gemini)
+            let primarySrc = voice.audioSampleUrl;
+            if (primarySrc.includes('drive.google.com')) {
+              primarySrc = getDriveUrl(primarySrc);
+            } else if (primarySrc.includes('generativelanguage.googleapis.com')) {
+              primarySrc = getGeminiUrl(primarySrc);
+            }
+            sources.push(primarySrc);
 
-          // Fallback source: fileUri (Gemini API)
-          if (voice.fileUri && !primarySrc.includes(voice.fileUri)) {
-            sources.push(getGeminiUrl(voice.fileUri));
+            // Fallback source: fileUri (Gemini API)
+            if (voice.fileUri && !primarySrc.includes(voice.fileUri)) {
+              sources.push(getGeminiUrl(voice.fileUri));
+            }
           }
 
           const tryPlay = async (index: number) => {
@@ -128,7 +137,7 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
     return () => {
       isCancelled = true;
     };
-  }, [playingVoice, voices]);
+  }, [playingVoice, voices, generatedAudioUrl, generatedVoiceName]);
 
   // Keyboard navigation
   useEffect(() => {
