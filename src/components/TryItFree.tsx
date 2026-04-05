@@ -9,7 +9,7 @@ const STYLES = ["Professional", "Warm", "Energetic", "Formal", "Calm", "Storytel
 
 type VisualizerState = "idle" | "generating" | "playing";
 
-function VoiceVisualizer({ color, state, label }: { color: string; state: VisualizerState; label: string }) {
+function VoiceVisualizer({ color, state, label, size = 320 }: { color: string; state: VisualizerState; label: string; size?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const spikesRef = useRef<number[]>(Array(72).fill(0));
   const targetRef = useRef<number[]>(Array(72).fill(0));
@@ -134,7 +134,7 @@ function VoiceVisualizer({ color, state, label }: { color: string; state: Visual
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <canvas ref={canvasRef} width={320} height={280} className="rounded-xl" />
+      <canvas ref={canvasRef} width={size} height={size} className="rounded-xl w-full h-full" />
       <p className="text-sm font-bold uppercase tracking-widest" style={{ color }}>{label}</p>
     </div>
   );
@@ -366,30 +366,35 @@ export function TryItFree() {
           </div>
 
           {/* RIGHT — Visualizer */}
-          <div className="flex flex-col items-center justify-center gap-6 min-h-[320px]">
+          <div className="flex flex-col items-center justify-center w-full h-full min-h-[420px]">
             {mode === "single" ? (
-              <VoiceVisualizer
-                color={selectedVoiceA.cardColor || "#D4AF37"}
-                state={vizState}
-                label={selectedVoiceA.name}
-              />
+              <div className="w-full h-full flex flex-col items-center justify-center">
+                <VoiceVisualizer
+                  color={selectedVoiceA.cardColor || "#D4AF37"}
+                  state={vizState}
+                  label={selectedVoiceA.name}
+                  size={480}
+                />
+              </div>
             ) : (
-              <div className="flex items-center gap-8">
-                <div className="flex flex-col items-center gap-2">
+              <div className="w-full flex items-center justify-center gap-4">
+                <div className="flex flex-col items-center gap-2 flex-1">
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500">AGENT</p>
                   <VoiceVisualizer
                     color={selectedVoiceA.cardColor || "#D4AF37"}
                     state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
                     label={selectedVoiceA.name}
+                    size={300}
                   />
                 </div>
-                <div className="text-zinc-600 text-lg">↔</div>
-                <div className="flex flex-col items-center gap-2">
+                <div className="text-zinc-600 text-2xl">↔</div>
+                <div className="flex flex-col items-center gap-2 flex-1">
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500">CUSTOMER</p>
                   <VoiceVisualizer
                     color={selectedVoiceB.cardColor || "#a78bfa"}
                     state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
                     label={selectedVoiceB.name}
+                    size={300}
                   />
                 </div>
               </div>

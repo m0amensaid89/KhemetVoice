@@ -58,23 +58,31 @@ export const VoiceHero: React.FC = () => {
   };
 
   const handleAutoAdvance = useCallback(() => {
-    if (!isAutoMode || isMuted) return;
-
+    if (!isAutoMode) return;
     const nextIndex = (activeIndex + 1) % VOICE_DATA.length;
     setActiveIndex(nextIndex);
-
-    // Small delay to allow the carousel to transition before starting next audio
-    setTimeout(() => {
+    if (!isMuted) {
+      setTimeout(() => {
         setPlayingVoice(VOICE_DATA[nextIndex].name);
-    }, 500);
-  }, [activeIndex, isAutoMode, hasStarted]);
+      }, 500);
+    }
+  }, [activeIndex, isAutoMode, isMuted]);
 
-  // When auto mode is turned on, start playing if nothing is playing
+  // When auto mode is turned on, start playing if not muted
   useEffect(() => {
-      if (!isMuted && isAutoMode && !playingVoice) {
-          setPlayingVoice(VOICE_DATA[activeIndex].name);
-      }
+    if (!isMuted && isAutoMode && !playingVoice) {
+      setPlayingVoice(VOICE_DATA[activeIndex].name);
+    }
   }, [isAutoMode, activeIndex, playingVoice, isMuted]);
+
+  // Auto-scroll carousel every 4 seconds when MUTED
+  useEffect(() => {
+    if (!isMuted || !isAutoMode) return;
+    const timer = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % VOICE_DATA.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isMuted, isAutoMode]);
 
   return (
     <div className="h-[800px] w-full bg-[#09090b] text-zinc-100 font-sans overflow-hidden flex flex-col relative transition-colors duration-300 dark">
