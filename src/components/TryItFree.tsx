@@ -377,24 +377,24 @@ export function TryItFree() {
                 />
               </div>
             ) : (
-              <div className="w-full flex items-center justify-center gap-4">
-                <div className="flex flex-col items-center gap-2 flex-1">
+              <div className="w-full flex flex-col items-center gap-3">
+                <div className="flex flex-col items-center gap-1">
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500">AGENT</p>
                   <VoiceVisualizer
                     color={selectedVoiceA.cardColor || "#D4AF37"}
                     state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
                     label={selectedVoiceA.name}
-                    size={300}
+                    size={480}
                   />
                 </div>
-                <div className="text-zinc-600 text-2xl">↔</div>
-                <div className="flex flex-col items-center gap-2 flex-1">
+                <div className="text-zinc-600 text-xl">↕</div>
+                <div className="flex flex-col items-center gap-1">
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500">CUSTOMER</p>
                   <VoiceVisualizer
                     color={selectedVoiceB.cardColor || "#a78bfa"}
                     state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
                     label={selectedVoiceB.name}
-                    size={300}
+                    size={480}
                   />
                 </div>
               </div>
