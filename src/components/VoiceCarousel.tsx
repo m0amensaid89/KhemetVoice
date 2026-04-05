@@ -18,6 +18,7 @@ interface Carousel3DProps {
   onPlayToggle: (voiceName: string) => void;
   onEnded?: () => void;
   disabled?: boolean;
+  isMuted?: boolean;
 }
 
 const Carousel3D: React.FC<Carousel3DProps> = ({
@@ -27,7 +28,8 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
   playingVoice,
   onPlayToggle,
   onEnded,
-  disabled = false
+  disabled = false,
+  isMuted = false
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -49,6 +51,9 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
       // Stop any current playback
       audio.pause();
       audio.currentTime = 0;
+
+      if (isMuted) audio.muted = true;
+      else audio.muted = false;
 
       if (playingVoice) {
         const voice = voices.find(v => v.name === playingVoice);
