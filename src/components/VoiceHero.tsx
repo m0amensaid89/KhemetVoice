@@ -37,6 +37,7 @@ export const VoiceHero: React.FC = () => {
 
   const handleUnmute = () => {
     setIsMuted(false);
+    setIsAutoMode(true);
     // Small delay to let state update before triggering audio
     setTimeout(() => {
       setPlayingVoice(VOICE_DATA[activeIndex].name);
@@ -45,6 +46,7 @@ export const VoiceHero: React.FC = () => {
 
   const handleMute = () => {
     setIsMuted(true);
+    setIsAutoMode(false);
     setPlayingVoice(null);
   };
 
@@ -100,9 +102,9 @@ export const VoiceHero: React.FC = () => {
         ) : (
           <button
             onClick={handleMute}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-black/40 text-white/60 font-medium text-sm transition-all backdrop-blur-md border border-white/10 hover:bg-black/60"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#D4AF37] text-black font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(212,175,55,0.4)] border border-[#D4AF37]/50"
           >
-            <Volume2 size={16} />
+            <Volume2 size={16} fill="currentColor" />
             MUTE
           </button>
         )}
