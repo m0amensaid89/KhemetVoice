@@ -173,7 +173,8 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
 
   const handleAudioEnded = () => {
      if (playingVoice) {
-         onPlayToggle(playingVoice);
+         // Auto-advance directly so we don't accidentally "toggle" the play state off
+         // which would cause isMuted=true and isAutoMode=false.
          if (onEnded) onEnded();
      }
   };

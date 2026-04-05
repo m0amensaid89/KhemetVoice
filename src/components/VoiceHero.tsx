@@ -145,10 +145,10 @@ export const VoiceHero: React.FC = () => {
             <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50">
                 <button
                     onClick={handleMuteToggle}
-                    className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] bg-[#D4AF37] text-black border border-[#D4AF37]/50 hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] bg-[#D4AF37] text-black border border-[#D4AF37]/50 hover:scale-105 active:scale-95"
                 >
                     {isMuted ? <VolumeX size={16} fill="currentColor" /> : <Volume2 size={16} fill="currentColor" />}
-                    {isMuted ? 'UNMUTE (AUTO PLAY OFF)' : 'MUTE (AUTO PLAY ON)'}
+                    {isMuted ? 'UNMUTE' : 'MUTE'}
                 </button>
             </div>
 
