@@ -14,15 +14,19 @@ export default function LoginPage() {
       <nav className="w-full flex items-center justify-between px-8 py-5 border-b border-white/5">
         <div className="flex items-center gap-3">
           <img
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Khemet Voice"
             className="h-10 w-auto object-contain"
           />
+          <span className="font-display font-bold text-lg tracking-widest text-white uppercase hidden sm:block">
+            Voice of Khemet
+          </span>
         </div>
-        <Link href="#login">
-          <Button size="sm" variant="secondary" className="gap-2 border-white/20">
-            Sign In <ArrowRight className="w-3 h-3" />
-          </Button>
+        <Link href="/auth">
+          <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#D4AF37] text-black font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            <ArrowRight className="w-4 h-4" />
+            REGISTER NOW
+          </button>
         </Link>
       </nav>
 
