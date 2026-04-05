@@ -37,7 +37,10 @@ export const VoiceHero: React.FC = () => {
 
   const handleUnmute = () => {
     setIsMuted(false);
-    setPlayingVoice(VOICE_DATA[activeIndex].name);
+    // Small delay to let state update before triggering audio
+    setTimeout(() => {
+      setPlayingVoice(VOICE_DATA[activeIndex].name);
+    }, 100);
   };
 
   const handleMute = () => {
