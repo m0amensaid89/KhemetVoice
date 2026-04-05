@@ -78,7 +78,7 @@ export async function POST(req: Request) {
 
     const base64Audio = audioPart.inlineData.data;
 
-    return NextResponse.json({ audio: base64Audio }, { status: 200 });
+    return NextResponse.json({ audioBase64: base64Audio, success: true }, { status: 200 });
 
   } catch (error: any) {
     console.error("TTS Error:", error);
