@@ -155,7 +155,6 @@ export function TryItFree() {
         setPlaybackState(playbackState === "PLAYING_B" ? "PLAYING_B" : "PLAYING");
       } else {
         activeRef.current.pause();
-        // keep playback state to keep visualizer visual indication
       }
     }
   };
@@ -170,7 +169,6 @@ export function TryItFree() {
     let w = canvas.width;
     let h = canvas.height;
 
-    // Resize handler
     const handleResize = () => {
       const parent = canvas.parentElement;
       if (parent) {
@@ -183,7 +181,6 @@ export function TryItFree() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Particles
     const particles = Array.from({ length: 20 }).map(() => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -195,7 +192,6 @@ export function TryItFree() {
 
     let time = 0;
 
-    // Spikes arrays for smooth interpolation
     let targetSpikesA = Array(72).fill(4);
     let currentSpikesA = Array(72).fill(4);
     let targetSpikesB = Array(72).fill(4);
@@ -204,7 +200,6 @@ export function TryItFree() {
     const drawCircle = (cx: number, cy: number, r: number, color: string, state: "IDLE" | "GENERATING" | "PLAYING", label?: string, currentSpikes?: number[], isSecondary?: boolean) => {
       ctx.save();
 
-      // Draw label
       if (label) {
         ctx.font = "10px sans-serif";
         ctx.fillStyle = color;
@@ -242,7 +237,6 @@ export function TryItFree() {
         ctx.restore();
       }
       else if (state === "PLAYING" && currentSpikes) {
-        // Base ring
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.strokeStyle = color;
@@ -252,7 +246,6 @@ export function TryItFree() {
         ctx.stroke();
         ctx.shadowBlur = 0;
 
-        // Spikes
         ctx.beginPath();
         for (let i = 0; i < 72; i++) {
           const angle = (i / 72) * Math.PI * 2;
@@ -270,8 +263,7 @@ export function TryItFree() {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Label below
-        if (!label) { // only for single speaker mode
+        if (!label) {
           ctx.font = "bold 14px sans-serif";
           ctx.fillStyle = color;
           ctx.textAlign = "center";
@@ -287,7 +279,6 @@ export function TryItFree() {
       ctx.fillStyle = "#000000";
       ctx.fillRect(0, 0, w, h);
 
-      // Update particles
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
@@ -302,7 +293,6 @@ export function TryItFree() {
         ctx.fill();
       });
 
-      // Update spikes logic
       if (time % 4 === 0) {
         for(let i=0; i<72; i++) {
           targetSpikesA[i] = playbackState === "PLAYING" ? 4 + Math.random() * 24 : 4;
@@ -352,44 +342,84 @@ export function TryItFree() {
 
 
   const renderVoiceRow = (
-    label: string,
     selectedVoice: Voice | null,
     onSelect: (v: Voice) => void
   ) => (
-    <div className="mb-6">
-      {label && <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{label}</div>}
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-        {VOICE_DATA.map(voice => {
-          const isSelected = selectedVoice?.name === voice.name;
-          const firstChar = voice.characteristics.split(",")[0].trim();
+    <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+      {VOICE_DATA.map(voice => {
+        const isSelected = selectedVoice?.name === voice.name;
+        const firstChar = voice.characteristics.split(",")[0].trim();
 
-          return (
-            <button
-              key={voice.name}
-              onClick={() => onSelect(voice)}
-              className={`shrink-0 w-[120px] h-[80px] rounded-lg border bg-zinc-900 flex flex-col p-3 text-left transition-all relative overflow-hidden`}
-              style={{
-                borderColor: isSelected ? voice.cardColor : "rgba(255,255,255,0.1)",
-                boxShadow: isSelected ? `0 0 12px ${voice.cardColor}60` : "none"
-              }}
-            >
-              <div className="flex justify-between items-center mb-1">
-                <span className="font-bold text-white text-sm">{voice.name}</span>
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: voice.cardColor }} />
-              </div>
-              <div className="text-zinc-600 text-xs mb-1">{voice.pitch}</div>
-              <div className="text-zinc-400 text-xs truncate">{firstChar}</div>
-            </button>
-          );
-        })}
-      </div>
+        return (
+          <button
+            key={voice.name}
+            onClick={() => onSelect(voice)}
+            className={`shrink-0 w-[120px] h-[80px] rounded-lg border bg-zinc-900 flex flex-col p-3 text-left transition-all relative overflow-hidden`}
+            style={{
+              borderColor: isSelected ? voice.cardColor : "rgba(255,255,255,0.1)",
+              boxShadow: isSelected ? `0 0 12px ${voice.cardColor}60` : "none"
+            }}
+          >
+            <div className="flex justify-between items-center mb-1">
+              <span className="font-bold text-white text-sm">{voice.name}</span>
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: voice.cardColor }} />
+            </div>
+            <div className="text-zinc-600 text-xs mb-1">{voice.pitch}</div>
+            <div className="text-zinc-400 text-xs truncate">{firstChar}</div>
+          </button>
+        );
+      })}
     </div>
   );
 
   const isGenerateDisabled = isGenerating || (speakersMode === 1 ? !textA : (!textA || !textB));
 
+  const visualizerContent = (
+    <>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+      <div className="absolute bottom-6 flex gap-4 z-10 w-full justify-center">
+        <button
+          onClick={togglePlayPause}
+          disabled={playbackState === "IDLE"}
+          className={`p-3 rounded-full bg-zinc-900 border border-white/10 transition-colors ${
+            playbackState !== "IDLE" ? 'text-white hover:border-[#D4AF37]' : 'text-zinc-600'
+          }`}
+        >
+          {playbackState === "PLAYING" || playbackState === "PLAYING_B" ? <Pause size={20} /> : <Play size={20} />}
+        </button>
+
+        <button
+          onClick={() => setShowRegisterModal(true)}
+          className="p-3 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-white hover:border-[#D4AF37] transition-colors flex items-center justify-center gap-2"
+          title="Download requires registration"
+        >
+          <Lock size={16} />
+        </button>
+      </div>
+    </>
+  );
+
   return (
     <section className="w-full bg-[#09090b] text-white">
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          height: 8px;
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #000000;
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #D4AF37;
+          border-radius: 4px;
+        }
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #D4AF37 #000000;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-6 py-24">
         {/* HEADER */}
         <div className="text-center mb-16">
@@ -404,15 +434,96 @@ export function TryItFree() {
           </div>
         </div>
 
-        {/* LAYOUT */}
-        <div className="flex flex-col md:flex-row gap-8">
+        {/* 1 SPEAKER MODE LAYOUT */}
+        {speakersMode === 1 && (
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1 flex flex-col gap-8">
+              <div>
+                <div className="text-sm text-zinc-400 mb-3">1. Select Mode</div>
+                <div className="flex gap-3">
+                  {[1, 2].map((num) => (
+                    <button
+                      key={num}
+                      onClick={() => setSpeakersMode(num as 1 | 2)}
+                      className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
+                        speakersMode === num
+                          ? 'border-[#D4AF37] text-[#D4AF37]'
+                          : 'border-white/10 text-zinc-400 hover:border-white/20'
+                      }`}
+                    >
+                      {num} Speaker{num > 1 ? 's' : ''}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          {/* LEFT: Controls */}
-          <div className="flex-1 flex flex-col gap-8">
+              <div>
+                <div className="text-sm text-zinc-400 mb-3">2. Select Voice</div>
+                {renderVoiceRow(selectedVoiceA, setSelectedVoiceA)}
+              </div>
 
-            {/* STEP 1 */}
-            <div>
-              <div className="text-sm text-zinc-400 mb-3">1. Select Mode</div>
+              <div>
+                <div className="text-sm text-zinc-400 mb-3">3. Speaking Style</div>
+                <div className="flex flex-wrap gap-2">
+                  {STYLES.map(style => (
+                    <button
+                      key={style}
+                      onClick={() => setSelectedStyle(style)}
+                      className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                        selectedStyle === style
+                          ? 'bg-[#D4AF37] text-black'
+                          : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                      }`}
+                    >
+                      {style}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="text-sm text-zinc-400 mb-3">4. Script</div>
+                <div className="relative">
+                  <textarea
+                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-4 text-white resize-none focus:outline-none focus:border-[#D4AF37] custom-scrollbar"
+                    placeholder="Type what your voice agent will say..."
+                    maxLength={300}
+                    value={textA}
+                    onChange={(e) => setTextA(e.target.value)}
+                  />
+                  <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
+                </div>
+              </div>
+
+              <button
+                onClick={handleGenerate}
+                disabled={isGenerateDisabled}
+                className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
+                  isGenerateDisabled
+                    ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                    : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
+                }`}
+              >
+                {isGenerating ? (
+                  <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
+                ) : (
+                  "Generate Voice"
+                )}
+              </button>
+            </div>
+
+            <div className="flex-1 relative flex flex-col items-center justify-center min-h-[400px] bg-black rounded-xl border border-white/5 overflow-hidden">
+              {visualizerContent}
+            </div>
+          </div>
+        )}
+
+        {/* 2 SPEAKERS MODE LAYOUT */}
+        {speakersMode === 2 && (
+          <div className="flex flex-col gap-12">
+
+            {/* Mode Select */}
+            <div className="flex justify-center">
               <div className="flex gap-3">
                 {[1, 2].map((num) => (
                   <button
@@ -430,122 +541,90 @@ export function TryItFree() {
               </div>
             </div>
 
-            {/* STEP 2 */}
-            <div>
-              <div className="text-sm text-zinc-400 mb-3">2. Select Voice</div>
-              {speakersMode === 1 ? (
-                renderVoiceRow("", selectedVoiceA, setSelectedVoiceA)
-              ) : (
-                <>
-                  {renderVoiceRow("Speaker A", selectedVoiceA, setSelectedVoiceA)}
-                  {renderVoiceRow("Speaker B", selectedVoiceB, setSelectedVoiceB)}
-                </>
-              )}
+            {/* Visualizer */}
+            <div className="relative flex flex-col items-center justify-center min-h-[320px] w-full bg-black rounded-xl border border-white/5 overflow-hidden">
+              {visualizerContent}
             </div>
 
-            {/* STEP 3 */}
-            <div>
-              <div className="text-sm text-zinc-400 mb-3">3. Speaking Style</div>
-              <div className="flex flex-wrap gap-2">
-                {STYLES.map(style => (
-                  <button
-                    key={style}
-                    onClick={() => setSelectedStyle(style)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                      selectedStyle === style
-                        ? 'bg-[#D4AF37] text-black'
-                        : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-                    }`}
-                  >
-                    {style}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* STEP 4 */}
-            <div>
-              <div className="text-sm text-zinc-400 mb-3">4. Script</div>
-              {speakersMode === 1 ? (
-                <div className="relative">
+            {/* 2 Columns: Voices and Scripts */}
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="flex-1 flex flex-col gap-6">
+                <div>
+                  <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Speaker A Voice</div>
+                  {renderVoiceRow(selectedVoiceA, setSelectedVoiceA)}
+                </div>
+                <div>
+                  <div className="text-sm text-zinc-400 mb-2">Speaker A Script</div>
                   <textarea
-                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-4 text-white resize-none focus:outline-none focus:border-[#D4AF37]"
-                    placeholder="Type what your voice agent will say..."
+                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-3 text-white resize-none focus:outline-none focus:border-[#D4AF37] custom-scrollbar"
+                    placeholder="Type Speaker A text..."
                     maxLength={300}
                     value={textA}
                     onChange={(e) => setTextA(e.target.value)}
                   />
                   <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
                 </div>
-              ) : (
-                <div className="space-y-4">
-                  <div>
-                    <label className="text-xs text-zinc-500 mb-1 block">Speaker A says:</label>
-                    <textarea
-                      className="w-full h-24 bg-zinc-900 border border-white/10 rounded-lg p-3 text-white resize-none focus:outline-none focus:border-[#D4AF37]"
-                      maxLength={300}
-                      value={textA}
-                      onChange={(e) => setTextA(e.target.value)}
-                    />
-                    <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
-                  </div>
-                  <div>
-                    <label className="text-xs text-zinc-500 mb-1 block">Speaker B says:</label>
-                    <textarea
-                      className="w-full h-24 bg-zinc-900 border border-white/10 rounded-lg p-3 text-white resize-none focus:outline-none focus:border-[#D4AF37]"
-                      maxLength={300}
-                      value={textB}
-                      onChange={(e) => setTextB(e.target.value)}
-                    />
-                    <div className="text-right text-xs text-zinc-500 mt-1">{textB.length} / 300</div>
-                  </div>
+              </div>
+
+              <div className="flex-1 flex flex-col gap-6">
+                <div>
+                  <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Speaker B Voice</div>
+                  {renderVoiceRow(selectedVoiceB, setSelectedVoiceB)}
                 </div>
-              )}
+                <div>
+                  <div className="text-sm text-zinc-400 mb-2">Speaker B Script</div>
+                  <textarea
+                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-3 text-white resize-none focus:outline-none focus:border-[#D4AF37] custom-scrollbar"
+                    placeholder="Type Speaker B text..."
+                    maxLength={300}
+                    value={textB}
+                    onChange={(e) => setTextB(e.target.value)}
+                  />
+                  <div className="text-right text-xs text-zinc-500 mt-1">{textB.length} / 300</div>
+                </div>
+              </div>
             </div>
 
-            {/* STEP 5 */}
-            <button
-              onClick={handleGenerate}
-              disabled={isGenerateDisabled}
-              className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
-                isGenerateDisabled
-                  ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
-                  : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
-              }`}
-            >
-              {isGenerating ? (
-                <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
-              ) : (
-                "Generate Voice"
-              )}
-            </button>
-          </div>
+            {/* Style and Generate */}
+            <div className="flex flex-col items-center gap-8 border-t border-white/5 pt-8">
+              <div className="w-full">
+                <div className="text-sm text-zinc-400 mb-3 text-center">Speaking Style</div>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {STYLES.map(style => (
+                    <button
+                      key={style}
+                      onClick={() => setSelectedStyle(style)}
+                      className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                        selectedStyle === style
+                          ? 'bg-[#D4AF37] text-black'
+                          : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                      }`}
+                    >
+                      {style}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          {/* RIGHT: Visualizer */}
-          <div className="flex-1 relative flex flex-col items-center justify-center min-h-[400px] bg-black rounded-xl border border-white/5 overflow-hidden">
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-
-            <div className="absolute bottom-6 flex gap-4">
               <button
-                onClick={togglePlayPause}
-                disabled={playbackState === "IDLE"}
-                className={`p-3 rounded-full bg-zinc-900 border border-white/10 transition-colors ${
-                  playbackState !== "IDLE" ? 'text-white hover:border-[#D4AF37]' : 'text-zinc-600'
+                onClick={handleGenerate}
+                disabled={isGenerateDisabled}
+                className={`w-full max-w-lg py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
+                  isGenerateDisabled
+                    ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                    : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
                 }`}
               >
-                {playbackState === "PLAYING" || playbackState === "PLAYING_B" ? <Pause size={20} /> : <Play size={20} />}
-              </button>
-
-              <button
-                onClick={() => setShowRegisterModal(true)}
-                className="p-3 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-white hover:border-[#D4AF37] transition-colors flex items-center justify-center gap-2"
-                title="Download requires registration"
-              >
-                <Lock size={16} />
+                {isGenerating ? (
+                  <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
+                ) : (
+                  "Generate Voice"
+                )}
               </button>
             </div>
+
           </div>
-        </div>
+        )}
       </div>
 
       <RegisterModal
