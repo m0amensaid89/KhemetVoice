@@ -366,37 +366,28 @@ export function TryItFree() {
           </div>
 
           {/* RIGHT — Visualizer */}
-          <div className="flex flex-col items-center justify-center w-full h-full min-h-[420px]">
+          <div className="flex flex-col items-stretch justify-between w-full sticky top-0">
             {mode === "single" ? (
-              <div className="w-full h-full flex flex-col items-center justify-center">
+              <VoiceVisualizer
+                color={selectedVoiceA.cardColor || "#D4AF37"}
+                state={vizState}
+                label={selectedVoiceA.name}
+                size={480}
+              />
+            ) : (
+              <div className="flex flex-col items-center w-full gap-2">
                 <VoiceVisualizer
                   color={selectedVoiceA.cardColor || "#D4AF37"}
-                  state={vizState}
-                  label={selectedVoiceA.name}
-                  size={480}
+                  state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
+                  label=""
+                  size={340}
                 />
-              </div>
-            ) : (
-              <div className="w-full flex flex-col items-center gap-3">
-                <div className="flex flex-col items-center gap-1">
-                  <p className="text-[10px] uppercase tracking-widest text-zinc-500">AGENT</p>
-                  <VoiceVisualizer
-                    color={selectedVoiceA.cardColor || "#D4AF37"}
-                    state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
-                    label={selectedVoiceA.name}
-                    size={480}
-                  />
-                </div>
-                <div className="text-zinc-600 text-xl">↕</div>
-                <div className="flex flex-col items-center gap-1">
-                  <p className="text-[10px] uppercase tracking-widest text-zinc-500">CUSTOMER</p>
-                  <VoiceVisualizer
-                    color={selectedVoiceB.cardColor || "#a78bfa"}
-                    state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
-                    label={selectedVoiceB.name}
-                    size={480}
-                  />
-                </div>
+                <VoiceVisualizer
+                  color={selectedVoiceB.cardColor || "#a78bfa"}
+                  state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
+                  label=""
+                  size={340}
+                />
               </div>
             )}
           </div>
