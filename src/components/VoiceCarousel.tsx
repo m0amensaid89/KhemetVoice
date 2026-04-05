@@ -133,7 +133,7 @@ const Carousel3D: React.FC<Carousel3DProps> = ({
     return () => {
       isCancelled = true;
     };
-  }, [playingVoice, voices]);
+  }, [playingVoice, voices, isMuted]);
 
   // Keyboard navigation
   useEffect(() => {

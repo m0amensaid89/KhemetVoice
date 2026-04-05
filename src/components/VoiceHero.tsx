@@ -113,7 +113,7 @@ export const VoiceHero: React.FC = () => {
       <div className="flex flex-col flex-1 overflow-hidden relative">
         {/* UNMUTE BUTTON */}
         {isMuted && (
-          <div className="absolute z-[60] top-1/2 left-1/2 -translate-x-1/2 -translate-y-full mb-8">
+          <div className="absolute z-[60] top-1/2 left-1/2 -translate-x-1/2 -translate-y-[240px] sm:-translate-y-[280px]">
             <button
               onClick={toggleMute}
               className="group relative px-8 py-3 bg-[#D4AF37] text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(212,175,55,0.3)] pointer-events-auto"
