@@ -14,7 +14,7 @@ function VoiceVisualizer({ color, state, label }: { color: string; state: Visual
   const spikesRef = useRef<number[]>(Array(72).fill(0));
   const targetRef = useRef<number[]>(Array(72).fill(0));
   const frameRef = useRef(0);
-  const animRef = useRef<number>();
+  const animRef = useRef<number | undefined>(undefined);
   const particlesRef = useRef(
     Array.from({ length: 20 }, () => ({
       x: Math.random() * 400,
