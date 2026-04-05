@@ -34,25 +34,17 @@ export default function HomePage() {
       if (!res.ok) throw new Error("Failed to generate TTS");
 
       const data = await res.json();
-      if (data.audioBase64) {
-        const audioUrl = `data:${data.mimeType || 'audio/mp3'};base64,${data.audioBase64}`;
+      if (data.audio) {
+        const audioUrl = `data:audio/mp3;base64,${data.audio}`;
         setGeneratedAudioUrl(audioUrl);
         setGeneratedVoiceName(selectedVoice.name);
 
-        // Wait a tick for the VoiceCarousel to re-render with the new props,
-        // then trigger play by setting it to the unmuted playing state if needed.
-        // We'll dispatch a custom event or let VoiceHero/VoiceCarousel pick it up.
-        // Actually, since VoiceCarousel listens to `playingVoice`, we might need
-        // to pass a handler to trigger play, or we can just update `playingVoice` in VoiceHero.
-        // Wait, VoiceHero manages `playingVoice`. We don't have access to `setPlayingVoice` here.
-        // Let's pass a custom event or ref. Or just let the user click play.
-        // The instructions say: "When the user selects any of the 7 heroes and clicks "Generate Voice", it sends the exact voiceKey + text to /api/tts and plays the returned audio in the existing Framer Motion player."
-        // We should dispatch an event that VoiceHero can listen to, or lift `playingVoice` state too.
-        // Let's add a simple global event to trigger play.
         window.dispatchEvent(new CustomEvent('playGeneratedVoice', { detail: selectedVoice.name }));
+      } else {
+        throw new Error(data.error || "No audio returned");
       }
     } catch (e) {
-      console.error(e);
+      console.error("Generate Voice Error:", e);
       alert("Error generating voice. Please check the console.");
     } finally {
       setIsGenerating(false);

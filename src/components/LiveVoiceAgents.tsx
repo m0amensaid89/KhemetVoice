@@ -25,6 +25,9 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
   const selectedVoice = VOICE_DATA[activeIndex];
 
   const handleStartSession = async () => {
+    // For UI demo, show mock message directly
+    alert("Live session coming soon — Gemini Live integration in progress");
+    /*
     if (!process.env.NEXT_PUBLIC_LIVEKIT_URL) {
       alert("LiveKit URL is not configured. (Mocking connection for UI demo)");
     }
@@ -47,6 +50,7 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
     } finally {
       setIsConnecting(false);
     }
+    */
   };
 
   const handleDisconnect = () => {

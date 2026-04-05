@@ -13,7 +13,11 @@ const khemetToGeminiMap: Record<string, { voiceName: string, promptBoost: string
 
 export async function POST(req: Request) {
   try {
-    const { text, voiceKey } = await req.json();
+    const body = await req.json();
+    console.log("TTS API called with body:", body);
+    console.log("GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
+
+    const { text, voiceKey } = body;
 
     if (!text || !voiceKey) {
       return NextResponse.json({ error: 'Missing text or voiceKey' }, { status: 400 });
@@ -24,27 +28,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid voiceKey' }, { status: 400 });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY || "";
     if (!apiKey) {
       return NextResponse.json({ error: 'Missing GEMINI_API_KEY' }, { status: 500 });
     }
 
+    // Explicitly creating GoogleGenerativeAI instance as requested
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash", // Use standard model, but pass generationConfig for audio
-    });
 
     const fullPrompt = `${text} ${mapping.promptBoost}`;
 
-    // The instructions say "gemini-2.5-flash-preview-tts"
-    // The previous error showed "This model only supports text output" for gemini-2.5-flash.
-    // So we must use gemini-2.5-flash-preview-tts or gemini-2.5-flash-preview as instructed, actually let's just use what they said:
-    // model "gemini-2.5-flash-preview-tts"
-    // Wait, the prompt said: "gemini-2.5-flash-preview-tts".
-    // Wait, standard `gemini-2.5-flash` model does not support AUDIO modality, only some do (e.g., gemini-2.0-flash-exp, gemini-2.5-flash-preview-tts etc).
-    // Let's just use gemini-2.5-flash-preview-tts or gemini-2.0-flash as that supports audio modalities.
-    // The prompt says exactly: model "gemini-2.5-flash-preview-tts"
-
+    // Using fetch with the required exact model as specified in the instructions
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
@@ -82,10 +76,9 @@ export async function POST(req: Request) {
         throw new Error("No audio returned from Gemini");
     }
 
-    return NextResponse.json({
-        audioBase64: audioPart.inlineData.data,
-        mimeType: audioPart.inlineData.mimeType
-    });
+    const base64Audio = audioPart.inlineData.data;
+
+    return NextResponse.json({ audio: base64Audio }, { status: 200 });
 
   } catch (error: any) {
     console.error("TTS Error:", error);
