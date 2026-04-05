@@ -436,35 +436,48 @@ export function TryItFree() {
 
         {/* 1 SPEAKER MODE LAYOUT */}
         {speakersMode === 1 && (
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-8 max-w-[1000px] mx-auto">
             <div className="flex-1 flex flex-col gap-8">
               <div>
-                <div className="text-sm text-zinc-400 mb-3">1. Select Mode</div>
-                <div className="flex gap-3">
-                  {[1, 2].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => setSpeakersMode(num as 1 | 2)}
-                      className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
-                        speakersMode === num
-                          ? 'border-[#D4AF37] text-[#D4AF37]'
-                          : 'border-white/10 text-zinc-400 hover:border-white/20'
-                      }`}
-                    >
-                      {num} Speaker{num > 1 ? 's' : ''}
-                    </button>
-                  ))}
+                <div className="flex justify-center mb-6">
+                  <div className="flex gap-3">
+                    {[1, 2].map((num) => (
+                      <button
+                        key={num}
+                        onClick={() => setSpeakersMode(num as 1 | 2)}
+                        className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
+                          speakersMode === num
+                            ? 'border-[#D4AF37] text-[#D4AF37]'
+                            : 'border-white/10 text-zinc-400 hover:border-white/20'
+                        }`}
+                      >
+                        {num} Speaker{num > 1 ? 's' : ''}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <div className="text-sm text-zinc-400 mb-3">2. Select Voice</div>
+                <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Select Voice</div>
                 {renderVoiceRow(selectedVoiceA, setSelectedVoiceA)}
               </div>
 
               <div>
-                <div className="text-sm text-zinc-400 mb-3">3. Speaking Style</div>
-                <div className="flex flex-wrap gap-2">
+                <div className="text-sm text-zinc-400 mb-2">Script</div>
+                <div className="relative">
+                  <textarea
+                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-4 text-white resize-none focus:outline-none focus:border-[#D4AF37] custom-scrollbar"
+                    placeholder="Type what your voice agent will say..."
+                    maxLength={300}
+                    value={textA}
+                    onChange={(e) => setTextA(e.target.value)}
+                  />
+                  <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
+                </div>
+              </div>
+
+              <div>
+                <div className="text-sm text-zinc-400 mb-3 text-center">Speaking Style</div>
+                <div className="flex flex-wrap justify-center gap-2 mb-6">
                   {STYLES.map(style => (
                     <button
                       key={style}
@@ -479,37 +492,23 @@ export function TryItFree() {
                     </button>
                   ))}
                 </div>
-              </div>
 
-              <div>
-                <div className="text-sm text-zinc-400 mb-3">4. Script</div>
-                <div className="relative">
-                  <textarea
-                    className="w-full h-32 bg-zinc-900 border border-white/10 rounded-lg p-4 text-white resize-none focus:outline-none focus:border-[#D4AF37] custom-scrollbar"
-                    placeholder="Type what your voice agent will say..."
-                    maxLength={300}
-                    value={textA}
-                    onChange={(e) => setTextA(e.target.value)}
-                  />
-                  <div className="text-right text-xs text-zinc-500 mt-1">{textA.length} / 300</div>
-                </div>
+                <button
+                  onClick={handleGenerate}
+                  disabled={isGenerateDisabled}
+                  className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
+                    isGenerateDisabled
+                      ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                      : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
+                  }`}
+                >
+                  {isGenerating ? (
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
+                  ) : (
+                    "Generate Voice"
+                  )}
+                </button>
               </div>
-
-              <button
-                onClick={handleGenerate}
-                disabled={isGenerateDisabled}
-                className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
-                  isGenerateDisabled
-                    ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
-                    : 'bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90'
-                }`}
-              >
-                {isGenerating ? (
-                  <><Loader2 className="w-5 h-5 animate-spin" /> Generating...</>
-                ) : (
-                  "Generate Voice"
-                )}
-              </button>
             </div>
 
             <div className="flex-1 relative flex flex-col items-center justify-center min-h-[400px] bg-black rounded-xl border border-white/5 overflow-hidden">
@@ -520,7 +519,7 @@ export function TryItFree() {
 
         {/* 2 SPEAKERS MODE LAYOUT */}
         {speakersMode === 2 && (
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8 max-w-[1000px] mx-auto">
 
             {/* Mode Select */}
             <div className="flex justify-center">
@@ -548,7 +547,7 @@ export function TryItFree() {
 
             {/* 2 Columns: Voices and Scripts */}
             <div className="flex flex-col md:flex-row gap-8">
-              <div className="flex-1 flex flex-col gap-6">
+              <div className="flex-1 flex flex-col gap-6 w-full md:w-1/2 min-w-0">
                 <div>
                   <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Speaker A Voice</div>
                   {renderVoiceRow(selectedVoiceA, setSelectedVoiceA)}
@@ -566,7 +565,7 @@ export function TryItFree() {
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col gap-6">
+              <div className="flex-1 flex flex-col gap-6 w-full md:w-1/2 min-w-0">
                 <div>
                   <div className="text-[#D4AF37] text-xs font-bold uppercase mb-3">Speaker B Voice</div>
                   {renderVoiceRow(selectedVoiceB, setSelectedVoiceB)}
