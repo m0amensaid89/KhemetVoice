@@ -65,7 +65,7 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
         <div className="text-center">
           <h2 className="text-2xl font-serif text-white mb-2">Live Voice Agents</h2>
           <p className="text-zinc-400 text-sm max-w-xl mx-auto">
-            Experience our ultra-low latency conversational AI using Gemini 2.5 Flash Native Audio.
+            Experience our ultra-low latency conversational AI.
             Speak directly with {selectedVoice?.name} in real-time.
           </p>
         </div>
