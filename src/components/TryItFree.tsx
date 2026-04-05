@@ -243,14 +243,14 @@ export function TryItFree() {
       onClick={onSelect}
       className="flex-shrink-0 flex flex-col gap-1 p-3 rounded-lg border transition-all w-28"
       style={{
-        borderColor: selected ? voice.cardColor || "#D4AF37" : "rgba(255,255,255,0.1)",
-        boxShadow: selected ? `0 0 12px ${voice.cardColor || "#D4AF37"}60` : "none",
-        background: selected ? `${voice.cardColor || "#D4AF37"}10` : "transparent",
+        borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
+        boxShadow: selected ? "0 0 12px rgba(212,175,55,0.5)" : "none",
+        background: selected ? "rgba(212,175,55,0.12)" : "#09090b",
       }}
     >
       <div className="flex items-center gap-1.5">
         <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
-        <span className="text-white text-xs font-bold truncate">{voice.name}</span>
+        <span className={`text-xs font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
       </div>
       <span className="text-zinc-500 text-[10px]">{voice.pitch}</span>
       <span className="text-zinc-400 text-[10px] truncate">{(voice.characteristics as string).split(",")[0]}</span>
@@ -379,13 +379,13 @@ export function TryItFree() {
                 <VoiceVisualizer
                   color={selectedVoiceA.cardColor || "#D4AF37"}
                   state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
-                  label=""
+                  label={selectedVoiceA.name}
                   size={340}
                 />
                 <VoiceVisualizer
                   color={selectedVoiceB.cardColor || "#a78bfa"}
                   state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
-                  label=""
+                  label={selectedVoiceB.name}
                   size={340}
                 />
               </div>
