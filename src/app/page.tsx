@@ -58,22 +58,22 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ── 50/50 SPLIT SCREEN: VISUALIZER & HERO SELECTION ── */}
-      <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-white/5 bg-[#09090b]">
+      {/* ── 4-BOX HORIZONTAL LAYOUT ── */}
+      <section className="w-full max-w-[1600px] mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-4 bg-[#09090b]">
 
-        {/* LEFT COLUMN: BIG ANIMATED GLOWING CIRCLE */}
-        <div className="border-r border-white/5 flex justify-center items-center py-12">
+        {/* BOX 1: BIG ANIMATED GLOWING CIRCLE */}
+        <div className="flex justify-center items-center p-4 border border-white/5 rounded-xl bg-[#09090b]">
           <VoiceVisualizer
             color={activeVoice?.cardColor || "#D4AF37"}
             state={vizState}
             label={activeVoice?.name || "Khemet Voice"}
-            size={480}
+            size={220}
           />
         </div>
 
-        {/* RIGHT COLUMN: HERO SELECTION BOXES */}
-        <div className="flex justify-center items-center py-12">
-          <div className="grid grid-cols-2 gap-4 px-6 max-w-2xl w-full">
+        {/* BOX 2: HERO SELECTION BOXES */}
+        <div className="flex flex-col justify-center items-center p-4 border border-white/5 rounded-xl bg-[#09090b]">
+          <div className="grid grid-cols-2 gap-3 w-full max-w-sm h-full max-h-[400px] overflow-y-auto scrollbar-hide">
             {VOICE_DATA.map((voice, index) => {
               const selected = activeIndex === index;
               const isLast = index === VOICE_DATA.length - 1;
@@ -81,20 +81,19 @@ export default function HomePage() {
                 <button
                   key={voice.name}
                   onClick={() => setActiveIndex(index)}
-                  className={`flex flex-col gap-2 p-5 rounded-xl border transition-all w-full ${isLast ? 'col-span-2 max-w-[50%] mx-auto' : ''}`}
+                  className={`flex flex-col gap-1 p-3 rounded-lg border transition-all w-full ${isLast ? 'col-span-2' : ''}`}
                   style={{
                     borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
-                    boxShadow: selected ? "0 0 20px rgba(212,175,55,0.4)" : "none",
+                    boxShadow: selected ? "0 0 12px rgba(212,175,55,0.4)" : "none",
                     background: selected ? "rgba(212,175,55,0.15)" : "#09090b",
                   }}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
-                    <span className={`text-lg font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
+                    <span className={`text-sm font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
                   </div>
                   <div className="flex justify-between w-full items-center">
-                    <span className="text-zinc-400 text-sm truncate">{(voice.characteristics as string).split(",")[0]}</span>
-                    <span className="text-zinc-500 text-xs uppercase tracking-wider">{voice.pitch}</span>
+                    <span className="text-zinc-500 text-[10px] uppercase tracking-wider">{voice.pitch}</span>
                   </div>
                 </button>
               );
@@ -102,18 +101,13 @@ export default function HomePage() {
           </div>
         </div>
 
-      </section>
-
-      {/* ── 50/50 SPLIT SCREEN: LIVE AGENTS & TRY IT FREE ── */}
-      <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-white/5">
-
-        {/* LEFT COLUMN: LIVE VOICE AGENTS */}
-        <div className="border-r border-white/5 bg-[#09090b]">
+        {/* BOX 3: LIVE VOICE AGENTS */}
+        <div className="flex justify-center items-stretch">
           <LiveVoiceAgents activeIndex={activeIndex} setVizState={setVizState} />
         </div>
 
-        {/* RIGHT COLUMN: TRY IT FREE */}
-        <div className="bg-[#09090b]">
+        {/* BOX 4: TRY IT FREE */}
+        <div className="flex justify-center items-stretch">
           <TryItFree
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}

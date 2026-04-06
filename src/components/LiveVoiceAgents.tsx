@@ -32,11 +32,6 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
       await navigator.mediaDevices.getUserMedia({ audio: true });
       console.log("✅ Mic permission granted - Live session started");
 
-      if (!process.env.NEXT_PUBLIC_LIVEKIT_URL) {
-        alert("Sovereign Live Voice integration is currently unavailable. Please try again later.");
-        return;
-      }
-
       setIsConnecting(true);
       const roomName = `room-${selectedVoice.name}-${Math.random().toString(36).substring(7)}`;
       const res = await fetch(`/api/livekit/token?room=${roomName}&username=user`);
@@ -67,16 +62,11 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
   };
 
   return (
-    <section className="w-full py-16 px-6 relative flex flex-col items-center border-t border-white/5">
-      <div className="max-w-4xl w-full flex flex-col items-center gap-8">
-
-        <div className="text-center">
-          <h2 className="text-2xl font-serif text-white mb-2">Live Voice Agents</h2>
-          <p className="text-zinc-400 text-sm max-w-xl mx-auto">
-            Experience our ultra-low latency conversational AI.
-            Speak directly with {selectedVoice?.name} in real-time.
-          </p>
-        </div>
+    <div className="w-full h-full p-4 border border-white/5 bg-[#09090b] rounded-xl flex flex-col gap-4">
+      <div className="text-center">
+        <h2 className="text-lg font-serif text-white mb-1">Live Voice Agents</h2>
+        <p className="text-zinc-400 text-xs">Speak directly in real-time.</p>
+      </div>
 
         {!isConnected ? (
           <div className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center gap-6">
@@ -123,8 +113,7 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
             </LiveKitRoom>
           </div>
         )}
-      </div>
-    </section>
+    </div>
   );
 }
 

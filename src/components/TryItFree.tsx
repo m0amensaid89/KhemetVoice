@@ -92,21 +92,17 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
   };
 
   return (
-    <section className="w-full py-16 px-6 bg-[#09090b] h-full">
-      <div className="w-full max-w-xl mx-auto flex flex-col gap-8">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-2xl font-serif text-white mb-2">
-            Try Khemet Voice Free
-          </h2>
-          <p className="text-zinc-400 mb-4">Experience the power. 3 generations included — no credit card required.</p>
-          <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold border ${triesLeft > 0 ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#D4AF37]" : "bg-red-500/10 border-red-500/30 text-red-400"}`}>
-            {triesLeft} of 3 remaining today
-          </span>
-        </div>
+    <div className="w-full h-full p-4 border border-white/5 bg-[#09090b] rounded-xl flex flex-col gap-4">
+      <div className="text-center">
+        <h2 className="text-lg font-serif text-white mb-1">Generate Voice</h2>
+        <p className="text-zinc-400 text-xs mb-2">3 generations included.</p>
+        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${triesLeft > 0 ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#D4AF37]" : "bg-red-500/10 border-red-500/30 text-red-400"}`}>
+          {triesLeft} of 3 left
+        </span>
+      </div>
 
-        <div className="flex flex-col gap-8">
-            {/* Step 3 — Style */}
+      <div className="flex flex-col gap-4">
+          {/* Step 3 — Style */}
             <div>
               <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Style</p>
               <div className="flex flex-wrap gap-2">
@@ -144,7 +140,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
                 {loading ? <><Loader2 size={16} className="animate-spin" /> GENERATING...</> : "GENERATE VOICE"}
               </button>
             </div>
-        </div>
       </div>
 
       <RegisterModal
@@ -152,6 +147,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
         onClose={() => setShowModal(false)}
         onSuccess={() => { setTriesUsed(0); setShowModal(false); }}
       />
-    </section>
+    </div>
   );
 }
