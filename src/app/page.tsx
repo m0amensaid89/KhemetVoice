@@ -47,18 +47,8 @@ export default function HomePage() {
         </Link>
       </nav>
 
-      {/* ── BIG ANIMATED GLOWING CIRCLE (TOP) ── */}
-      <section className="w-full pt-28 pb-4 flex justify-center items-center">
-        <VoiceVisualizer
-          color={activeVoice?.cardColor || "#D4AF37"}
-          state={vizState}
-          label={activeVoice?.name || "Khemet Voice"}
-          size={480}
-        />
-      </section>
-
       {/* ── 3D CAROUSEL HERO ── */}
-      <section className="w-full">
+      <section className="w-full pt-20">
         <VoiceHero
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
@@ -68,16 +58,65 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ── 50/50 SPLIT SCREEN: LIVE AGENTS & TRY IT FREE ── */}
-      <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-white/5">
+      {/* ── 4-BOX HORIZONTAL LAYOUT ── */}
+      <div className="w-full text-center mt-12 mb-4">
+        <h2 className="text-3xl md:text-5xl font-serif text-white tracking-wide mb-2">
+          Choose Your Voice
+        </h2>
+        <p className="text-zinc-400 text-lg">
+          Test it Yourself for Free
+        </p>
+      </div>
 
-        {/* LEFT COLUMN: LIVE VOICE AGENTS */}
-        <div className="border-r border-white/5 bg-[#09090b]">
+      <section className="w-full max-w-[1600px] mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-4 bg-[#09090b]">
+
+        {/* BOX 1: BIG ANIMATED GLOWING CIRCLE */}
+        <div className="flex justify-center items-center p-4 border border-white/5 rounded-xl bg-[#09090b]">
+          <VoiceVisualizer
+            color={activeVoice?.cardColor || "#D4AF37"}
+            state={vizState}
+            label={activeVoice?.name || "Khemet Voice"}
+            size={220}
+          />
+        </div>
+
+        {/* BOX 2: HERO SELECTION BOXES */}
+        <div className="flex flex-col justify-center items-center p-4 border border-white/5 rounded-xl bg-[#09090b]">
+          <div className="grid grid-cols-2 gap-3 w-full max-w-sm h-full max-h-[400px] overflow-y-auto scrollbar-hide">
+            {VOICE_DATA.map((voice, index) => {
+              const selected = activeIndex === index;
+              const isLast = index === VOICE_DATA.length - 1;
+              return (
+                <button
+                  key={voice.name}
+                  onClick={() => setActiveIndex(index)}
+                  className={`flex flex-col gap-1 p-3 rounded-lg border transition-all w-full ${isLast ? 'col-span-2' : ''}`}
+                  style={{
+                    borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
+                    boxShadow: selected ? "0 0 12px rgba(212,175,55,0.4)" : "none",
+                    background: selected ? "rgba(212,175,55,0.15)" : "#09090b",
+                  }}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
+                    <span className={`text-sm font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
+                  </div>
+                  <div className="flex justify-between w-full items-center">
+                    <span className="text-zinc-500 text-[10px] uppercase tracking-wider">{voice.pitch}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* BOX 3: LIVE VOICE AGENTS */}
+        <div className="flex justify-center items-stretch">
           <LiveVoiceAgents activeIndex={activeIndex} setVizState={setVizState} />
         </div>
 
-        {/* RIGHT COLUMN: TRY IT FREE */}
-        <div className="bg-[#09090b]">
+        {/* BOX 4: TRY IT FREE */}
+        <div className="flex justify-center items-stretch">
           <TryItFree
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}

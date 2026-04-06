@@ -39,25 +39,25 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
   const handleGenerate = async () => {
     if (triesLeft <= 0) { setShowModal(true); return; }
 
-    // Use default text if none is provided
     const defaultText = `Hi, I am ${selectedVoiceA.name}. Thank you for choosing Khemet Voice.`;
     const textToGenerate = textA.trim() ? textA.trim() : defaultText;
+
+    if (!textToGenerate.trim()) return;
 
     setLoading(true);
     setVizState("generating");
 
     try {
-      const body = {
-        text: textToGenerate,
-        styleInstructions: styleInstructions.trim(),
-        voiceKey: selectedVoiceA.name
-      };
-
-      const res = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+      const res = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: textToGenerate,
+          styleInstructions: styleInstructions || "",
+          voiceKey: selectedVoiceA.name
+        })
       });
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -69,71 +69,54 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
       setTriesUsed(newCount);
 
       if (data.audioBase64) {
-        const audioUrl = `data:audio/mp3;base64,${data.audioBase64}`;
-        if (onGenerateSuccess) {
-          // Pass the audio to the global Framer Motion player instead of playing locally
-          onGenerateSuccess(audioUrl, selectedVoiceA.name);
+        const byteCharacters = atob(data.audioBase64);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const audioBlob = new Blob([byteArray], { type: 'audio/mp3' });
+        const audioUrl = URL.createObjectURL(audioBlob);
 
-          // Scroll up so user can see it playing in the hero carousel
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+        const audio = new Audio(audioUrl);
+        audio.onended = () => {
+          setVizState("idle");
+        };
+        await audio.play();
+        console.log("✅ Generate Voice SUCCESS - audio playing");
+
+        // Keep viz state as playing
+        setVizState("playing");
+
+        // Let the parent know, if needed for anything else (like pushing to the global hero state if that's still desired)
+        if (onGenerateSuccess) {
+           onGenerateSuccess(audioUrl, selectedVoiceA.name);
         }
       } else {
-        throw new Error(data.error || "No audio returned");
+        console.error("No audioBase64 received");
+        setVizState("idle");
       }
-    } catch (e) {
-      console.error("Generate Voice Error:", e);
+    } catch (err) {
+      console.error("Generate Voice error:", err);
       alert("Error generating voice. Please check the console.");
+      setVizState("idle");
     } finally {
       setLoading(false);
-      setVizState("idle");
     }
   };
 
-  const VoiceCard = ({ voice, selected, onSelect }: { voice: typeof VOICE_DATA[0]; selected: boolean; onSelect: () => void }) => (
-    <button
-      onClick={onSelect}
-      className="flex-shrink-0 flex flex-col gap-1 p-3 rounded-lg border transition-all w-28"
-      style={{
-        borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
-        boxShadow: selected ? "0 0 12px rgba(212,175,55,0.5)" : "none",
-        background: selected ? "rgba(212,175,55,0.12)" : "#09090b",
-      }}
-    >
-      <div className="flex items-center gap-1.5">
-        <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
-        <span className={`text-xs font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
-      </div>
-      <span className="text-zinc-500 text-[10px]">{voice.pitch}</span>
-      <span className="text-zinc-400 text-[10px] truncate">{(voice.characteristics as string).split(",")[0]}</span>
-    </button>
-  );
-
   return (
-    <section className="w-full py-16 px-6 bg-[#09090b] h-full">
-      <div className="w-full max-w-xl mx-auto flex flex-col gap-8">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-2xl font-serif text-white mb-2">
-            Try Khemet Voice Free
-          </h2>
-          <p className="text-zinc-400 mb-4">Experience the power. 3 generations included — no credit card required.</p>
-          <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold border ${triesLeft > 0 ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#D4AF37]" : "bg-red-500/10 border-red-500/30 text-red-400"}`}>
-            {triesLeft} of 3 remaining today
-          </span>
-        </div>
+    <div className="w-full h-full p-4 border border-white/5 bg-[#09090b] rounded-xl flex flex-col gap-4">
+      <div className="text-center">
+        <h2 className="text-lg font-serif text-white mb-1">Generate Voice</h2>
+        <p className="text-zinc-400 text-xs mb-2">3 generations included.</p>
+        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border ${triesLeft > 0 ? "bg-[#D4AF37]/10 border-[#D4AF37]/30 text-[#D4AF37]" : "bg-red-500/10 border-red-500/30 text-red-400"}`}>
+          {triesLeft} of 3 left
+        </span>
+      </div>
 
-        <div className="flex flex-col gap-8">
-            {/* Step 1 — Voice selector */}
-            <div>
-              <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">
-                Select Voice
-              </p>
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {VOICE_DATA.map((v, index) => <VoiceCard key={v.name} voice={v} selected={activeIndex === index} onSelect={() => setActiveIndex(index)} />)}
-              </div>
-            </div>
-
-            {/* Step 3 — Style */}
+      <div className="flex flex-col gap-4">
+          {/* Step 3 — Style */}
             <div>
               <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Style</p>
               <div className="flex flex-wrap gap-2">
@@ -171,7 +154,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
                 {loading ? <><Loader2 size={16} className="animate-spin" /> GENERATING...</> : "GENERATE VOICE"}
               </button>
             </div>
-        </div>
       </div>
 
       <RegisterModal
@@ -179,6 +161,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
         onClose={() => setShowModal(false)}
         onSuccess={() => { setTriesUsed(0); setShowModal(false); }}
       />
-    </section>
+    </div>
   );
 }

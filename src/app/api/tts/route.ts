@@ -14,10 +14,9 @@ const khemetToGeminiMap: Record<string, { voiceName: string, promptBoost: string
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("TTS API called with body:", body);
-    console.log("GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
-
     const { text, styleInstructions, voiceKey } = body;
+    console.log("=== TTS API CALLED ===", { text, styleInstructions, voiceKey });
+    console.log("GOOGLE_API_KEY loaded:", !!process.env.GOOGLE_API_KEY);
 
     if (!text || !voiceKey) {
       return NextResponse.json({ error: 'Missing text or voiceKey' }, { status: 400 });
@@ -28,9 +27,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid voiceKey' }, { status: 400 });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY || "";
+    const apiKey = process.env.GOOGLE_API_KEY || "";
     if (!apiKey) {
-      return NextResponse.json({ error: 'Missing GEMINI_API_KEY' }, { status: 500 });
+      return NextResponse.json({ error: 'Missing GOOGLE_API_KEY' }, { status: 500 });
     }
 
     // Explicitly creating GoogleGenerativeAI instance as requested
