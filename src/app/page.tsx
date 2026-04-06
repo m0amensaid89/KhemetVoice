@@ -1,10 +1,20 @@
+"use client"
+import { useState } from "react";
 import { VoiceHero } from "@/components/VoiceHero";
 import { TryItFree } from "@/components/TryItFree";
 import { PricingSection } from "@/components/PricingSection";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { Loader2 } from "lucide-react";
+import { VOICE_DATA } from "@/data/voiceData";
+import { LiveVoiceAgents } from "@/components/LiveVoiceAgents";
+
 export default function HomePage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [generatedAudioUrl, setGeneratedAudioUrl] = useState<string | undefined>();
+  const [generatedVoiceName, setGeneratedVoiceName] = useState<string | undefined>();
+
   return (
     <div className="min-h-screen flex flex-col bg-[#09090b]">
 
@@ -29,11 +39,29 @@ export default function HomePage() {
 
       {/* ── 3D CAROUSEL HERO ── */}
       <section className="w-full">
-        <VoiceHero />
+        <VoiceHero
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          generatedAudioUrl={generatedAudioUrl}
+          generatedVoiceName={generatedVoiceName}
+        />
       </section>
 
+      {/* ── LIVE VOICE AGENTS ── */}
+      <LiveVoiceAgents activeIndex={activeIndex} />
+
       {/* ── TRY IT FREE ── */}
-      <TryItFree />
+      <TryItFree
+        onGenerateSuccess={(audioUrl, voiceName) => {
+          setGeneratedAudioUrl(audioUrl);
+          setGeneratedVoiceName(voiceName);
+          const voiceIndex = VOICE_DATA.findIndex(v => v.name === voiceName);
+          if (voiceIndex !== -1) {
+            setActiveIndex(voiceIndex);
+          }
+          window.dispatchEvent(new CustomEvent('playGeneratedVoice', { detail: voiceName }));
+        }}
+      />
 
       {/* ── PRICING ── */}
       <PricingSection />
