@@ -14,10 +14,9 @@ const khemetToGeminiMap: Record<string, { voiceName: string, promptBoost: string
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("TTS API called with body:", body);
-    console.log("GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
-
     const { text, styleInstructions, voiceKey } = body;
+    console.log("=== TTS API CALLED ===", { text, styleInstructions, voiceKey });
+    console.log("GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
 
     if (!text || !voiceKey) {
       return NextResponse.json({ error: 'Missing text or voiceKey' }, { status: 400 });

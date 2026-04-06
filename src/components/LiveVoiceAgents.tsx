@@ -28,13 +28,16 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
   const selectedVoice = VOICE_DATA[activeIndex];
 
   const handleStartSession = async () => {
-    if (!process.env.NEXT_PUBLIC_LIVEKIT_URL) {
-      alert("Sovereign Live Voice integration is currently unavailable. Please try again later.");
-      return;
-    }
-
-    setIsConnecting(true);
     try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log("✅ Mic permission granted - Live session started");
+
+      if (!process.env.NEXT_PUBLIC_LIVEKIT_URL) {
+        alert("Sovereign Live Voice integration is currently unavailable. Please try again later.");
+        return;
+      }
+
+      setIsConnecting(true);
       const roomName = `room-${selectedVoice.name}-${Math.random().toString(36).substring(7)}`;
       const res = await fetch(`/api/livekit/token?room=${roomName}&username=user`);
 
@@ -50,9 +53,9 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
       } else {
         throw new Error(data.error || "Failed to get token");
       }
-    } catch (e) {
-      console.error(e);
-      alert("Sovereign Live Voice integration in progress. Check back soon.");
+    } catch (err) {
+      console.error("Live Agent error:", err);
+      alert("Microphone permission denied or Sovereign Live Voice integration in progress.");
     } finally {
       setIsConnecting(false);
     }

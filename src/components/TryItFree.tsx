@@ -39,25 +39,25 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
   const handleGenerate = async () => {
     if (triesLeft <= 0) { setShowModal(true); return; }
 
-    // Use default text if none is provided
     const defaultText = `Hi, I am ${selectedVoiceA.name}. Thank you for choosing Khemet Voice.`;
     const textToGenerate = textA.trim() ? textA.trim() : defaultText;
+
+    if (!textToGenerate.trim()) return;
 
     setLoading(true);
     setVizState("generating");
 
     try {
-      const body = {
-        text: textToGenerate,
-        styleInstructions: styleInstructions.trim(),
-        voiceKey: selectedVoiceA.name
-      };
-
-      const res = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+      const res = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: textToGenerate,
+          styleInstructions: styleInstructions || "",
+          voiceKey: selectedVoiceA.name
+        })
       });
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -69,19 +69,21 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
       setTriesUsed(newCount);
 
       if (data.audioBase64) {
-        const audioUrl = `data:audio/mp3;base64,${data.audioBase64}`;
-        if (onGenerateSuccess) {
-          // Pass the audio to the global Framer Motion player instead of playing locally
-          onGenerateSuccess(audioUrl, selectedVoiceA.name);
+        const audioBlob = new Blob([Uint8Array.from(atob(data.audioBase64), c => c.charCodeAt(0))], { type: 'audio/mp3' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        const audio = new Audio(audioUrl);
+        audio.play();
+        console.log("✅ Generate Voice SUCCESS - audio playing");
 
-          // Scroll up so user can see it playing in the hero carousel
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Let the parent know, if needed for anything else (like pushing to the global hero state if that's still desired)
+        if (onGenerateSuccess) {
+           onGenerateSuccess(audioUrl, selectedVoiceA.name);
         }
       } else {
-        throw new Error(data.error || "No audio returned");
+        console.error("No audioBase64 received");
       }
-    } catch (e) {
-      console.error("Generate Voice Error:", e);
+    } catch (err) {
+      console.error("Generate Voice error:", err);
       alert("Error generating voice. Please check the console.");
     } finally {
       setLoading(false);
