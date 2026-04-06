@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { VOICE_DATA } from "@/data/voiceData";
 import { Loader2, Lock, Play, Pause } from "lucide-react";
 import { RegisterModal } from "./RegisterModal";
+import { LiveVoiceAgents } from "./LiveVoiceAgents";
 
 const STYLES = ["Professional", "Warm", "Energetic", "Formal", "Calm", "Storytelling"];
 
@@ -141,20 +142,14 @@ function VoiceVisualizer({ color, state, label, size = 320 }: { color: string; s
 }
 
 export function TryItFree() {
-  const [mode, setMode] = useState<"single" | "dual">("single");
-  const [selectedVoiceA, setSelectedVoiceA] = useState(VOICE_DATA[0]);
-  const [selectedVoiceB, setSelectedVoiceB] = useState(VOICE_DATA[1]);
-  const [style, setStyle] = useState("Professional");
-  const [textA, setTextA] = useState("");
-  const [textB, setTextB] = useState("");
+  const [selectedVoice, setSelectedVoice] = useState(VOICE_DATA[0]);
+  const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [vizState, setVizState] = useState<VisualizerState>("idle");
-  const [activeSpeaker, setActiveSpeaker] = useState<"A" | "B">("A");
   const [triesUsed, setTriesUsed] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioARef = useRef<HTMLAudioElement | null>(null);
-  const audioBRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const today = new Date().toISOString().split("T")[0];
@@ -168,36 +163,33 @@ export function TryItFree() {
   const triesLeft = 3 - triesUsed;
 
   const stopAudio = () => {
-    audioARef.current?.pause();
-    audioBRef.current?.pause();
+    audioRef.current?.pause();
     setIsPlaying(false);
     setVizState("idle");
   };
 
-  const playAudio = (audioA: string, audioB?: string) => {
-    const a = new Audio("data:audio/wav;base64," + audioA);
-    audioARef.current = a;
-    setActiveSpeaker("A");
+  const playAudio = (audioBase64: string) => {
+    const audioBlob = new Blob(
+      [Uint8Array.from(atob(audioBase64), c => c.charCodeAt(0))],
+      { type: 'audio/mp3' }
+    );
+    const url = URL.createObjectURL(audioBlob);
+    const a = new Audio(url);
+    audioRef.current = a;
     setVizState("playing");
     setIsPlaying(true);
     a.play();
-    if (audioB) {
-      a.onended = () => {
-        const b = new Audio("data:audio/wav;base64," + audioB);
-        audioBRef.current = b;
-        setActiveSpeaker("B");
-        b.play();
-        b.onended = () => { setVizState("idle"); setIsPlaying(false); };
-      };
-    } else {
-      a.onended = () => { setVizState("idle"); setIsPlaying(false); };
-    }
+
+    a.onended = () => {
+      setVizState("idle");
+      setIsPlaying(false);
+      URL.revokeObjectURL(url);
+    };
   };
 
   const handleGenerate = async () => {
     if (triesLeft <= 0) { setShowModal(true); return; }
 
-    const text = mode === "single" ? textA : textA;
     if (!text.trim()) return;
 
     setLoading(true);
@@ -205,31 +197,25 @@ export function TryItFree() {
     stopAudio();
 
     try {
-      const body = mode === "single"
-        ? {
-            mode: "single",
-            speakers: [{ text: textA, style, voiceName: selectedVoiceA.name }],
-          }
-        : {
-            mode: "dual",
-            speakers: [
-              { text: textA, style, voiceName: selectedVoiceA.name },
-              { text: textB, style, voiceName: selectedVoiceB.name },
-            ],
-          };
+      const body = { text, voiceKey: selectedVoice.name };
 
-      const res = await fetch("/api/tts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
       const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Generation failed");
+      }
 
       const newCount = triesUsed + 1;
       localStorage.setItem("kv_tries", String(newCount));
       setTriesUsed(newCount);
 
-      if (mode === "single") {
-        playAudio(data.audio);
-      } else {
-        playAudio(data.audioA, data.audioB);
-      }
+      playAudio(data.audioBase64);
     } catch (e) {
       console.error(e);
       setVizState("idle");
@@ -274,77 +260,32 @@ export function TryItFree() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* LEFT — Controls */}
           <div className="flex flex-col gap-6">
-            {/* Step 1 — Mode */}
-            <div>
-              <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Speaker Mode</p>
-              <div className="flex gap-3">
-                {(["single", "dual"] as const).map((m) => (
-                  <button key={m} onClick={() => setMode(m)}
-                    className={`px-5 py-2 rounded-lg border text-sm font-medium transition-all ${mode === m ? "border-[#D4AF37] text-[#D4AF37]" : "border-white/10 text-zinc-400 hover:border-white/20"}`}>
-                    {m === "single" ? "1 Speaker" : "2 Speakers"}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 2 — Voice selector */}
+            {/* Step 1 — Voice selector */}
             <div>
               <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">
-                {mode === "dual" ? "Speaker A — Voice" : "Voice"}
+                Voice
               </p>
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {VOICE_DATA.map(v => <VoiceCard key={v.name} voice={v} selected={selectedVoiceA.name === v.name} onSelect={() => setSelectedVoiceA(v)} />)}
+                {VOICE_DATA.map(v => <VoiceCard key={v.name} voice={v} selected={selectedVoice.name === v.name} onSelect={() => setSelectedVoice(v)} />)}
               </div>
             </div>
 
-            {mode === "dual" && (
-              <div>
-                <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Speaker B — Voice</p>
-                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                  {VOICE_DATA.map(v => <VoiceCard key={v.name} voice={v} selected={selectedVoiceB.name === v.name} onSelect={() => setSelectedVoiceB(v)} />)}
-                </div>
-              </div>
-            )}
-
-            {/* Step 3 — Style */}
-            <div>
-              <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Style</p>
-              <div className="flex flex-wrap gap-2">
-                {STYLES.map(s => (
-                  <button key={s} onClick={() => setStyle(s)}
-                    className={`px-4 py-1.5 rounded-full text-sm transition-all ${style === s ? "bg-[#D4AF37] text-black font-bold" : "bg-zinc-800 text-zinc-400 hover:text-white"}`}>
-                    {s}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 4 — Text */}
+            {/* Step 2 — Text */}
             <div className="flex flex-col gap-3">
               <div>
-                {mode === "dual" && <p className="text-zinc-400 text-xs uppercase tracking-widest mb-2">Speaker A says:</p>}
-                <textarea value={textA} onChange={e => setTextA(e.target.value)} maxLength={300}
-                  placeholder="Type what your voice agent will say..."
+                <textarea value={text} onChange={e => setText(e.target.value)} maxLength={300}
+                  placeholder="Hear your hero speak any text in real Khemet voice..."
                   className="w-full h-28 bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#D4AF37]/40 resize-none" />
-                <p className="text-right text-xs text-zinc-600 mt-1">{textA.length} / 300</p>
+                <p className="text-right text-xs text-zinc-600 mt-1">{text.length} / 300</p>
               </div>
-              {mode === "dual" && (
-                <div>
-                  <p className="text-zinc-400 text-xs uppercase tracking-widest mb-2">Speaker B says:</p>
-                  <textarea value={textB} onChange={e => setTextB(e.target.value)} maxLength={300}
-                    placeholder="Type the customer's response..."
-                    className="w-full h-28 bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#D4AF37]/40 resize-none" />
-                  <p className="text-right text-xs text-zinc-600 mt-1">{textB.length} / 300</p>
-                </div>
-              )}
             </div>
 
-            {/* Step 5 — Generate */}
+            {/* Step 3 — Generate */}
             <div className="flex flex-col gap-3">
               <button onClick={handleGenerate}
-                disabled={loading || !textA.trim()}
+                disabled={loading || !text.trim()}
                 className="w-full py-3 rounded-lg bg-[#D4AF37] text-black font-bold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:pointer-events-none">
-                {loading ? <><Loader2 size={16} className="animate-spin" /> Generating...</> : "Generate Voice"}
+                {loading ? <><Loader2 size={16} className="animate-spin" /> Generating...</> : "Try Khemet Voice Free"}
               </button>
 
               {/* Play/Pause + locked download */}
@@ -367,31 +308,17 @@ export function TryItFree() {
 
           {/* RIGHT — Visualizer */}
           <div className="flex flex-col items-stretch justify-between w-full sticky top-0">
-            {mode === "single" ? (
-              <VoiceVisualizer
-                color={selectedVoiceA.cardColor || "#D4AF37"}
-                state={vizState}
-                label={selectedVoiceA.name}
-                size={480}
-              />
-            ) : (
-              <div className="flex flex-col items-center w-full gap-2">
-                <VoiceVisualizer
-                  color={selectedVoiceA.cardColor || "#D4AF37"}
-                  state={vizState !== "idle" && activeSpeaker === "A" ? vizState : "idle"}
-                  label={selectedVoiceA.name}
-                  size={340}
-                />
-                <VoiceVisualizer
-                  color={selectedVoiceB.cardColor || "#a78bfa"}
-                  state={vizState !== "idle" && activeSpeaker === "B" ? vizState : "idle"}
-                  label={selectedVoiceB.name}
-                  size={340}
-                />
-              </div>
-            )}
+            <VoiceVisualizer
+              color={selectedVoice.cardColor || "#D4AF37"}
+              state={vizState}
+              label={selectedVoice.name}
+              size={480}
+            />
           </div>
         </div>
+
+        {/* Live Voice Agents Section */}
+        <LiveVoiceAgents selectedHero={selectedVoice.name} />
       </div>
 
       <RegisterModal

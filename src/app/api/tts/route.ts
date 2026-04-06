@@ -1,122 +1,68 @@
 import { NextRequest, NextResponse } from "next/server";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const STYLE_PRESETS: Record<string, string> = {
-  Professional: "Clear, measured, professional business tone. Confident and composed.",
-  Warm: "Warm, genuine, human warmth. Like talking to a trusted advisor.",
-  Energetic: "Upbeat, enthusiastic, forward energy. Exciting but controlled.",
-  Formal: "Formal, authoritative, composed. Zero unnecessary warmth.",
-  Calm: "Slow, peaceful, reassuring. Very deliberate pacing.",
-  Storytelling: "Expressive narrative tone. Slight dramatic flair and rhythm.",
+const khemetToGeminiMap: Record<string, { voiceName: string; promptBoost: string }> = {
+  "KAIRO":   { voiceName: "Aoede",  promptBoost: "upbeat energetic male" },
+  "NEFRA":   { voiceName: "Kore",    promptBoost: "bright clear female" },
+  "RAMET":   { voiceName: "Charon",  promptBoost: "deep calm informative male" },
+  "NEXAR":   { voiceName: "Puck",    promptBoost: "warm friendly upbeat male" },
+  "LYRA":    { voiceName: "Aoede",   promptBoost: "enthusiastic upbeat female" },
+  "HORUSEN": { voiceName: "Fenrir",  promptBoost: "casual clear excitable male" },
+  "THOREN":  { voiceName: "Iapetus", promptBoost: "confident professional clear male" }
 };
-
-const VOICE_MAP: Record<string, string> = {
-  KAIRO: "Puck",
-  NEFRA: "Aoede",
-  RAMET: "Charon",
-  NEXAR: "Fenrir",
-  LYRA: "Leda",
-  HORUSEN: "Alnilam",
-  THOREN: "Iapetus",
-};
-
-async function generateSingleAudio(
-  text: string,
-  style: string,
-  voiceName: string,
-  apiKey: string
-): Promise<string> {
-  const styleNotes = STYLE_PRESETS[style] || style;
-  const geminiVoice = VOICE_MAP[voiceName?.toUpperCase()] || "Iapetus";
-  const prompt = `DIRECTOR'S NOTES\n${styleNotes}\n\nTRANSCRIPT:\n${text}`;
-
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          responseModalities: ["AUDIO"],
-          speechConfig: {
-            voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: geminiVoice },
-            },
-          },
-        },
-      }),
-    }
-  );
-
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`Gemini TTS error: ${err}`);
-  }
-
-  const data = await response.json();
-  const audioData = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-  if (!audioData) throw new Error("No audio in Gemini response");
-  return audioData;
-}
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log("=== TTS API CALLED ===", body);
+
+    const { text, voiceKey } = body;
+    if (!text || !voiceKey) {
+      return NextResponse.json({ error: "Missing text or voiceKey" }, { status: 400 });
+    }
+
     const apiKey = process.env.GEMINI_API_KEY;
-
     if (!apiKey) {
-      return NextResponse.json({ error: "Gemini API key not configured" }, { status: 500 });
+      return NextResponse.json({ error: "API key not configured" }, { status: 500 });
     }
 
-    // Legacy single-speaker format: { text, style }
-    if (body.text && !body.mode) {
-      const audioData = await generateSingleAudio(
-        body.text,
-        body.style || "Professional",
-        "THOREN",
-        apiKey
-      );
-      const audioBuffer = Buffer.from(audioData, "base64");
-      return new NextResponse(audioBuffer, {
-        status: 200,
-        headers: {
-          "Content-Type": "audio/wav",
-          "Content-Length": audioBuffer.length.toString(),
-        },
-      });
-    }
+    const mapping = khemetToGeminiMap[voiceKey.toUpperCase()] || khemetToGeminiMap["THOREN"];
+    const fullPrompt = `${text} ${mapping.promptBoost}`;
 
-    // New format: { mode, speakers: [{ text, style, voiceName }] }
-    const { mode, speakers } = body;
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-tts" });
 
-    if (!speakers || speakers.length === 0) {
-      return NextResponse.json({ error: "No speakers provided" }, { status: 400 });
-    }
+    // We cannot pass responseModalities to `generateContent` via SDK directly in an intuitive way without overriding config
+    // Actually, generating TTS via @google/generative-ai SDK requires passing it in the generationConfig or using a raw fetch.
+    // The prompt explicitly states: "POST Route Handler using @google/generative-ai and model 'gemini-2.5-flash-preview-tts'"
+    // and "Set responseModalities to ['AUDIO']". The SDK does support `responseModalities`.
 
-    if (mode === "single" || speakers.length === 1) {
-      const { text, style, voiceName } = speakers[0];
-      if (!text) return NextResponse.json({ error: "No text provided" }, { status: 400 });
-
-      const audio = await generateSingleAudio(text, style || "Professional", voiceName, apiKey);
-      return NextResponse.json({ audio, mimeType: "audio/wav" });
-    }
-
-    if (mode === "dual" && speakers.length === 2) {
-      const [spA, spB] = speakers;
-      if (!spA.text || !spB.text) {
-        return NextResponse.json({ error: "Both speakers need text" }, { status: 400 });
+    const result = await model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
+      generationConfig: {
+        // @ts-ignore - The SDK might not have types for responseModalities and speechConfig yet
+        responseModalities: ["AUDIO"],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: {
+              voiceName: mapping.voiceName,
+            }
+          }
+        }
       }
+    });
 
-      // Generate both in parallel
-      const [audioA, audioB] = await Promise.all([
-        generateSingleAudio(spA.text, spA.style || "Professional", spA.voiceName, apiKey),
-        generateSingleAudio(spB.text, spB.style || "Warm", spB.voiceName, apiKey),
-      ]);
+    const response = await result.response;
 
-      return NextResponse.json({ audioA, audioB, mimeType: "audio/wav" });
+    // The SDK structure for inlineData might be inside the response object.
+    // Usually it's in candidates[0].content.parts[0].inlineData.data
+    const audioBase64 = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+
+    if (!audioBase64) {
+      throw new Error("No audio returned from Gemini");
     }
 
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return NextResponse.json({ audioBase64: audioBase64 });
   } catch (error) {
     console.error("TTS route error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
