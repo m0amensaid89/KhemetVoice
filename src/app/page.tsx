@@ -59,27 +59,30 @@ export default function HomePage() {
       </section>
 
       {/* ── HERO SELECTION BOXES ── */}
-      <section className="w-full py-8 bg-[#09090b] flex justify-center border-t border-white/5">
-        <div className="flex gap-4 overflow-x-auto px-6 pb-2 scrollbar-hide max-w-6xl mx-auto">
+      <section className="w-full pt-8 pb-4 bg-[#09090b] flex justify-center border-t border-white/5">
+        <div className="grid grid-cols-2 gap-4 px-6 max-w-2xl mx-auto w-full">
           {VOICE_DATA.map((voice, index) => {
             const selected = activeIndex === index;
+            const isLast = index === VOICE_DATA.length - 1;
             return (
               <button
                 key={voice.name}
                 onClick={() => setActiveIndex(index)}
-                className="flex-shrink-0 flex flex-col gap-1 p-3 rounded-lg border transition-all w-32"
+                className={`flex flex-col gap-2 p-5 rounded-xl border transition-all w-full ${isLast ? 'col-span-2 max-w-[50%] mx-auto' : ''}`}
                 style={{
                   borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
-                  boxShadow: selected ? "0 0 12px rgba(212,175,55,0.5)" : "none",
-                  background: selected ? "rgba(212,175,55,0.12)" : "#09090b",
+                  boxShadow: selected ? "0 0 20px rgba(212,175,55,0.4)" : "none",
+                  background: selected ? "rgba(212,175,55,0.15)" : "#09090b",
                 }}
               >
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
-                  <span className={`text-sm font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
+                  <span className={`text-lg font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
                 </div>
-                <span className="text-zinc-500 text-xs">{voice.pitch}</span>
-                <span className="text-zinc-400 text-xs truncate">{(voice.characteristics as string).split(",")[0]}</span>
+                <div className="flex justify-between w-full items-center">
+                  <span className="text-zinc-400 text-sm truncate">{(voice.characteristics as string).split(",")[0]}</span>
+                  <span className="text-zinc-500 text-xs uppercase tracking-wider">{voice.pitch}</span>
+                </div>
               </button>
             );
           })}
@@ -87,7 +90,7 @@ export default function HomePage() {
       </section>
 
       {/* ── BIG ANIMATED GLOWING CIRCLE ── */}
-      <section className="w-full py-12 flex justify-center items-center bg-[#09090b]">
+      <section className="w-full py-4 flex justify-center items-center bg-[#09090b]">
         <VoiceVisualizer
           color={activeVoice?.cardColor || "#D4AF37"}
           state={vizState}
