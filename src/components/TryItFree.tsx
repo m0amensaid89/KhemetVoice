@@ -7,149 +7,21 @@ import { RegisterModal } from "./RegisterModal";
 
 const STYLES = ["Professional", "Warm", "Energetic", "Formal", "Calm", "Storytelling"];
 
-type VisualizerState = "idle" | "generating" | "playing";
-
-function VoiceVisualizer({ color, state, label, size = 320 }: { color: string; state: VisualizerState; label: string; size?: number }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const spikesRef = useRef<number[]>(Array(72).fill(0));
-  const targetRef = useRef<number[]>(Array(72).fill(0));
-  const frameRef = useRef(0);
-  const animRef = useRef<number | undefined>(undefined);
-  const particlesRef = useRef(
-    Array.from({ length: 20 }, () => ({
-      x: Math.random() * 400,
-      y: Math.random() * 300,
-      r: Math.random() * 1.5 + 0.5,
-      opacity: Math.random() * 0.08 + 0.02,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-    }))
-  );
-
-  const draw = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const W = canvas.width;
-    const H = canvas.height;
-    const cx = W / 2;
-    const cy = H / 2;
-    const baseR = Math.min(W, H) * 0.3;
-
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = "#09090b";
-    ctx.fillRect(0, 0, W, H);
-
-    // Particles
-    particlesRef.current.forEach((p) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
-      ctx.fill();
-    });
-
-    frameRef.current++;
-
-    if (state === "playing") {
-      // Update spike targets every 4 frames
-      if (frameRef.current % 4 === 0) {
-        targetRef.current = Array(72).fill(0).map(() => Math.random() * 28 + 4);
-      }
-      // Lerp spikes
-      spikesRef.current = spikesRef.current.map((s, i) =>
-        s + (targetRef.current[i] - s) * 0.15
-      );
-    } else {
-      // Return to 0
-      spikesRef.current = spikesRef.current.map((s) => s + (0 - s) * 0.1);
-    }
-
-    // Glow
-    const glowR = state === "playing" ? baseR + 8 : baseR + 2;
-    const gradient = ctx.createRadialGradient(cx, cy, glowR * 0.7, cx, cy, glowR + (state === "playing" ? 30 : 15));
-    gradient.addColorStop(0, color + (state === "playing" ? "40" : "20"));
-    gradient.addColorStop(1, "transparent");
-    ctx.beginPath();
-    ctx.arc(cx, cy, glowR + (state === "playing" ? 30 : 15), 0, Math.PI * 2);
-    ctx.fillStyle = gradient;
-    ctx.fill();
-
-    // Spikes
-    if (state === "playing") {
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = color;
-      ctx.fillStyle = color;
-      for (let i = 0; i < 72; i++) {
-        const angle = (i / 72) * Math.PI * 2 - Math.PI / 2;
-        const h = spikesRef.current[i];
-        const x1 = cx + Math.cos(angle) * baseR;
-        const y1 = cy + Math.sin(angle) * baseR;
-        const x2 = cx + Math.cos(angle) * (baseR + h);
-        const y2 = cy + Math.sin(angle) * (baseR + h);
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = color;
-        ctx.stroke();
-      }
-      ctx.shadowBlur = 0;
-    }
-
-    // Spinning arc for generating
-    if (state === "generating") {
-      ctx.beginPath();
-      const startAngle = (frameRef.current * 0.05) % (Math.PI * 2);
-      ctx.arc(cx, cy, baseR, startAngle, startAngle + Math.PI * 1.2);
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 3;
-      ctx.stroke();
-    }
-
-    // Circle ring
-    const pulseScale = state === "idle" ? 1 + Math.sin(frameRef.current * 0.03) * 0.01 : 1;
-    ctx.beginPath();
-    ctx.arc(cx, cy, baseR * pulseScale, 0, Math.PI * 2);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = state === "playing" ? 1.5 : 2;
-    ctx.shadowBlur = state === "playing" ? 20 : 10;
-    ctx.shadowColor = color;
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    animRef.current = requestAnimationFrame(draw);
-  }, [state, color]);
-
-  useEffect(() => {
-    animRef.current = requestAnimationFrame(draw);
-    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
-  }, [draw]);
-
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <canvas ref={canvasRef} width={size} height={size} className="rounded-xl w-full h-full" />
-      <p className="text-sm font-bold uppercase tracking-widest" style={{ color }}>{label}</p>
-    </div>
-  );
-}
+import type { VisualizerState } from "./VoiceVisualizer";
 
 interface TryItFreeProps {
+  activeIndex: number;
+  setActiveIndex: (index: number) => void;
+  setVizState: (state: VisualizerState) => void;
   onGenerateSuccess?: (audioUrl: string, voiceName: string) => void;
 }
 
-export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
-  const [selectedVoiceA, setSelectedVoiceA] = useState(VOICE_DATA[0]);
+export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerateSuccess }: TryItFreeProps) {
+  const selectedVoiceA = VOICE_DATA[activeIndex] || VOICE_DATA[0];
+  const [styleInstructions, setStyleInstructions] = useState("");
   const [style, setStyle] = useState("Professional");
   const [textA, setTextA] = useState("");
   const [loading, setLoading] = useState(false);
-  const [vizState, setVizState] = useState<VisualizerState>("idle");
   const [triesUsed, setTriesUsed] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -177,6 +49,7 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
     try {
       const body = {
         text: textToGenerate,
+        styleInstructions: styleInstructions.trim(),
         voiceKey: selectedVoiceA.name
       };
 
@@ -188,7 +61,7 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to generate TTS");
+        throw new Error(data.error || "Failed to generate voice");
       }
 
       const newCount = triesUsed + 1;
@@ -236,11 +109,11 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
   );
 
   return (
-    <section className="w-full py-20 px-6 bg-[#09090b] border-t border-white/5">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full py-16 px-6 bg-[#09090b] h-full">
+      <div className="w-full max-w-xl mx-auto flex flex-col gap-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-cinzel)" }}>
+        <div className="text-center">
+          <h2 className="text-2xl font-serif text-white mb-2">
             Try Khemet Voice Free
           </h2>
           <p className="text-zinc-400 mb-4">Experience the power. 3 generations included — no credit card required.</p>
@@ -249,16 +122,14 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* LEFT — Controls */}
-          <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
             {/* Step 1 — Voice selector */}
             <div>
               <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">
                 Select Voice
               </p>
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {VOICE_DATA.map(v => <VoiceCard key={v.name} voice={v} selected={selectedVoiceA.name === v.name} onSelect={() => setSelectedVoiceA(v)} />)}
+                {VOICE_DATA.map((v, index) => <VoiceCard key={v.name} voice={v} selected={activeIndex === index} onSelect={() => setActiveIndex(index)} />)}
               </div>
             </div>
 
@@ -275,9 +146,16 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
               </div>
             </div>
 
-            {/* Step 4 — Text */}
-            <div className="flex flex-col gap-3">
+            {/* Step 4 — Instructions & Text */}
+            <div className="flex flex-col gap-6">
               <div>
+                <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Style Instructions</p>
+                <textarea value={styleInstructions} onChange={e => setStyleInstructions(e.target.value)} maxLength={300}
+                  placeholder="Speak as a powerful ancient Egyptian pharaoh with deep resonant commanding voice..."
+                  className="w-full h-24 bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#D4AF37]/40 resize-none" />
+              </div>
+              <div>
+                <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Text</p>
                 <textarea value={textA} onChange={e => setTextA(e.target.value)} maxLength={300}
                   placeholder="Type what your voice agent will say..."
                   className="w-full h-28 bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#D4AF37]/40 resize-none" />
@@ -286,24 +164,13 @@ export function TryItFree({ onGenerateSuccess }: TryItFreeProps) {
             </div>
 
             {/* Step 5 — Generate */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 pt-2">
               <button onClick={handleGenerate}
                 disabled={loading}
-                className="w-full py-3 rounded-lg bg-[#D4AF37] text-black font-bold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:pointer-events-none">
-                {loading ? <><Loader2 size={16} className="animate-spin" /> Generating...</> : "Generate Voice"}
+                className="w-full py-4 rounded-full bg-[#D4AF37] text-black font-bold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:pointer-events-none shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                {loading ? <><Loader2 size={16} className="animate-spin" /> GENERATING...</> : "GENERATE VOICE"}
               </button>
             </div>
-          </div>
-
-          {/* RIGHT — Visualizer */}
-          <div className="flex flex-col items-stretch justify-between w-full sticky top-0">
-            <VoiceVisualizer
-              color={selectedVoiceA.cardColor || "#D4AF37"}
-              state={vizState}
-              label={selectedVoiceA.name}
-              size={480}
-            />
-          </div>
         </div>
       </div>
 

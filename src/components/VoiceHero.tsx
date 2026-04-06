@@ -23,18 +23,22 @@ const EGYPTIAN_SYMBOLS = [
   "eye-of-horus"
 ];
 
+import type { VisualizerState } from "./VoiceVisualizer";
+
 interface VoiceHeroProps {
   activeIndex: number;
   setActiveIndex: (index: number) => void;
   generatedAudioUrl?: string;
   generatedVoiceName?: string;
+  setVizState?: (state: VisualizerState) => void;
 }
 
 export const VoiceHero: React.FC<VoiceHeroProps> = ({
   activeIndex,
   setActiveIndex,
   generatedAudioUrl,
-  generatedVoiceName
+  generatedVoiceName,
+  setVizState
 }) => {
   const [playingVoice, setPlayingVoice] = useState<string | null>(null);
   const [isAutoMode, setIsAutoMode] = useState(true);
@@ -91,6 +95,17 @@ export const VoiceHero: React.FC<VoiceHeroProps> = ({
       }, 500);
     }
   }, [activeIndex, isAutoMode, isMuted]);
+
+  // Sync the global visualizer state with VoiceHero's playing state
+  useEffect(() => {
+    if (setVizState) {
+      if (playingVoice) {
+        setVizState("playing");
+      } else {
+        setVizState("idle");
+      }
+    }
+  }, [playingVoice, setVizState]);
 
   // When auto mode is turned on, start playing if not muted
   useEffect(() => {
