@@ -89,25 +89,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
     }
   };
 
-  const VoiceCard = ({ voice, selected, onSelect }: { voice: typeof VOICE_DATA[0]; selected: boolean; onSelect: () => void }) => (
-    <button
-      onClick={onSelect}
-      className="flex-shrink-0 flex flex-col gap-1 p-3 rounded-lg border transition-all w-28"
-      style={{
-        borderColor: selected ? "#D4AF37" : "rgba(255,255,255,0.1)",
-        boxShadow: selected ? "0 0 12px rgba(212,175,55,0.5)" : "none",
-        background: selected ? "rgba(212,175,55,0.12)" : "#09090b",
-      }}
-    >
-      <div className="flex items-center gap-1.5">
-        <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: voice.cardColor || "#D4AF37" }} />
-        <span className={`text-xs font-bold truncate ${selected ? "text-[#D4AF37]" : "text-white"}`}>{voice.name}</span>
-      </div>
-      <span className="text-zinc-500 text-[10px]">{voice.pitch}</span>
-      <span className="text-zinc-400 text-[10px] truncate">{(voice.characteristics as string).split(",")[0]}</span>
-    </button>
-  );
-
   return (
     <section className="w-full py-16 px-6 bg-[#09090b] h-full">
       <div className="w-full max-w-xl mx-auto flex flex-col gap-8">
@@ -123,16 +104,6 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
         </div>
 
         <div className="flex flex-col gap-8">
-            {/* Step 1 — Voice selector */}
-            <div>
-              <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">
-                Select Voice
-              </p>
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {VOICE_DATA.map((v, index) => <VoiceCard key={v.name} voice={v} selected={activeIndex === index} onSelect={() => setActiveIndex(index)} />)}
-              </div>
-            </div>
-
             {/* Step 3 — Style */}
             <div>
               <p className="text-zinc-400 text-xs uppercase tracking-widest mb-3">Style</p>
