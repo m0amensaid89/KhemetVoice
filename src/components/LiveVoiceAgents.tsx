@@ -12,12 +12,15 @@ import {
 } from "@livekit/components-react";
 import { VOICE_DATA } from "@/data/voiceData";
 import "@livekit/components-styles";
+import type { VisualizerState } from "./VoiceVisualizer";
+import { useEffect } from "react";
 
 interface LiveVoiceAgentsProps {
   activeIndex: number;
+  setVizState?: (state: VisualizerState) => void;
 }
 
-export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
+export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsProps) {
   const [isConnecting, setIsConnecting] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [token, setToken] = useState<string | null>(null);
@@ -25,17 +28,20 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
   const selectedVoice = VOICE_DATA[activeIndex];
 
   const handleStartSession = async () => {
-    // For UI demo, show mock message directly
-    alert("Live session coming soon — Gemini Live integration in progress");
-    /*
     if (!process.env.NEXT_PUBLIC_LIVEKIT_URL) {
-      alert("LiveKit URL is not configured. (Mocking connection for UI demo)");
+      alert("Sovereign Live Voice integration is currently unavailable. Please try again later.");
+      return;
     }
 
     setIsConnecting(true);
     try {
       const roomName = `room-${selectedVoice.name}-${Math.random().toString(36).substring(7)}`;
       const res = await fetch(`/api/livekit/token?room=${roomName}&username=user`);
+
+      if (!res.ok) {
+          throw new Error("Failed to get token");
+      }
+
       const data = await res.json();
 
       if (data.token) {
@@ -46,11 +52,10 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
       }
     } catch (e) {
       console.error(e);
-      alert("Error starting live session.");
+      alert("Sovereign Live Voice integration in progress. Check back soon.");
     } finally {
       setIsConnecting(false);
     }
-    */
   };
 
   const handleDisconnect = () => {
@@ -111,7 +116,7 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
               className="w-full"
             >
               <RoomAudioRenderer />
-              <ActiveSessionUI selectedVoice={selectedVoice} />
+              <ActiveSessionUI selectedVoice={selectedVoice} setVizState={setVizState} />
             </LiveKitRoom>
           </div>
         )}
@@ -120,9 +125,21 @@ export function LiveVoiceAgents({ activeIndex }: LiveVoiceAgentsProps) {
   );
 }
 
-function ActiveSessionUI({ selectedVoice }: { selectedVoice: any }) {
+function ActiveSessionUI({ selectedVoice, setVizState }: { selectedVoice: any, setVizState?: (state: VisualizerState) => void }) {
   const { state, audioTrack } = useVoiceAssistant();
   const { localParticipant } = useLocalParticipant();
+
+  useEffect(() => {
+    if (setVizState) {
+      if (state === "speaking") {
+        setVizState("playing");
+      } else if (state === "listening") {
+        setVizState("generating");
+      } else {
+        setVizState("idle");
+      }
+    }
+  }, [state, setVizState]);
 
   return (
     <div className="flex flex-col h-[500px] w-full">

@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     console.log("TTS API called with body:", body);
     console.log("GEMINI_API_KEY loaded:", !!process.env.GEMINI_API_KEY);
 
-    const { text, voiceKey } = body;
+    const { text, styleInstructions, voiceKey } = body;
 
     if (!text || !voiceKey) {
       return NextResponse.json({ error: 'Missing text or voiceKey' }, { status: 400 });
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     // Explicitly creating GoogleGenerativeAI instance as requested
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    const fullPrompt = `${text} ${mapping.promptBoost}`;
+    const fullPrompt = `${styleInstructions ? styleInstructions + ' ' : ''}${text} ${mapping.promptBoost}`;
 
     // Using fetch with the required exact model as specified in the instructions
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
