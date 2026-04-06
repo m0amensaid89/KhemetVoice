@@ -69,11 +69,24 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
       setTriesUsed(newCount);
 
       if (data.audioBase64) {
-        const audioBlob = new Blob([Uint8Array.from(atob(data.audioBase64), c => c.charCodeAt(0))], { type: 'audio/mp3' });
+        const byteCharacters = atob(data.audioBase64);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const audioBlob = new Blob([byteArray], { type: 'audio/mp3' });
         const audioUrl = URL.createObjectURL(audioBlob);
+
         const audio = new Audio(audioUrl);
-        audio.play();
+        audio.onended = () => {
+          setVizState("idle");
+        };
+        await audio.play();
         console.log("✅ Generate Voice SUCCESS - audio playing");
+
+        // Keep viz state as playing
+        setVizState("playing");
 
         // Let the parent know, if needed for anything else (like pushing to the global hero state if that's still desired)
         if (onGenerateSuccess) {
@@ -81,13 +94,14 @@ export function TryItFree({ activeIndex, setActiveIndex, setVizState, onGenerate
         }
       } else {
         console.error("No audioBase64 received");
+        setVizState("idle");
       }
     } catch (err) {
       console.error("Generate Voice error:", err);
       alert("Error generating voice. Please check the console.");
+      setVizState("idle");
     } finally {
       setLoading(false);
-      setVizState("idle");
     }
   };
 

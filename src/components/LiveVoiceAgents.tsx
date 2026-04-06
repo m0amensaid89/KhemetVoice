@@ -50,7 +50,6 @@ export function LiveVoiceAgents({ activeIndex, setVizState }: LiveVoiceAgentsPro
       }
     } catch (err) {
       console.error("Live Agent error:", err);
-      alert("Microphone permission denied or Sovereign Live Voice integration in progress.");
     } finally {
       setIsConnecting(false);
     }

@@ -59,6 +59,15 @@ export default function HomePage() {
       </section>
 
       {/* ── 4-BOX HORIZONTAL LAYOUT ── */}
+      <div className="w-full text-center mt-12 mb-4">
+        <h2 className="text-3xl md:text-5xl font-serif text-white tracking-wide mb-2">
+          Choose Your Voice
+        </h2>
+        <p className="text-zinc-400 text-lg">
+          Test it Yourself for Free
+        </p>
+      </div>
+
       <section className="w-full max-w-[1600px] mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-4 bg-[#09090b]">
 
         {/* BOX 1: BIG ANIMATED GLOWING CIRCLE */}
